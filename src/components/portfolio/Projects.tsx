@@ -12,6 +12,7 @@ const TILE_BG = [
 ];
 
 export function Projects() {
+  if (PROJECTS.length === 0) return null;
   const [featured, ...rest] = PROJECTS;
   return (
     <section id="work" className="border-b-4 border-ink">
@@ -57,10 +58,12 @@ export function Projects() {
             </article>
           </Reveal>
 
-          {/* Side card */}
-          <Reveal className="md:col-span-4" delay={0.08}>
-            <ProjectCard p={rest[0]} bg="bg-ink text-white" tall />
-          </Reveal>
+          {/* Side card — only rendered when a second project exists */}
+          {rest[0] && (
+            <Reveal className="md:col-span-4" delay={0.08}>
+              <ProjectCard p={rest[0]} bg="bg-ink text-white" tall />
+            </Reveal>
+          )}
 
           {/* Smaller grid */}
           {rest.slice(1).map((p, i) => (

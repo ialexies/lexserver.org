@@ -1,14 +1,30 @@
 import { useState } from "react";
 import { PROFILE } from "@/lib/portfolio-data";
 
+function sanitize(s: string) {
+  return s.replace(/[\r\n]/g, " ").trim();
+}
+
 export function Contact() {
   const [name, setName] = useState("");
   const [from, setFrom] = useState("");
   const [msg, setMsg] = useState("");
 
-  const mailto = `mailto:${PROFILE.email}?subject=${encodeURIComponent(
-    `Project inquiry from ${name || "your site"}`,
-  )}&body=${encodeURIComponent(`${msg}\n\n— ${name}${from ? ` (${from})` : ""}`)}`;
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const safeName = sanitize(name);
+    const safeFrom = sanitize(from);
+    const safeMsg = sanitize(msg);
+    const uri =
+      "mailto:" +
+      PROFILE.email +
+      "?subject=" +
+      encodeURIComponent(`Project inquiry from ${safeName || "your site"}`) +
+      "&body=" +
+      encodeURIComponent(`${safeMsg}\n\n— ${safeName}${safeFrom ? ` (${safeFrom})` : ""}`);
+    if (!uri.startsWith("mailto:")) return;
+    window.location.href = uri;
+  };
 
   return (
     <section id="contact" className="border-b-4 border-ink bg-pop text-white">
@@ -47,10 +63,7 @@ export function Contact() {
         </div>
 
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            window.location.href = mailto;
-          }}
+          onSubmit={handleSubmit}
           className="border-4 border-ink bg-paper p-6 text-ink shadow-brut-lg md:p-8"
         >
           <div className="grid gap-4">

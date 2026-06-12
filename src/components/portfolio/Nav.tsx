@@ -5,11 +5,13 @@ const LINKS = [
   { href: "#services", label: "Services" },
   { href: "#stack", label: "Stack" },
   { href: "#experience", label: "Story" },
+  { href: "#about", label: "About" },
   { href: "#contact", label: "Contact" },
 ];
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+
   useEffect(() => {
     const close = () => setOpen(false);
     window.addEventListener("hashchange", close);

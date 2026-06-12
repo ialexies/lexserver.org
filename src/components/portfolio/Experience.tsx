@@ -19,7 +19,7 @@ export function Experience() {
         <div className="p-6 md:p-12 lg:col-span-8">
           <ol className="space-y-10">
             {EXPERIENCE.map((e, i) => (
-              <Reveal key={e.company + e.period} delay={i * 0.05}>
+              <Reveal key={i} delay={i * 0.05}>
                 <li className="relative grid grid-cols-1 gap-4 border-l-4 border-ink pl-6 md:grid-cols-[1fr_auto] md:gap-8">
                   <span
                     className={`absolute -left-3 top-1 h-5 w-5 border-2 border-ink ${

@@ -23,7 +23,7 @@ export function Services() {
           {SERVICES.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.08}>
               <article
-                className={`flex h-full flex-col border-4 border-ink p-8 shadow-brut-lg ${CARDS[i]}`}
+                className={`flex h-full flex-col border-4 border-ink p-8 shadow-brut-lg ${CARDS[i % CARDS.length]}`}
               >
                 <span className="font-display text-xs uppercase tracking-widest opacity-70">
                   / {s.tag}
