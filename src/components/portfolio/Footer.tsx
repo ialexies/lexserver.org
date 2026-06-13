@@ -13,8 +13,14 @@ export function Footer() {
           </p>
           <div className="flex gap-6 text-xs font-bold uppercase tracking-widest">
             <a
-              href="/about"
+              href="/work"
               className="underline decoration-pop decoration-2 underline-offset-4 hover:text-pop"
+            >
+              Work
+            </a>
+            <a
+              href="/about"
+              className="underline decoration-ink decoration-2 underline-offset-4 hover:text-pop"
             >
               About
             </a>

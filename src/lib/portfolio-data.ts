@@ -107,32 +107,6 @@ export type PortfolioItem = {
 
 export const PORTFOLIO: PortfolioItem[] = [
   {
-    slug: "tara-stays",
-    title: "Tara Stays",
-    client: "Tara",
-    country: "🇵🇭 Philippines",
-    category: "web",
-    description:
-      "Free hostel booking marketplace for the Philippines — connecting travelers with local accommodations across Zambales and beyond. GCash & Maya payments supported. Zero-commission for property owners, with a free dashboard for managing listings and bookings.",
-    image: "https://picsum.photos/seed/tara-stays/800/500",
-    url: "https://staging.tara-stays.com/en",
-    status: "in-development",
-    tech: ["Next.js", "React", "TypeScript"],
-  },
-  {
-    slug: "fitness-app",
-    title: "Fitness Tracker App",
-    client: "Internal Project",
-    country: "🇵🇭 Philippines",
-    category: "web",
-    description:
-      "Web-based fitness and workout tracking app — log workouts, track progress over time, set weekly goals. Clean and fast, works on any device.",
-    image: "https://picsum.photos/seed/fitness-web/800/500",
-    url: "https://fitness-app.lexserver.org",
-    status: "in-development",
-    tech: ["React", "Next.js", "TypeScript"],
-  },
-  {
     slug: "biyahero",
     title: "Biyahero Riding App",
     client: "Groover Delivery Service",
@@ -294,6 +268,85 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Paolo Reyes",
     company: "DealFlow Brokerage",
     location: "Manila, Philippines",
+  },
+];
+
+export type Platform = "android" | "ios" | "web";
+
+export type OwnProduct = {
+  slug: string;
+  name: string;
+  tagline: string;
+  description: string;
+  platforms: Platform[];
+  status: "published" | "in-development";
+  image: string;
+  url?: string;
+  storeLinks?: {
+    android?: string;
+    ios?: string;
+    github?: string;
+  };
+  features: string[];
+};
+
+export const PRODUCTS: OwnProduct[] = [
+  {
+    slug: "re-call",
+    name: "Re-call",
+    tagline: "Never Miss What Was Said",
+    description:
+      "An Android app that records phone calls so you can revisit important conversations — business agreements, medical consultations, or anything worth remembering. All recordings stay on your device; nothing is sent to any server.",
+    platforms: ["android"],
+    status: "published",
+    image: "https://picsum.photos/seed/re-call-app/800/500",
+    storeLinks: {
+      android: "#",
+      github: "#",
+    },
+    features: [
+      "Manual & automatic call recording",
+      "Waveform audio player with seek",
+      "Contact name auto-labeling",
+      "100% local — no cloud, no servers",
+      "Smart cleanup of short recordings",
+    ],
+  },
+  {
+    slug: "tara-stays",
+    name: "Tara Stays",
+    tagline: "Free Hostel Booking for the Philippines",
+    description:
+      "A free hostel booking marketplace connecting travelers with local accommodations across the Philippines. Zero-commission for property owners, with GCash & Maya payment support.",
+    platforms: ["web"],
+    status: "in-development",
+    image: "https://picsum.photos/seed/tara-stays/800/500",
+    url: "https://staging.tara-stays.com/en",
+    features: [
+      "Free for travelers & property owners",
+      "GCash & Maya payment support",
+      "Property owner dashboard",
+      "Search by location, dates & price",
+      "Zero-commission on all bookings",
+    ],
+  },
+  {
+    slug: "fitness-app",
+    name: "Fitness Tracker",
+    tagline: "Track Workouts, Build Habits",
+    description:
+      "A web-based fitness and workout tracking app — log workouts, track progress over time, and hit weekly goals. Clean, fast, and works on any device without installing anything.",
+    platforms: ["web"],
+    status: "in-development",
+    image: "https://picsum.photos/seed/fitness-web/800/500",
+    url: "https://fitness-app.lexserver.org",
+    features: [
+      "Workout logging & history",
+      "Progress tracking & charts",
+      "Weekly goal setting",
+      "Works on all devices",
+      "No app installation needed",
+    ],
   },
 ];
 
