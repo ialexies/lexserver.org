@@ -7,7 +7,7 @@ export function About() {
     <section id="about" className="border-b-4 border-ink bg-paper">
       <div className="mx-auto max-w-[1400px] px-4 py-20 md:px-8 md:py-28">
         <SectionHeading
-          index="06"
+          index="07"
           eyebrow="About the studio"
           title="Why Builds Worlds."
         />

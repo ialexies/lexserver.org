@@ -7,6 +7,7 @@ import { Process } from "@/components/portfolio/Process";
 import { Portfolio } from "@/components/portfolio/Portfolio";
 import { TechStack } from "@/components/portfolio/TechStack";
 import { Testimonials } from "@/components/portfolio/Testimonials";
+import { Pricing } from "@/components/portfolio/Pricing";
 import { About } from "@/components/portfolio/About";
 import { BlogPreview } from "@/components/portfolio/BlogPreview";
 import { Contact } from "@/components/portfolio/Contact";
@@ -28,6 +29,7 @@ function Index() {
         <Portfolio />
         <TechStack />
         <Testimonials />
+        <Pricing />
         <About />
         <BlogPreview />
         <Contact />

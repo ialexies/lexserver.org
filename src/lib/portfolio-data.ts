@@ -320,6 +320,98 @@ export const TECH = [
   "Photoshop",
 ];
 
+export type PricingTier = {
+  service: string;
+  tag: string;
+  price: string;
+  unit: string;
+  note: string;
+  highlight?: boolean;
+  includes: string[];
+};
+
+export const PRICING: PricingTier[] = [
+  {
+    service: "WordPress Site",
+    tag: "WordPress",
+    price: "₱15,000",
+    unit: "starting from",
+    note: "Delivered in 2–3 weeks",
+    includes: [
+      "Up to 7 pages",
+      "Mobile responsive design",
+      "Contact form & Google Maps",
+      "Basic SEO setup",
+    ],
+  },
+  {
+    service: "Web Design & Development",
+    tag: "Web",
+    price: "₱45,000",
+    unit: "starting from",
+    note: "React / Next.js / Laravel",
+    highlight: true,
+    includes: [
+      "Custom-built, no templates",
+      "Up to 10 pages or screens",
+      "CMS or admin panel",
+      "Performance optimized",
+    ],
+  },
+  {
+    service: "Business Branding",
+    tag: "Branding",
+    price: "₱20,000",
+    unit: "starting from",
+    note: "3 initial logo concepts",
+    includes: [
+      "Logo design & variants",
+      "Brand color & typography",
+      "Brand guidelines PDF",
+      "Social media kit",
+    ],
+  },
+  {
+    service: "Mobile App",
+    tag: "Mobile",
+    price: "₱150,000",
+    unit: "starting from",
+    note: "iOS + Android (Flutter)",
+    includes: [
+      "Cross-platform build",
+      "Up to 10 screens",
+      "Firebase or REST backend",
+      "App store submission",
+    ],
+  },
+  {
+    service: "Graphic Design",
+    tag: "Design",
+    price: "₱5,000",
+    unit: "starting from",
+    note: "Per project basis",
+    includes: [
+      "Social media assets",
+      "Print-ready files",
+      "Multiple revisions",
+      "Source files included",
+    ],
+  },
+  {
+    service: "IT Services & Hosting",
+    tag: "IT",
+    price: "₱2,500",
+    unit: "/ month",
+    note: "Cancel anytime",
+    includes: [
+      "Managed web hosting",
+      "Monthly maintenance",
+      "Security monitoring",
+      "Priority email support",
+    ],
+  },
+];
+
 export const EXPERIENCE = [
   {
     role: "Mobile App Developer",

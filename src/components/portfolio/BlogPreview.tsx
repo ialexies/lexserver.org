@@ -10,7 +10,7 @@ export function BlogPreview() {
       <div className="mx-auto max-w-[1400px] px-4 py-20 md:px-8 md:py-28">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <SectionHeading
-            index="07"
+            index="08"
             eyebrow="From the blog"
             title="Latest Articles."
             description="Insights on web development, branding, and tech for Southeast Asian businesses."
