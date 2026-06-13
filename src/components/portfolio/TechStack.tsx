@@ -1,7 +1,6 @@
 import { TECH } from "@/lib/portfolio-data";
 
 export function TechStack() {
-  // Duplicate for seamless marquee loop
   const items = [...TECH, ...TECH];
   return (
     <section
@@ -13,10 +12,10 @@ export function TechStack() {
         <div className="marquee-track flex shrink-0 items-center gap-10 whitespace-nowrap px-6 font-display text-2xl uppercase md:text-3xl">
           {items.map((t, i) => (
             <span key={i} className="flex items-center gap-10">
-              <span className={i % 3 === 1 ? "text-pop" : i % 3 === 2 ? "text-acid" : ""}>
+              <span className={i % 5 === 2 ? "text-pop" : ""}>
                 {t}
               </span>
-              <span className="text-pop">●</span>
+              <span className="text-pop opacity-60">●</span>
             </span>
           ))}
         </div>

@@ -6,11 +6,11 @@
 
 @theme inline {
   --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-  --radius-xl: 0px;
-  --radius-2xl: 0px;
-  --radius-3xl: 0px;
+  --radius-md: 4px;
+  --radius-lg: 4px;
+  --radius-xl: 4px;
+  --radius-2xl: 4px;
+  --radius-3xl: 4px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -34,7 +34,6 @@
   --color-ink: var(--ink);
   --color-paper: var(--paper);
   --color-pop: var(--pop);
-  --color-acid: var(--acid);
   --font-display: "Archivo Black", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Hind", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -45,7 +44,6 @@
   --paper: #ffffff;
   --ink: #0a0a0a;
   --pop: #ff5722;
-  --acid: #ffeb3b;
 
   --background: #ffffff;
   --foreground: #0a0a0a;
@@ -55,15 +53,15 @@
   --popover-foreground: #0a0a0a;
   --primary: #ff5722;
   --primary-foreground: #ffffff;
-  --secondary: #ffeb3b;
+  --secondary: #f5f5f5;
   --secondary-foreground: #0a0a0a;
   --muted: #f5f5f5;
   --muted-foreground: #525252;
-  --accent: #ffeb3b;
-  --accent-foreground: #0a0a0a;
+  --accent: #ff5722;
+  --accent-foreground: #ffffff;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: #0a0a0a;
+  --border: #e5e5e5;
   --input: #0a0a0a;
   --ring: #ff5722;
 }
@@ -83,8 +81,8 @@ html { scroll-behavior: smooth; }
 }
 
 ::selection {
-  background: var(--acid);
-  color: var(--ink);
+  background: var(--pop);
+  color: #ffffff;
 }
 
 /* Marquee */
@@ -97,7 +95,19 @@ html { scroll-behavior: smooth; }
   will-change: transform;
 }
 
-/* Hard brutalist shadow utility */
+/* Hard brutalist shadow — used only for hero CTA and key accent elements */
 .shadow-brut    { box-shadow: 8px 8px 0 0 var(--ink); }
 .shadow-brut-lg { box-shadow: 12px 12px 0 0 var(--ink); }
 .shadow-brut-white { box-shadow: 8px 8px 0 0 #ffffff; }
+.shadow-brut-pop   { box-shadow: 8px 8px 0 0 var(--pop); }
+
+/* Blog prose styles */
+.prose-blog h2 { font-family: var(--font-display); font-size: 1.75rem; text-transform: uppercase; margin-top: 2rem; margin-bottom: 0.75rem; }
+.prose-blog h3 { font-family: var(--font-display); font-size: 1.25rem; text-transform: uppercase; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+.prose-blog p  { line-height: 1.8; margin-bottom: 1rem; font-size: 1.0625rem; }
+.prose-blog ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+.prose-blog li { margin-bottom: 0.25rem; line-height: 1.7; }
+.prose-blog a  { color: var(--pop); text-decoration: underline; }
+.prose-blog code { background: #f5f5f5; padding: 0.15em 0.4em; font-family: var(--font-mono); font-size: 0.875em; }
+.prose-blog pre { background: var(--ink); color: #f5f5f5; padding: 1.5rem; overflow-x: auto; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 0.875rem; line-height: 1.6; }
+.prose-blog blockquote { border-left: 4px solid var(--pop); padding-left: 1rem; font-style: italic; margin-bottom: 1rem; }

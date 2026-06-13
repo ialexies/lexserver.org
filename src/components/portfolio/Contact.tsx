@@ -19,9 +19,11 @@ export function Contact() {
       "mailto:" +
       PROFILE.email +
       "?subject=" +
-      encodeURIComponent(`Project inquiry from ${safeName || "your site"}`) +
+      encodeURIComponent(`Project inquiry from ${safeName || "your website"}`) +
       "&body=" +
-      encodeURIComponent(`${safeMsg}\n\n— ${safeName}${safeFrom ? ` (${safeFrom})` : ""}`);
+      encodeURIComponent(
+        `${safeMsg}\n\n— ${safeName}${safeFrom ? ` (${safeFrom})` : ""}`
+      );
     if (!uri.startsWith("mailto:")) return;
     window.location.href = uri;
   };
@@ -31,33 +33,38 @@ export function Contact() {
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 px-4 py-20 md:grid-cols-2 md:px-8 md:py-28">
         <div className="flex flex-col justify-between">
           <div>
-            <span className="border-2 border-white px-3 py-1 text-xs font-bold uppercase tracking-widest">
+            <span className="border-2 border-white/30 px-3 py-1 text-xs font-bold uppercase tracking-widest">
               / Let's talk
             </span>
             <h2 className="font-display mt-6 text-6xl uppercase leading-[0.9] md:text-8xl">
               Ready to
               <br />
-              <span className="text-acid">build?</span>
+              build?
             </h2>
-            <p className="mt-6 max-w-md text-lg font-semibold uppercase tracking-wide">
-              Open for product builds, contracts, IT services, and custom 3D-printed work.
+            <p className="mt-6 max-w-md text-lg font-semibold leading-relaxed uppercase tracking-wide text-white/80">
+              Open for website projects, mobile apps, branding, graphic design,
+              and IT services. Let's make something great together.
             </p>
           </div>
+
           <ul className="mt-10 space-y-3 text-sm font-bold uppercase tracking-widest">
             <li>
-              <a className="hover:text-acid" href={`mailto:${PROFILE.email}`}>
+              <a className="hover:text-white/70 transition-colors" href={`mailto:${PROFILE.email}`}>
                 ▸ {PROFILE.email}
               </a>
             </li>
             <li>
-              <a className="hover:text-acid" href={PROFILE.linkedin} target="_blank" rel="noreferrer">
-                ▸ linkedin.com/in/alexies-iglesia
+              <a
+                className="hover:text-white/70 transition-colors"
+                href={PROFILE.linkedin}
+                target="_blank"
+                rel="noreferrer"
+              >
+                ▸ LinkedIn — Alexies Iglesia
               </a>
             </li>
             <li>
-              <a className="hover:text-acid" href={PROFILE.github} target="_blank" rel="noreferrer">
-                ▸ github.com/ialexies
-              </a>
+              <span className="text-white/50">▸ Hermosa, Bataan · Philippines</span>
             </li>
           </ul>
         </div>
@@ -67,28 +74,39 @@ export function Contact() {
           className="border-4 border-ink bg-paper p-6 text-ink shadow-brut-lg md:p-8"
         >
           <div className="grid gap-4">
-            <Field label="Name" value={name} onChange={setName} placeholder="JUAN DELA CRUZ" />
-            <Field label="Email" type="email" value={from} onChange={setFrom} placeholder="YOU@COMPANY.COM" />
+            <Field
+              label="Name"
+              value={name}
+              onChange={setName}
+              placeholder="JUAN DELA CRUZ"
+            />
+            <Field
+              label="Email"
+              type="email"
+              value={from}
+              onChange={setFrom}
+              placeholder="YOU@COMPANY.COM"
+            />
             <label className="block">
               <span className="block text-[11px] font-bold uppercase tracking-widest">
-                Project brief
+                Project Brief
               </span>
               <textarea
                 required
                 rows={5}
                 value={msg}
                 onChange={(e) => setMsg(e.target.value)}
-                placeholder="TELL ME WHAT YOU'RE BUILDING…"
-                className="mt-2 w-full resize-none border-4 border-ink bg-paper p-4 text-sm font-bold uppercase tracking-wider placeholder:text-ink/40 focus:bg-acid focus:outline-none"
+                placeholder="TELL US WHAT YOU'RE BUILDING…"
+                className="mt-2 w-full resize-none border-4 border-ink bg-paper p-4 text-sm font-bold uppercase tracking-wider placeholder:text-ink/30 focus:border-pop focus:outline-none"
               />
             </label>
             <button
               type="submit"
-              className="font-display border-4 border-ink bg-ink p-5 text-xl uppercase text-paper transition-transform hover:-translate-x-1 hover:-translate-y-1 hover:shadow-brut"
+              className="font-display border-4 border-ink bg-ink p-5 text-xl uppercase text-paper transition-all hover:-translate-x-1 hover:-translate-y-1 hover:shadow-brut"
             >
-              Send message →
+              Send Message →
             </button>
-            <p className="text-[10px] font-bold uppercase tracking-widest opacity-60">
+            <p className="text-[10px] font-bold uppercase tracking-widest opacity-50">
               Opens your email client. No data is stored.
             </p>
           </div>
@@ -122,7 +140,7 @@ function Field({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="mt-2 w-full border-4 border-ink bg-paper p-4 text-sm font-bold uppercase tracking-wider placeholder:text-ink/40 focus:bg-acid focus:outline-none"
+        className="mt-2 w-full border-4 border-ink bg-paper p-4 text-sm font-bold uppercase tracking-wider placeholder:text-ink/30 focus:border-pop focus:outline-none"
       />
     </label>
   );

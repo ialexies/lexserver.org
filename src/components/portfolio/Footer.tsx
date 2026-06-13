@@ -8,27 +8,33 @@ export function Footer() {
           Builds&nbsp;Worlds<span className="text-pop">.</span>
         </div>
         <div className="flex flex-col items-center justify-between gap-4 py-6 md:flex-row">
-          <p className="text-xs font-bold uppercase tracking-widest">
-            © {new Date().getFullYear()} Builds Worlds Studio · Hermosa, Bataan PH
+          <p className="text-center text-xs font-bold uppercase tracking-widest text-ink/60 md:text-left">
+            © {new Date().getFullYear()} Builds Worlds Studio · Hermosa, Bataan · Philippines
           </p>
           <div className="flex gap-6 text-xs font-bold uppercase tracking-widest">
             <a
               href="/about"
-              className="underline decoration-acid decoration-4 underline-offset-4"
+              className="underline decoration-pop decoration-2 underline-offset-4 hover:text-pop"
             >
               About
             </a>
             <a
-              href={PROFILE.github}
+              href="/blog"
+              className="underline decoration-ink decoration-2 underline-offset-4 hover:text-pop"
+            >
+              Blog
+            </a>
+            <a
+              href={PROFILE.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="underline decoration-pop decoration-4 underline-offset-4"
+              className="underline decoration-ink/30 decoration-2 underline-offset-4 hover:text-pop"
             >
-              GitHub
+              LinkedIn
             </a>
             <a
               href={`mailto:${PROFILE.email}`}
-              className="underline decoration-ink decoration-4 underline-offset-4"
+              className="underline decoration-ink/30 decoration-2 underline-offset-4 hover:text-pop"
             >
               Email
             </a>

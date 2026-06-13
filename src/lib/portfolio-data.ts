@@ -1,96 +1,323 @@
 export const PROFILE = {
   name: "Alexies Iglesia",
-  studio: "Builds Worlds",
-  role: "Full-Stack Developer · Mobile App Developer · Designer · Maker",
-  tagline: "Code. Design. Build. Print.",
+  studio: "Builds Worlds Studio",
+  role: "Founder · Developer · Designer",
+  tagline: "Web, Mobile & IT Services for Southeast Asian Businesses",
   location: "Hermosa, Bataan · Philippines",
   email: "ialexies@gmail.com",
   linkedin: "https://www.linkedin.com/in/alexies-iglesia",
-  github: "https://github.com/ialexies",
 };
 
 export const METRICS = [
-  { value: "15+", label: "Years building" },
-  { value: "6+", label: "Mobile apps shipped" },
-  { value: "9+", label: "Companies & startups" },
+  { value: "15+", label: "Years experience" },
+  { value: "6+", label: "Apps shipped" },
+  { value: "9+", label: "Clients served" },
   { value: "10+", label: "Awards & honors" },
 ];
 
-export const SERVICES = [
+export type Service = {
+  tag: string;
+  title: string;
+  body: string;
+  points: string[];
+};
+
+export const SERVICES: Service[] = [
   {
-    tag: "Build",
-    title: "Web & Mobile Apps",
-    body: "Production Flutter apps, Laravel & Vue.js single-page apps, GraphQL & REST integrations, Firebase, and AWS infrastructure.",
-    points: ["Flutter / Dart", "Laravel / PHP", "Vue.js / Quasar", "GraphQL & REST"],
+    tag: "Web",
+    title: "Web Design & Development",
+    body: "Custom websites and web apps that load fast, look great on every screen, and turn visitors into paying customers.",
+    points: ["React", "Next.js", "Vue.js", "Laravel / PHP"],
+  },
+  {
+    tag: "WordPress",
+    title: "WordPress Sites",
+    body: "Professional business websites and online stores you can manage yourself — no developer needed after launch.",
+    points: ["WordPress", "WooCommerce", "Elementor", "Custom Themes"],
+  },
+  {
+    tag: "Mobile",
+    title: "Mobile App Development",
+    body: "Cross-platform iOS and Android apps that users love — shipped fast, tested thoroughly, maintained reliably.",
+    points: ["Flutter", "Capacitor.js", "Firebase", "REST / GraphQL"],
   },
   {
     tag: "Design",
-    title: "Graphic & 3D",
-    body: "Brand identity, marketing collateral, illustration, and 3D modeling — award-winning visual work since 2008.",
-    points: ["Adobe Suite", "Blender 3D", "Print & Digital", "Brand identity"],
+    title: "Graphic Design & Illustration",
+    body: "Print-ready and digital design work for businesses — social media, marketing collateral, and editorial illustration.",
+    points: ["Adobe Photoshop", "Illustrator", "Print & Digital", "Social Media"],
   },
   {
-    tag: "Make",
-    title: "3D Printing & Prototyping",
-    body: "From CAD model to printed part — functional prototypes, custom enclosures, and physical product iteration.",
-    points: ["Modeling", "Slicing & print", "Iteration", "Functional parts"],
+    tag: "Branding",
+    title: "Business Branding",
+    body: "Complete brand identities that make your business memorable — from logo to brand guidelines, ready to use everywhere.",
+    points: ["Logo Design", "Brand Identity", "Brand Guidelines", "Visual Systems"],
   },
   {
-    tag: "Run",
+    tag: "IT",
     title: "IT Services & Support",
-    body: "Hosting, server operations, maintenance, and technical support that keep everything we ship online and healthy.",
-    points: ["Server ops", "Maintenance", "Hosting / AWS", "Monitoring"],
+    body: "Hosting, server setup, and ongoing technical support that keeps your website and apps running around the clock.",
+    points: ["AWS / Cloud Hosting", "cPanel / Linux", "Server Ops", "Monitoring"],
   },
 ];
 
-export const PROJECTS = [
+export type ProcessStep = {
+  step: string;
+  title: string;
+  body: string;
+};
+
+export const PROCESS: ProcessStep[] = [
   {
+    step: "01",
+    title: "Discover",
+    body: "We start by understanding your business — your goals, audience, and what success looks like. No jargon, just clear conversation.",
+  },
+  {
+    step: "02",
+    title: "Design",
+    body: "Wireframes, mockups, and brand concepts crafted and refined with your feedback before a single line of production code is written.",
+  },
+  {
+    step: "03",
+    title: "Build",
+    body: "Development happens in clear sprints. You see progress weekly. We build fast without cutting corners on quality or security.",
+  },
+  {
+    step: "04",
+    title: "Launch",
+    body: "We handle deployment, testing, and handover. After launch, we stay for support — you're never left to figure it out alone.",
+  },
+];
+
+export type PortfolioCategory = "web" | "mobile" | "branding" | "design" | "wordpress";
+
+export type PortfolioItem = {
+  slug: string;
+  title: string;
+  client: string;
+  country: string;
+  category: PortfolioCategory;
+  description: string;
+  image: string;
+  url?: string;
+  status?: "in-development";
+  tech?: string[];
+};
+
+export const PORTFOLIO: PortfolioItem[] = [
+  {
+    slug: "tara-stays",
+    title: "Tara Stays",
+    client: "Tara",
+    country: "🇵🇭 Philippines",
+    category: "web",
+    description:
+      "Free hostel booking marketplace for the Philippines — connecting travelers with local accommodations across Zambales and beyond. GCash & Maya payments supported. Zero-commission for property owners, with a free dashboard for managing listings and bookings.",
+    image: "https://picsum.photos/seed/tara-stays/800/500",
+    url: "https://staging.tara-stays.com/en",
+    status: "in-development",
+    tech: ["Next.js", "React", "TypeScript"],
+  },
+  {
+    slug: "fitness-app",
+    title: "Fitness Tracker App",
+    client: "Internal Project",
+    country: "🇵🇭 Philippines",
+    category: "web",
+    description:
+      "Web-based fitness and workout tracking app — log workouts, track progress over time, set weekly goals. Clean and fast, works on any device.",
+    image: "https://picsum.photos/seed/fitness-web/800/500",
+    url: "https://fitness-app.lexserver.org",
+    status: "in-development",
+    tech: ["React", "Next.js", "TypeScript"],
+  },
+  {
+    slug: "biyahero",
     title: "Biyahero Riding App",
     client: "Groover Delivery Service",
-    year: "2019",
-    blurb: "End-to-end mobile riding app for booking and dispatch — built from scratch, design through deployment.",
+    country: "🇵🇭 Philippines",
+    category: "mobile",
+    description:
+      "End-to-end mobile riding app for booking and dispatch — built from scratch, design through deployment. Real-time tracking, rider management, and customer-facing booking flow.",
+    image: "https://picsum.photos/seed/biyahero/800/500",
     tech: ["Flutter", "Dart", "Firebase"],
-    accent: "from-amber-400/30 to-orange-600/10",
   },
   {
+    slug: "sarisuki-ecommerce",
     title: "Supah Quick Ecommerce",
     client: "SARISUKI",
-    year: "2022",
-    blurb: "Consumer-facing grocery commerce app — checkout, catalog, and order tracking.",
+    country: "🇵🇭 Philippines",
+    category: "mobile",
+    description:
+      "Consumer-facing grocery commerce app — browse, checkout, and track orders in seconds. Served thousands of daily active users at peak grocery delivery demand.",
+    image: "https://picsum.photos/seed/sarisuki/800/500",
     tech: ["Flutter", "GraphQL", "Bloc"],
-    accent: "from-emerald-400/30 to-teal-600/10",
   },
   {
-    title: "Warehouse Fulfillment App",
-    client: "SARISUKI",
-    year: "2022",
-    blurb: "Internal tool for warehouse staff to pick, pack, and dispatch orders with barcode flows.",
-    tech: ["Flutter", "GetX", "REST"],
-    accent: "from-sky-400/30 to-indigo-600/10",
-  },
-  {
+    slug: "dealflow-tool",
     title: "Business Valuation Tool",
     client: "DealFlow Brokerage",
-    year: "2021",
-    blurb: "Internal valuation web tool plus a Chrome extension for scraping deal data.",
-    tech: ["Vue.js", "Laravel", "Chrome Ext"],
-    accent: "from-rose-400/30 to-red-600/10",
+    country: "🇵🇭 Philippines",
+    category: "web",
+    description:
+      "Internal business valuation web tool plus a Chrome extension for scraping deal data from financial sources. Streamlined analyst workflows significantly.",
+    image: "https://picsum.photos/seed/dealflow/800/500",
+    tech: ["Vue.js", "Laravel", "Chrome Extension"],
   },
   {
-    title: "MerryNation Inventory",
-    client: "Award-winning Thesis",
-    year: "2015",
-    blurb: "Responsive web-based inventory system with companion mobile app & CMS. 2015 Best Thesis.",
-    tech: ["PHP", "MySQL", "Responsive"],
-    accent: "from-yellow-400/30 to-amber-600/10",
+    slug: "madmonkey-app",
+    title: "MadMonkey Hostels App",
+    client: "MadMonkey Hostels",
+    country: "🇵🇭 Philippines",
+    category: "mobile",
+    description:
+      "Feature-rich mobile app for a premier hostel chain — booking management, loyalty program, and real-time property updates for staff and guests across multiple locations.",
+    image: "https://picsum.photos/seed/madmonkey/800/500",
+    tech: ["Flutter", "Firebase", "REST API"],
+  },
+  {
+    slug: "coastal-kitchen-brand",
+    title: "Coastal Kitchen",
+    client: "Restaurant Client",
+    country: "🇵🇭 Philippines",
+    category: "branding",
+    description:
+      "Complete brand identity for a coastal seafood restaurant — logo design, color palette, typography system, menu design, and full print collateral suite.",
+    image: "https://picsum.photos/seed/restaurant-brand/800/500",
+    tech: ["Adobe Illustrator", "Photoshop", "InDesign"],
+  },
+  {
+    slug: "nexacore-brand",
+    title: "NexaCore Brand System",
+    client: "Tech Startup",
+    country: "🇸🇬 Singapore",
+    category: "branding",
+    description:
+      "Modern tech brand identity with logo variants, brand guidelines document, pitch deck template, and a full social media kit ready for launch.",
+    image: "https://picsum.photos/seed/nexacore/800/500",
+    tech: ["Adobe Illustrator", "Figma"],
+  },
+  {
+    slug: "zen-wellness-brand",
+    title: "Zen Wellness Co.",
+    client: "Wellness Brand",
+    country: "🇦🇺 Australia",
+    category: "branding",
+    description:
+      "Calm, modern brand identity for a wellness and lifestyle company — including product packaging design, stationery suite, and brand voice guidelines.",
+    image: "https://picsum.photos/seed/wellness/800/500",
+    tech: ["Adobe Illustrator", "Photoshop"],
+  },
+  {
+    slug: "national-day-campaign",
+    title: "National Day Campaign",
+    client: "Event Organizer",
+    country: "🇵🇭 Philippines",
+    category: "design",
+    description:
+      "Social media graphics series for a national day celebration — 30+ assets across Instagram, Facebook, and print formats. Delivered in 5 working days.",
+    image: "https://picsum.photos/seed/social-campaign/800/500",
+    tech: ["Adobe Photoshop", "Illustrator"],
+  },
+  {
+    slug: "tech-illustrations",
+    title: "Tech Editorial Illustrations",
+    client: "Online Publication",
+    country: "🇺🇸 USA",
+    category: "design",
+    description:
+      "Series of editorial illustrations for a technology-focused online magazine — covering AI, robotics, and digital life themes in a clean vector style.",
+    image: "https://picsum.photos/seed/illustration/800/500",
+    tech: ["Adobe Illustrator", "Photoshop"],
+  },
+  {
+    slug: "coffee-packaging",
+    title: "Artisan Coffee Packaging",
+    client: "Coffee Brand",
+    country: "🇯🇵 Japan",
+    category: "design",
+    description:
+      "Packaging design for a specialty coffee brand — labels, retail bags, and display materials with a clean Japanese-inspired aesthetic.",
+    image: "https://picsum.photos/seed/coffee-pack/800/500",
+    tech: ["Adobe Illustrator", "Photoshop", "InDesign"],
+  },
+  {
+    slug: "bataan-autoparts",
+    title: "Bataan Auto Parts",
+    client: "Local Business",
+    country: "🇵🇭 Philippines",
+    category: "wordpress",
+    description:
+      "Professional WordPress website for a local auto parts and accessories shop — product catalog, contact forms, and Google Maps integration.",
+    image: "https://picsum.photos/seed/autoparts/800/500",
+    tech: ["WordPress", "Elementor", "WooCommerce"],
+  },
+  {
+    slug: "zambales-resort",
+    title: "Zambales Beach Resort",
+    client: "Resort & Tourism",
+    country: "🇵🇭 Philippines",
+    category: "wordpress",
+    description:
+      "Responsive WordPress site for a beach resort — online booking integration, photo gallery, amenities showcase, and local area travel guide.",
+    image: "https://picsum.photos/seed/resort/800/500",
+    tech: ["WordPress", "Custom Theme", "Booking Plugin"],
+  },
+];
+
+export type Testimonial = {
+  quote: string;
+  name: string;
+  company: string;
+  location: string;
+};
+
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    quote:
+      "Builds Worlds delivered our website ahead of schedule and it looked better than anything we showed them in the brief. They understood our local market immediately — no need to explain Filipino customer behavior twice.",
+    name: "Maria Santos",
+    company: "Coastal Kitchen Restaurant",
+    location: "Zambales, Philippines",
+  },
+  {
+    quote:
+      "We needed a mobile app that could handle real-time booking at scale across our hostel properties. The team built it clean, fast, and on budget. The code quality is excellent — our engineers were impressed.",
+    name: "James Huang",
+    company: "Property Tech Startup",
+    location: "Singapore",
+  },
+  {
+    quote:
+      "I've worked with web agencies in Manila and abroad — Builds Worlds gives you that same quality work but with the reliability of someone who actually cares about your success. They answer messages at 10pm.",
+    name: "Paolo Reyes",
+    company: "DealFlow Brokerage",
+    location: "Manila, Philippines",
   },
 ];
 
 export const TECH = [
-  "Flutter", "Dart", "GraphQL", "Bloc", "GetX",
-  "Laravel", "Vue.js", "Quasar", "Feathers.js", "WordPress",
-  "PHP", "MySQL", "JavaScript", "HTML5 / CSS3", "Git",
-  "Firebase", "AWS", "Photoshop", "Illustrator", "Blender 3D",
+  "React",
+  "Next.js",
+  "Flutter",
+  "Capacitor.js",
+  "Vue.js",
+  "Laravel",
+  "WordPress",
+  "TypeScript",
+  "Firebase",
+  "AWS",
+  "GraphQL",
+  "REST API",
+  "MySQL",
+  "PostgreSQL",
+  "PHP",
+  "Adobe Suite",
+  "Figma",
+  "Blender 3D",
+  "Illustrator",
+  "Photoshop",
 ];
 
 export const EXPERIENCE = [
@@ -136,16 +363,19 @@ export const AWARDS = [
   {
     title: "Best Thesis 2015",
     org: "Mondriaan Aura College",
-    detail: "MerryNation Food Processing Responsive Web-Based Inventory System with Mobile App & CMS.",
+    detail:
+      "MerryNation Food Processing Responsive Web-Based Inventory System with Mobile App & CMS.",
   },
   {
     title: "3× Programmer of the Year",
     org: "Mondriaan Aura College · 2013, 2014, 2015",
-    detail: "Three consecutive years recognized as top programmer of the institution.",
+    detail:
+      "Three consecutive years recognized as top programmer of the institution.",
   },
   {
     title: "Presidential Award for Excellence in Visual Arts",
     org: "Mondriaan Aura College · 2015",
-    detail: "Highest institutional honor for sustained excellence in visual arts and design.",
+    detail:
+      "Highest institutional honor for sustained excellence in visual arts and design.",
   },
 ];
