@@ -1,6 +1,7 @@
 import { PRODUCTS, type Platform } from "@/lib/portfolio-data";
 import { SectionHeading } from "./SectionHeading";
-import { Reveal } from "./Reveal";
+import { Reveal, RevealItem } from "./Reveal";
+import { Check } from "lucide-react";
 
 const PLATFORM_LABELS: Record<Platform, string> = {
   android: "Android",
@@ -10,7 +11,7 @@ const PLATFORM_LABELS: Record<Platform, string> = {
 
 export function Products() {
   return (
-    <section id="products" className="border-b-4 border-ink bg-paper">
+    <section id="products" className="border-b border-[#1e2d45]">
       <div className="mx-auto max-w-[1400px] px-4 py-20 md:px-8 md:py-28">
         <SectionHeading
           index="04"
@@ -19,17 +20,16 @@ export function Products() {
           description="Beyond client work — software we've designed, built, and shipped ourselves."
         />
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {PRODUCTS.map((product, i) => (
-            <Reveal key={product.slug} delay={i * 0.1}>
+        <Reveal stagger className="grid gap-6 md:grid-cols-3">
+          {PRODUCTS.map((product) => (
+            <RevealItem key={product.slug}>
               <div
-                className={`flex h-full flex-col border-2 transition-all duration-200 ${
+                className={`card-shimmer flex h-full flex-col border transition-all duration-200 hover:-translate-y-1 ${
                   product.status === "published"
                     ? "border-pop shadow-brut-pop"
-                    : "border-ink/20 hover:border-pop hover:shadow-md"
+                    : "border-[#1e2d45] bg-[#111827] hover:border-pop hover:shadow-brut"
                 }`}
               >
-                {/* Image */}
                 <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
                   <img
                     src={product.image}
@@ -40,7 +40,7 @@ export function Products() {
                   <span
                     className={`absolute left-3 top-3 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest ${
                       product.status === "published"
-                        ? "bg-ink text-white"
+                        ? "bg-[#111827] text-[#e2eaf5]"
                         : "bg-pop text-white"
                     }`}
                   >
@@ -48,51 +48,45 @@ export function Products() {
                   </span>
                 </div>
 
-                {/* Body */}
                 <div className="flex flex-1 flex-col p-6">
-                  <h3 className="font-display text-2xl uppercase leading-tight">
+                  <h3 className="font-display text-2xl uppercase leading-tight tracking-tight">
                     {product.name}
                   </h3>
-                  <p className="mt-1 text-[12px] font-bold uppercase tracking-widest text-ink/40">
+                  <p className="mt-1 text-[12px] font-bold uppercase tracking-widest text-[#7890a8]">
                     {product.tagline}
                   </p>
 
-                  <p className="mt-4 text-[14px] leading-relaxed text-ink/65">
+                  <p className="mt-4 text-[14px] leading-relaxed text-[#7890a8]">
                     {product.description}
                   </p>
 
                   <ul className="mt-5 space-y-2">
                     {product.features.map((f) => (
-                      <li
-                        key={f}
-                        className="flex items-start gap-2 text-[13px] leading-snug"
-                      >
-                        <span className="mt-0.5 shrink-0 text-pop">✓</span>
-                        <span className="text-ink/70">{f}</span>
+                      <li key={f} className="flex items-start gap-2 text-[13px] leading-snug">
+                        <Check size={13} className="mt-0.5 shrink-0 text-pop" />
+                        <span className="text-[#e2eaf5]/70">{f}</span>
                       </li>
                     ))}
                   </ul>
 
-                  {/* Platform badges */}
                   <div className="mt-5 flex flex-wrap gap-2">
                     {product.platforms.map((p) => (
                       <span
                         key={p}
-                        className="border border-ink/20 px-2 py-0.5 text-[11px] font-bold uppercase tracking-widest text-ink/50"
+                        className="border border-[#1e2d45] px-2 py-0.5 text-[11px] font-bold uppercase tracking-widest text-[#7890a8]"
                       >
                         {PLATFORM_LABELS[p]}
                       </span>
                     ))}
                   </div>
 
-                  {/* CTAs */}
                   <div className="mt-auto flex flex-wrap gap-3 pt-6">
                     {product.url && (
                       <a
                         href={product.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="border-2 border-pop bg-pop px-4 py-2 text-[12px] font-bold uppercase tracking-widest text-white shadow-brut-pop transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
+                        className="border border-pop bg-pop px-4 py-2 text-[12px] font-bold uppercase tracking-widest text-white shadow-brut-pop transition-all hover:ring-2 hover:ring-pop/30"
                       >
                         Visit →
                       </a>
@@ -102,7 +96,7 @@ export function Products() {
                         href={product.storeLinks.android}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="border-2 border-ink px-4 py-2 text-[12px] font-bold uppercase tracking-widest text-ink transition-all hover:bg-ink hover:text-white"
+                        className="border border-[#1e2d45] px-4 py-2 text-[12px] font-bold uppercase tracking-widest text-[#e2eaf5] transition-all hover:border-pop hover:text-pop"
                       >
                         Play Store →
                       </a>
@@ -112,7 +106,7 @@ export function Products() {
                         href={product.storeLinks.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="border-2 border-ink/30 px-4 py-2 text-[12px] font-bold uppercase tracking-widest text-ink/60 transition-all hover:border-ink hover:text-ink"
+                        className="border border-[#1e2d45] px-4 py-2 text-[12px] font-bold uppercase tracking-widest text-[#7890a8] transition-all hover:border-pop hover:text-pop"
                       >
                         GitHub →
                       </a>
@@ -120,9 +114,9 @@ export function Products() {
                   </div>
                 </div>
               </div>
-            </Reveal>
+            </RevealItem>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { motion } from "framer-motion";
 import { Nav } from "@/components/portfolio/Nav";
 import { Hero } from "@/components/portfolio/Hero";
 import { Metrics } from "@/components/portfolio/Metrics";
@@ -18,7 +19,12 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="min-h-screen bg-paper text-ink">
+    <motion.div
+      className="min-h-screen bg-paper text-ink"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.25 }}
+    >
       <Nav />
       <main>
         <Hero />
@@ -33,6 +39,6 @@ function Index() {
         <Contact />
       </main>
       <Footer />
-    </div>
+    </motion.div>
   );
 }

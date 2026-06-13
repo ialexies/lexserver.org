@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useReducedMotion } from "framer-motion";
 import { PROFILE } from "@/lib/portfolio-data";
+import { CheckCircle } from "lucide-react";
 
 function sanitize(s: string) {
   return s.replace(/[\r\n]/g, " ").trim();
@@ -9,6 +11,8 @@ export function Contact() {
   const [name, setName] = useState("");
   const [from, setFrom] = useState("");
   const [msg, setMsg] = useState("");
+  const [sent, setSent] = useState(false);
+  const reduce = useReducedMotion();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,17 +30,18 @@ export function Contact() {
       );
     if (!uri.startsWith("mailto:")) return;
     window.location.href = uri;
+    setSent(true);
   };
 
   return (
-    <section id="contact" className="border-b-4 border-ink bg-pop text-white">
+    <section id="contact" className="border-b border-[#1e2d45] bg-pop text-white">
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 px-4 py-20 md:grid-cols-2 md:px-8 md:py-28">
         <div className="flex flex-col justify-between">
           <div>
-            <span className="border-2 border-white/30 px-3 py-1 text-xs font-bold uppercase tracking-widest">
+            <span className="border border-white/20 px-3 py-1 text-xs font-bold uppercase tracking-widest">
               / Let's talk
             </span>
-            <h2 className="font-display mt-6 text-6xl uppercase leading-[0.9] md:text-8xl">
+            <h2 className="font-display mt-6 text-6xl uppercase leading-[0.9] tracking-tight md:text-8xl">
               Ready to
               <br />
               build?
@@ -49,13 +54,13 @@ export function Contact() {
 
           <ul className="mt-10 space-y-3 text-sm font-bold uppercase tracking-widest">
             <li>
-              <a className="hover:text-white/70 transition-colors" href={`mailto:${PROFILE.email}`}>
+              <a className="transition-colors hover:text-white/70" href={`mailto:${PROFILE.email}`}>
                 ▸ {PROFILE.email}
               </a>
             </li>
             <li>
               <a
-                className="hover:text-white/70 transition-colors"
+                className="transition-colors hover:text-white/70"
                 href={PROFILE.linkedin}
                 target="_blank"
                 rel="noreferrer"
@@ -69,48 +74,57 @@ export function Contact() {
           </ul>
         </div>
 
-        <form
-          onSubmit={handleSubmit}
-          className="border-4 border-ink bg-paper p-6 text-ink shadow-brut-lg md:p-8"
-        >
-          <div className="grid gap-4">
-            <Field
-              label="Name"
-              value={name}
-              onChange={setName}
-              placeholder="JUAN DELA CRUZ"
-            />
-            <Field
-              label="Email"
-              type="email"
-              value={from}
-              onChange={setFrom}
-              placeholder="YOU@COMPANY.COM"
-            />
-            <label className="block">
-              <span className="block text-[11px] font-bold uppercase tracking-widest">
-                Project Brief
-              </span>
-              <textarea
-                required
-                rows={5}
-                value={msg}
-                onChange={(e) => setMsg(e.target.value)}
-                placeholder="TELL US WHAT YOU'RE BUILDING…"
-                className="mt-2 w-full resize-none border-4 border-ink bg-paper p-4 text-sm font-bold uppercase tracking-wider placeholder:text-ink/30 focus:border-pop focus:outline-none"
-              />
-            </label>
+        {sent ? (
+          <div className="flex flex-col items-center justify-center gap-6 border border-white/20 bg-[#0b1120] p-8 text-center shadow-brut-lg">
+            <CheckCircle size={64} className="text-pop" strokeWidth={1.5} />
+            <div>
+              <h3 className="font-display text-2xl uppercase tracking-tight text-[#e2eaf5]">
+                Message Sent!
+              </h3>
+              <p className="mt-2 text-sm text-[#7890a8]">
+                Your email client should have opened. We'll get back to you within 24 hours.
+              </p>
+            </div>
             <button
-              type="submit"
-              className="font-display border-4 border-ink bg-ink p-5 text-xl uppercase text-paper transition-all hover:-translate-x-1 hover:-translate-y-1 hover:shadow-brut"
+              onClick={() => setSent(false)}
+              className="border border-[#1e2d45] px-6 py-2 text-xs font-bold uppercase tracking-widest text-[#7890a8] transition-colors hover:border-pop hover:text-pop"
             >
-              Send Message →
+              Send Another
             </button>
-            <p className="text-[10px] font-bold uppercase tracking-widest opacity-50">
-              Opens your email client. No data is stored.
-            </p>
           </div>
-        </form>
+        ) : (
+          <form
+            onSubmit={handleSubmit}
+            className="border border-white/20 bg-[#0b1120] p-6 shadow-brut-lg md:p-8"
+          >
+            <div className="grid gap-4">
+              <Field label="Name" value={name} onChange={setName} placeholder="JUAN DELA CRUZ" />
+              <Field label="Email" type="email" value={from} onChange={setFrom} placeholder="YOU@COMPANY.COM" />
+              <label className="block">
+                <span className="block text-[11px] font-bold uppercase tracking-widest text-[#e2eaf5]">
+                  Project Brief
+                </span>
+                <textarea
+                  required
+                  rows={5}
+                  value={msg}
+                  onChange={(e) => setMsg(e.target.value)}
+                  placeholder="TELL US WHAT YOU'RE BUILDING…"
+                  className="mt-2 w-full resize-none border border-[#1e2d45] bg-[#070e1b] p-4 text-sm font-bold uppercase tracking-wider text-[#e2eaf5] placeholder:text-[#7890a8]/60 focus:border-pop focus:outline-none"
+                />
+              </label>
+              <button
+                type="submit"
+                className="font-display border border-pop bg-pop p-5 text-xl uppercase text-white transition-all hover:ring-2 hover:ring-pop/30 hover:shadow-brut-pop"
+              >
+                Send Message →
+              </button>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-white/40">
+                Opens your email client. No data is stored.
+              </p>
+            </div>
+          </form>
+        )}
       </div>
     </section>
   );
@@ -131,7 +145,7 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="block text-[11px] font-bold uppercase tracking-widest">
+      <span className="block text-[11px] font-bold uppercase tracking-widest text-[#e2eaf5]">
         {label}
       </span>
       <input
@@ -140,7 +154,7 @@ function Field({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="mt-2 w-full border-4 border-ink bg-paper p-4 text-sm font-bold uppercase tracking-wider placeholder:text-ink/30 focus:border-pop focus:outline-none"
+        className="mt-2 w-full border border-[#1e2d45] bg-[#070e1b] p-4 text-sm font-bold uppercase tracking-wider text-[#e2eaf5] placeholder:text-[#7890a8]/60 focus:border-pop focus:outline-none"
       />
     </label>
   );

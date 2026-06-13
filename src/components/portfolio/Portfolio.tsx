@@ -13,12 +13,29 @@ const FILTERS: { value: PortfolioCategory | "all"; label: string }[] = [
 ];
 
 const CATEGORY_COLORS: Record<PortfolioCategory, string> = {
-  web: "bg-ink text-white",
+  web: "bg-[#1e2d45] text-[#e2eaf5]",
   mobile: "bg-pop text-white",
-  branding: "bg-paper text-ink border border-ink/30",
-  design: "bg-paper text-ink border border-ink/30",
-  wordpress: "bg-paper text-ink border border-ink/30",
+  branding: "bg-[#111827] text-[#e2eaf5] border border-[#1e2d45]",
+  design: "bg-[#111827] text-[#e2eaf5] border border-[#1e2d45]",
+  wordpress: "bg-[#111827] text-[#e2eaf5] border border-[#1e2d45]",
 };
+
+function SkeletonImage({ src, alt }: { src: string; alt: string }) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div className="relative h-full w-full">
+      {!loaded && (
+        <div className="absolute inset-0 animate-pulse bg-[#1a2540]" />
+      )}
+      <img
+        src={src}
+        alt={alt}
+        onLoad={() => setLoaded(true)}
+        className={`h-full w-full object-cover transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"}`}
+      />
+    </div>
+  );
+}
 
 export function Portfolio() {
   const [active, setActive] = useState<PortfolioCategory | "all">("all");
@@ -27,7 +44,7 @@ export function Portfolio() {
   const filtered = active === "all" ? PORTFOLIO : PORTFOLIO.filter((p) => p.category === active);
 
   return (
-    <section id="work" className="border-b-4 border-ink bg-paper">
+    <section id="work" className="border-b border-[#1e2d45]">
       <div className="mx-auto max-w-[1400px] px-4 py-20 md:px-8 md:py-28">
         <SectionHeading
           index="03"
@@ -42,14 +59,14 @@ export function Portfolio() {
             <button
               key={f.value}
               onClick={() => setActive(f.value)}
-              className={`border-2 px-4 py-1.5 text-[12px] font-bold uppercase tracking-widest transition-all ${
+              className={`border px-4 py-1.5 text-[12px] font-bold uppercase tracking-widest transition-all ${
                 active === f.value
                   ? "border-pop bg-pop text-white"
-                  : "border-ink/20 bg-paper text-ink hover:border-ink"
+                  : "border-[#1e2d45] bg-[#111827] text-[#e2eaf5] hover:border-[#e2eaf5]/30"
               }`}
             >
               {f.label}
-              <span className="ml-1.5 opacity-60">
+              <span className="ml-1.5 opacity-50">
                 ({f.value === "all" ? PORTFOLIO.length : PORTFOLIO.filter((p) => p.category === f.value).length})
               </span>
             </button>
@@ -61,22 +78,11 @@ export function Portfolio() {
           {filtered.map((item, i) => (
             <Reveal key={item.slug} delay={(i % 3) * 0.07}>
               <article
-                className="group cursor-pointer border-2 border-ink/20 bg-paper transition-all duration-200 hover:border-pop hover:shadow-md"
+                className="card-shimmer group cursor-pointer border border-[#1e2d45] bg-[#111827] transition-all duration-200 hover:-translate-y-1 hover:border-pop hover:shadow-brut"
                 onClick={() => setLightbox(item)}
               >
-                {/* Image */}
                 <div className="relative overflow-hidden" style={{ aspectRatio: "16/10" }}>
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = "none";
-                      target.parentElement!.classList.add("bg-muted");
-                    }}
-                  />
+                  <SkeletonImage src={item.image} alt={item.title} />
                   {item.status === "in-development" && (
                     <span className="absolute left-3 top-3 bg-pop px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white">
                       In Development
@@ -84,14 +90,13 @@ export function Portfolio() {
                   )}
                 </div>
 
-                {/* Card body */}
                 <div className="p-5">
                   <div className="flex items-start justify-between gap-3">
                     <div className="min-w-0">
-                      <h3 className="font-display truncate text-lg uppercase leading-tight">
+                      <h3 className="font-display truncate text-lg uppercase leading-tight tracking-tight">
                         {item.title}
                       </h3>
-                      <p className="mt-0.5 text-[12px] font-bold uppercase tracking-wide text-ink/50">
+                      <p className="mt-0.5 text-[12px] font-bold uppercase tracking-wide text-[#7890a8]">
                         {item.client} · {item.country}
                       </p>
                     </div>
@@ -102,7 +107,7 @@ export function Portfolio() {
                     </span>
                   </div>
 
-                  <p className="mt-3 line-clamp-2 text-[13px] leading-relaxed text-ink/60">
+                  <p className="mt-3 line-clamp-2 text-[13px] leading-relaxed text-[#7890a8]">
                     {item.description}
                   </p>
 
@@ -111,7 +116,7 @@ export function Portfolio() {
                       {item.tech?.slice(0, 3).map((t) => (
                         <span
                           key={t}
-                          className="border border-ink/15 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-ink/50"
+                          className="border border-[#1e2d45] px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#7890a8]"
                         >
                           {t}
                         </span>
@@ -139,45 +144,41 @@ export function Portfolio() {
       {/* Lightbox */}
       {lightbox && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-ink/90 p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#0b1120]/92 p-4 backdrop-blur-sm"
           onClick={() => setLightbox(null)}
         >
           <div
-            className="relative max-h-[90vh] w-full max-w-3xl overflow-auto bg-paper"
+            className="relative max-h-[90vh] w-full max-w-3xl overflow-auto bg-[#111827] shadow-brut-lg"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setLightbox(null)}
-              className="absolute right-0 top-0 z-10 border-b-2 border-l-2 border-ink bg-paper px-4 py-2 text-[11px] font-bold uppercase tracking-widest hover:bg-muted"
+              className="absolute right-0 top-0 z-10 border-b border-l border-[#1e2d45] bg-[#111827] px-4 py-2 text-[11px] font-bold uppercase tracking-widest text-[#7890a8] hover:bg-[#1a2540] hover:text-[#e2eaf5]"
             >
               ✕ Close
             </button>
 
             <div style={{ aspectRatio: "16/9" }}>
-              <img
-                src={lightbox.image}
-                alt={lightbox.title}
-                className="h-full w-full object-cover"
-              />
+              <SkeletonImage src={lightbox.image} alt={lightbox.title} />
             </div>
 
             <div className="p-6 md:p-8">
               <div className="flex flex-wrap items-start gap-3">
-                <h2 className="font-display text-3xl uppercase leading-tight">
+                <h2 className="font-display text-3xl uppercase leading-tight tracking-tight">
                   {lightbox.title}
                 </h2>
                 {lightbox.status === "in-development" && (
-                  <span className="border-2 border-pop px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-pop">
+                  <span className="border border-pop px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-pop">
                     In Development
                   </span>
                 )}
               </div>
 
-              <p className="mt-1 text-sm font-bold uppercase tracking-wide text-ink/50">
+              <p className="mt-1 text-sm font-bold uppercase tracking-wide text-[#7890a8]">
                 {lightbox.client} · {lightbox.country}
               </p>
 
-              <p className="mt-4 text-base leading-relaxed text-ink/75">
+              <p className="mt-4 text-base leading-relaxed text-[#e2eaf5]/75">
                 {lightbox.description}
               </p>
 
@@ -186,7 +187,7 @@ export function Portfolio() {
                   {lightbox.tech.map((t) => (
                     <span
                       key={t}
-                      className="border-2 border-ink/20 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide"
+                      className="border border-[#1e2d45] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-[#7890a8]"
                     >
                       {t}
                     </span>
@@ -199,7 +200,7 @@ export function Portfolio() {
                   href={lightbox.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-6 inline-block border-2 border-pop bg-pop px-5 py-2.5 text-sm font-bold uppercase tracking-widest text-white shadow-brut-pop transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
+                  className="mt-6 inline-block border border-pop bg-pop px-5 py-2.5 text-sm font-bold uppercase tracking-widest text-white shadow-brut-pop transition-all hover:ring-2 hover:ring-pop/30"
                 >
                   View Live Site →
                 </a>

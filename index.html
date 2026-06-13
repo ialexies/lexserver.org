@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>Builds Worlds Studio — Web · Mobile · Design · 3D</title>
     <meta name="description" content="A product studio shipping high-performance web and mobile apps, brand design, 3D-printed prototypes, and IT services. Based in Bataan, Philippines." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -10,7 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Hind:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div id="init-loader" style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#0b1120;">
+        <div style="width:32px;height:32px;border:2px solid #1e2d45;border-top-color:#ff5722;border-radius:50%;animation:spin 0.7s linear infinite;"></div>
+      </div>
+      <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

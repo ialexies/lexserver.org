@@ -1,7 +1,7 @@
 FROM node:22-alpine AS builder
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm ci --legacy-peer-deps
+RUN npm config set strict-ssl false && npm ci --legacy-peer-deps
 COPY . .
 RUN npm run build
 

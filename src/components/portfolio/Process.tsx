@@ -4,7 +4,7 @@ import { Reveal } from "./Reveal";
 
 export function Process() {
   return (
-    <section id="process" className="border-b-4 border-ink bg-ink text-white">
+    <section id="process" className="border-b border-[#1e2d45] bg-[#070e1b] text-[#e2eaf5]">
       <div className="mx-auto max-w-[1400px] px-4 py-20 md:px-8 md:py-28">
         <SectionHeading
           index="02"
@@ -17,14 +17,14 @@ export function Process() {
         <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {PROCESS.map((p, i) => (
             <Reveal key={p.step} delay={i * 0.1}>
-              <div className="relative border-2 border-white/20 bg-white/5 p-7 transition-colors hover:border-pop hover:bg-white/10">
+              <div className="relative border border-[#1e2d45] bg-[#111827]/60 p-7 transition-all duration-200 hover:border-pop hover:bg-[#111827]">
                 <span className="font-display text-5xl text-pop opacity-90">
                   {p.step}
                 </span>
                 <h3 className="font-display mt-4 text-2xl uppercase leading-tight">
                   {p.title}
                 </h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-white/65">
+                <p className="mt-3 text-[15px] leading-relaxed text-[#7890a8]">
                   {p.body}
                 </p>
                 {i < PROCESS.length - 1 && (

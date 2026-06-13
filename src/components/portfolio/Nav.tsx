@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 const NAV_LINKS = [
   { href: "/#services", label: "Services" },
@@ -10,6 +12,11 @@ const NAV_LINKS = [
 export function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { scrollYProgress } = useScroll();
+
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    setScrolled(v > 0.01);
+  });
 
   useEffect(() => {
     const close = () => setOpen(false);
@@ -17,76 +24,96 @@ export function Nav() {
     return () => window.removeEventListener("hashchange", close);
   }, []);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header
-      className={`sticky top-0 z-50 border-b-4 border-ink bg-paper transition-shadow ${
-        scrolled ? "shadow-md" : ""
-      }`}
-    >
-      <nav className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-4 md:px-8">
-        <a href="/" className="font-display text-xl uppercase tracking-tighter">
-          Builds&nbsp;Worlds<span className="text-pop">.</span>
-        </a>
+    <>
+      {/* Scroll progress bar */}
+      <motion.div
+        className="fixed left-0 top-0 z-[60] h-[2px] bg-pop origin-left"
+        style={{ scaleX: scrollYProgress }}
+      />
 
-        <ul className="hidden items-center gap-1 text-[13px] font-bold uppercase tracking-widest md:flex">
-          {NAV_LINKS.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                className="border-2 border-transparent px-3 py-1 transition-colors hover:border-ink hover:bg-muted"
-              >
-                {l.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        <a
-          href="/#contact"
-          className="hidden border-2 border-ink bg-pop px-4 py-2 text-xs font-bold uppercase tracking-widest text-white shadow-brut transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none md:inline-block"
-        >
-          Start a Project
-        </a>
-
-        <button
-          aria-label="Menu"
-          onClick={() => setOpen((v) => !v)}
-          className="border-2 border-ink bg-paper px-3 py-2 text-xs font-bold uppercase hover:bg-muted md:hidden"
-        >
-          {open ? "Close" : "Menu"}
-        </button>
-      </nav>
-
-      {open && (
-        <ul className="grid border-t-4 border-ink bg-paper md:hidden">
-          {NAV_LINKS.map((l) => (
-            <li key={l.href} className="border-b-2 border-ink/10">
-              <a
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="block px-6 py-4 text-sm font-bold uppercase tracking-widest hover:bg-muted"
-              >
-                {l.label}
-              </a>
-            </li>
-          ))}
-          <li>
-            <a
-              href="/#contact"
-              onClick={() => setOpen(false)}
-              className="block bg-pop px-6 py-4 text-sm font-bold uppercase tracking-widest text-white"
+      <header
+        className={`sticky top-0 z-50 border-b border-[#1e2d45] transition-all duration-300 ${
+          scrolled
+            ? "bg-[#0b1120]/85 backdrop-blur-md shadow-lg shadow-black/20"
+            : "bg-[#0b1120]"
+        }`}
+      >
+        <nav className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-4 md:px-8">
+          <a href="/" className="flex items-center gap-1.5 font-display text-xl uppercase tracking-tighter text-[#e2eaf5]">
+            Builds&nbsp;Worlds
+            <motion.span
+              animate={{ opacity: [1, 0.3, 1] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+              className="text-pop"
             >
-              Start a Project →
-            </a>
-          </li>
-        </ul>
-      )}
-    </header>
+              .
+            </motion.span>
+          </a>
+
+          <ul className="hidden items-center gap-1 text-[13px] font-bold uppercase tracking-widest md:flex">
+            {NAV_LINKS.map((l) => (
+              <li key={l.href}>
+                <a
+                  href={l.href}
+                  className="border border-transparent px-3 py-1.5 text-[#e2eaf5]/70 transition-colors hover:border-[#e2eaf5]/20 hover:bg-[#1a2540] hover:text-[#e2eaf5]"
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="/#contact"
+            className="hidden items-center gap-2 border border-[#1e2d45] bg-pop px-4 py-2 text-xs font-bold uppercase tracking-widest text-white shadow-brut-pop transition-all hover:ring-2 hover:ring-pop/30 md:inline-flex"
+          >
+            Start a Project
+            <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
+          </a>
+
+          <button
+            aria-label="Menu"
+            onClick={() => setOpen((v) => !v)}
+            className="border border-[#1e2d45] bg-[#111827] px-3 py-2 text-xs font-bold uppercase text-[#e2eaf5] hover:bg-[#1a2540] md:hidden"
+          >
+            {open ? "Close" : "Menu"}
+          </button>
+        </nav>
+
+        <AnimatePresence>
+          {open && (
+            <motion.ul
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.15 }}
+              className="grid border-t border-[#1e2d45] bg-[#0b1120] md:hidden"
+            >
+              {NAV_LINKS.map((l) => (
+                <li key={l.href} className="border-b border-[#1e2d45]">
+                  <a
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    className="block px-6 py-4 text-sm font-bold uppercase tracking-widest text-[#e2eaf5]/80 hover:bg-[#1a2540] hover:text-[#e2eaf5]"
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+              <li>
+                <a
+                  href="/#contact"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center gap-2 bg-pop px-6 py-4 text-sm font-bold uppercase tracking-widest text-white"
+                >
+                  Start a Project <ArrowRight size={14} />
+                </a>
+              </li>
+            </motion.ul>
+          )}
+        </AnimatePresence>
+      </header>
+    </>
   );
 }

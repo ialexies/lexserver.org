@@ -1,12 +1,12 @@
 import { getAllPosts } from "@/lib/blog";
 import { SectionHeading } from "./SectionHeading";
-import { Reveal } from "./Reveal";
+import { Reveal, RevealItem } from "./Reveal";
 
 export function BlogPreview() {
   const posts = getAllPosts().slice(0, 3);
 
   return (
-    <section id="blog" className="border-b-4 border-ink bg-paper">
+    <section id="blog" className="border-b border-[#1e2d45]">
       <div className="mx-auto max-w-[1400px] px-4 py-20 md:px-8 md:py-28">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <SectionHeading
@@ -17,20 +17,19 @@ export function BlogPreview() {
           />
           <a
             href="/blog"
-            className="mb-12 shrink-0 self-start border-2 border-ink px-4 py-2 text-[12px] font-bold uppercase tracking-widest hover:border-pop hover:text-pop md:self-auto"
+            className="mb-12 shrink-0 self-start border border-[#1e2d45] px-4 py-2 text-[12px] font-bold uppercase tracking-widest text-[#e2eaf5] transition-all hover:border-pop hover:text-pop md:self-auto"
           >
             All Posts →
           </a>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {posts.map((post, i) => (
-            <Reveal key={post.slug} delay={i * 0.08}>
+        <Reveal stagger className="grid gap-6 md:grid-cols-3">
+          {posts.map((post) => (
+            <RevealItem key={post.slug}>
               <a
                 href={`/blog/${post.slug}`}
-                className="group flex h-full flex-col border-2 border-ink/20 bg-paper transition-all duration-200 hover:border-pop hover:shadow-md"
+                className="card-shimmer group flex h-full flex-col border border-[#1e2d45] bg-[#111827] transition-all duration-200 hover:-translate-y-1 hover:border-pop hover:shadow-brut"
               >
-                {/* Image */}
                 <div className="overflow-hidden" style={{ aspectRatio: "16/9" }}>
                   <img
                     src={post.image}
@@ -40,13 +39,12 @@ export function BlogPreview() {
                   />
                 </div>
 
-                {/* Body */}
                 <div className="flex flex-1 flex-col p-5">
                   <div className="flex items-center gap-2">
-                    <span className="border-2 border-pop bg-pop px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white">
+                    <span className="border border-pop bg-pop px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white">
                       {post.category}
                     </span>
-                    <span className="text-[11px] font-bold uppercase tracking-wide text-ink/40">
+                    <span className="text-[11px] font-bold uppercase tracking-wide text-[#7890a8]">
                       {new Date(post.date).toLocaleDateString("en-PH", {
                         month: "short",
                         day: "numeric",
@@ -55,10 +53,10 @@ export function BlogPreview() {
                     </span>
                   </div>
 
-                  <h3 className="font-display mt-3 text-xl uppercase leading-tight">
+                  <h3 className="font-display mt-3 text-xl uppercase leading-tight tracking-tight">
                     {post.title}
                   </h3>
-                  <p className="mt-2 flex-1 text-[13px] leading-relaxed text-ink/60">
+                  <p className="mt-2 flex-1 text-[13px] leading-relaxed text-[#7890a8]">
                     {post.excerpt}
                   </p>
                   <span className="mt-4 text-[12px] font-bold uppercase tracking-wide text-pop">
@@ -66,9 +64,9 @@ export function BlogPreview() {
                   </span>
                 </div>
               </a>
-            </Reveal>
+            </RevealItem>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );
