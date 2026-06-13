@@ -37,10 +37,10 @@ export function Contact() {
             <h2 className="font-display mt-6 text-6xl uppercase leading-[0.9] md:text-8xl">
               Ready to
               <br />
-              <span className="text-acid">launch?</span>
+              <span className="text-acid">build?</span>
             </h2>
             <p className="mt-6 max-w-md text-lg font-semibold uppercase tracking-wide">
-              Open for product builds, contracts, and custom 3D-printed work.
+              Open for product builds, contracts, IT services, and custom 3D-printed work.
             </p>
           </div>
           <ul className="mt-10 space-y-3 text-sm font-bold uppercase tracking-widest">

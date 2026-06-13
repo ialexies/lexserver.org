@@ -12,7 +12,7 @@ export function Experience() {
               index="03"
               eyebrow="Career"
               title="The Timeline."
-              description="Roles where I built, led, and shipped — most recent first."
+              description="Roles where we built, led, and shipped — most recent first."
             />
           </div>
         </div>

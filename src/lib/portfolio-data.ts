@@ -1,5 +1,6 @@
 export const PROFILE = {
   name: "Alexies Iglesia",
+  studio: "Builds Worlds",
   role: "Full-Stack Developer · Mobile App Developer · Designer · Maker",
   tagline: "Code. Design. Build. Print.",
   location: "Hermosa, Bataan · Philippines",
@@ -19,7 +20,7 @@ export const SERVICES = [
   {
     tag: "Build",
     title: "Web & Mobile Apps",
-    body: "Production Flutter apps, Laravel & Vue.js single-page apps, GraphQL & REST integrations, Firebase, and AWS infra.",
+    body: "Production Flutter apps, Laravel & Vue.js single-page apps, GraphQL & REST integrations, Firebase, and AWS infrastructure.",
     points: ["Flutter / Dart", "Laravel / PHP", "Vue.js / Quasar", "GraphQL & REST"],
   },
   {
@@ -34,6 +35,12 @@ export const SERVICES = [
     body: "From CAD model to printed part — functional prototypes, custom enclosures, and physical product iteration.",
     points: ["Modeling", "Slicing & print", "Iteration", "Functional parts"],
   },
+  {
+    tag: "Run",
+    title: "IT Services & Support",
+    body: "Hosting, server operations, maintenance, and technical support that keep everything we ship online and healthy.",
+    points: ["Server ops", "Maintenance", "Hosting / AWS", "Monitoring"],
+  },
 ];
 
 export const PROJECTS = [
@@ -41,7 +48,7 @@ export const PROJECTS = [
     title: "Biyahero Riding App",
     client: "Groover Delivery Service",
     year: "2019",
-    blurb: "End-to-end mobile riding app for booking and dispatch — built from scratch.",
+    blurb: "End-to-end mobile riding app for booking and dispatch — built from scratch, design through deployment.",
     tech: ["Flutter", "Dart", "Firebase"],
     accent: "from-amber-400/30 to-orange-600/10",
   },
@@ -60,14 +67,6 @@ export const PROJECTS = [
     blurb: "Internal tool for warehouse staff to pick, pack, and dispatch orders with barcode flows.",
     tech: ["Flutter", "GetX", "REST"],
     accent: "from-sky-400/30 to-indigo-600/10",
-  },
-  {
-    title: "Cryptonight",
-    client: "Personal",
-    year: "2021",
-    blurb: "Crypto tracker concept app with live charts, watchlists, and dark-first UI.",
-    tech: ["Flutter", "REST", "Bloc"],
-    accent: "from-fuchsia-400/30 to-purple-600/10",
   },
   {
     title: "Business Valuation Tool",
