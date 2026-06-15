@@ -27,7 +27,7 @@ function AboutPage() {
               / About the Studio
             </span>
             <h1 className="font-display mt-6 text-[clamp(48px,11vw,140px)] uppercase leading-[0.84] tracking-tight">
-              Builds Worlds<span className="text-pop">.</span>
+              Builds<br />Worlds<span className="text-pop">.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#e2eaf5]/65">
               A web, mobile, and IT services studio based in Bataan,
