@@ -497,6 +497,12 @@ export const EXPERIENCE = [
     body: "Designed and developed Biyahero — a complete riding & delivery mobile app.",
   },
   {
+    role: "Web Developer & IT Personnel",
+    company: "HYS Yachts",
+    period: "2018 — 2022",
+    body: "Web development and IT support for a yacht services company — maintaining web presence, internal systems, and providing on-site IT assistance.",
+  },
+  {
     role: "Web Team Lead / Scrum Master",
     company: "Captivate Solutions",
     period: "Jun 2017 — Sep 2019",
