@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer className="bg-[#070e1b]">
       <div className="mx-auto max-w-[1400px] px-4 md:px-8">
-        <div className="font-display select-none border-b border-[#1e2d45] py-6 text-center text-[clamp(48px,13vw,180px)] uppercase leading-[0.9] tracking-tighter text-[#e2eaf5]/10">
+        <div className="font-display select-none border-b border-[#1e2d45] py-6 text-center text-[clamp(36px,8vw,120px)] uppercase leading-[0.9] tracking-tighter text-[#e2eaf5]/10">
           Builds&nbsp;Worlds<span className="text-pop">.</span>
         </div>
         <div className="flex flex-col items-center justify-between gap-4 py-6 md:flex-row">
