@@ -5,7 +5,7 @@ import { Reveal } from "./Reveal";
 export function Process() {
   return (
     <section id="process" className="border-b border-[#1e2d45] bg-[#070e1b] text-[#e2eaf5]">
-      <div className="mx-auto max-w-[1400px] px-4 py-20 md:px-8 md:py-28">
+      <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-20">
         <SectionHeading
           index="02"
           eyebrow="How we work"

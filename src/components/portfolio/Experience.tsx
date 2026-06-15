@@ -1,8 +1,53 @@
-import { EXPERIENCE } from "@/lib/portfolio-data";
+import { ALEXIES_EXPERIENCE, CHARITY_EXPERIENCE } from "@/lib/portfolio-data";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 
 const DOT_COLORS = ["bg-pop", "bg-[#2a3f5f]", "bg-[#1e2d45]"];
+
+type ExperienceEntry = {
+  role: string;
+  company: string;
+  period: string;
+  body: string;
+};
+
+function PersonTimeline({
+  name,
+  role,
+  entries,
+}: {
+  name: string;
+  role: string;
+  entries: ExperienceEntry[];
+}) {
+  return (
+    <div className="p-6 md:p-10">
+      <div className="mb-8">
+        <p className="font-display text-lg uppercase text-[#e2eaf5]">{name}</p>
+        <p className="mt-1 text-[11px] font-bold uppercase tracking-widest text-pop">{role}</p>
+      </div>
+      <ol className="space-y-10">
+        {entries.map((e, i) => (
+          <Reveal key={i} delay={i * 0.05}>
+            <li className="relative grid grid-cols-1 gap-4 border-l border-[#1e2d45] pl-6">
+              <span
+                className={`absolute -left-[9px] top-1 h-4 w-4 rounded-full border border-[#1e2d45] ${DOT_COLORS[i % DOT_COLORS.length]}`}
+              />
+              <div>
+                <h4 className="font-display text-lg uppercase md:text-xl">{e.company}</h4>
+                <p className="mt-1 text-sm font-bold uppercase tracking-widest text-pop">{e.role}</p>
+                <p className="mt-3 max-w-xl leading-relaxed text-[#7890a8]">{e.body}</p>
+                <span className="mt-3 inline-block border border-[#1e2d45] bg-[#111827] px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-[#7890a8]">
+                  {e.period}
+                </span>
+              </div>
+            </li>
+          </Reveal>
+        ))}
+      </ol>
+    </div>
+  );
+}
 
 export function Experience() {
   return (
@@ -18,30 +63,19 @@ export function Experience() {
             />
           </div>
         </div>
-        <div className="p-6 md:p-12 lg:col-span-8">
-          <ol className="space-y-10">
-            {EXPERIENCE.map((e, i) => (
-              <Reveal key={i} delay={i * 0.05}>
-                <li className="relative grid grid-cols-1 gap-4 border-l border-[#1e2d45] pl-6 md:grid-cols-[1fr_auto] md:gap-8">
-                  <span
-                    className={`absolute -left-[9px] top-1 h-4 w-4 rounded-full border border-[#1e2d45] ${DOT_COLORS[i % DOT_COLORS.length]}`}
-                  />
-                  <div>
-                    <h4 className="font-display text-xl uppercase md:text-2xl">
-                      {e.company}
-                    </h4>
-                    <p className="mt-1 text-sm font-bold uppercase tracking-widest text-pop">
-                      {e.role}
-                    </p>
-                    <p className="mt-3 max-w-xl leading-relaxed text-[#7890a8]">{e.body}</p>
-                  </div>
-                  <span className="self-start whitespace-nowrap border border-[#1e2d45] bg-[#111827] px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-[#7890a8]">
-                    {e.period}
-                  </span>
-                </li>
-              </Reveal>
-            ))}
-          </ol>
+        <div className="lg:col-span-8">
+          <div className="grid grid-cols-1 divide-y divide-[#1e2d45] md:grid-cols-2 md:divide-x md:divide-y-0">
+            <PersonTimeline
+              name="Alexies Iglesia"
+              role="IT Engineer · Software Engineer"
+              entries={ALEXIES_EXPERIENCE}
+            />
+            <PersonTimeline
+              name="Charity Dultra"
+              role="Graphic Designer · Illustrator"
+              entries={CHARITY_EXPERIENCE}
+            />
+          </div>
         </div>
       </div>
     </section>

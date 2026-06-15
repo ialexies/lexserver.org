@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { PORTFOLIO, type PortfolioCategory, type PortfolioItem } from "@/lib/portfolio-data";
-import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 
 const FILTERS: { value: PortfolioCategory | "all"; label: string }[] = [
@@ -45,14 +44,7 @@ export function Portfolio() {
 
   return (
     <section id="work" className="border-b border-[#1e2d45]">
-      <div className="mx-auto max-w-[1400px] px-4 py-20 md:px-8 md:py-28">
-        <SectionHeading
-          index="03"
-          eyebrow="Portfolio"
-          title="Our Work."
-          description="From mobile apps serving thousands of users to brand identities shipped to clients around the world."
-        />
-
+      <div className="mx-auto max-w-[1400px] px-4 py-12 md:px-8 md:py-16">
         {/* Filter tabs */}
         <div className="mb-10 flex flex-wrap gap-2">
           {FILTERS.map((f) => (

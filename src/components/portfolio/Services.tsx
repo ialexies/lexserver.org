@@ -5,7 +5,7 @@ import { Reveal, RevealItem } from "./Reveal";
 export function Services() {
   return (
     <section id="services" className="border-b border-[#1e2d45]">
-      <div className="mx-auto max-w-[1400px] px-4 py-20 md:px-8 md:py-28">
+      <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-20">
         <SectionHeading
           index="01"
           eyebrow="What we do"

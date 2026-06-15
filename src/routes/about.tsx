@@ -4,7 +4,7 @@ import { Nav } from "@/components/portfolio/Nav";
 import { Footer } from "@/components/portfolio/Footer";
 import { Experience } from "@/components/portfolio/Experience";
 import { Reveal } from "@/components/portfolio/Reveal";
-import { PROFILE } from "@/lib/portfolio-data";
+import { PROFILE, TEAM } from "@/lib/portfolio-data";
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
@@ -30,17 +30,17 @@ function AboutPage() {
               Builds<br />Worlds<span className="text-pop">.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#e2eaf5]/65">
-              A web, mobile, and IT services studio based in Bataan,
-              Philippines. Founded by {PROFILE.name} — developer, designer,
-              and maker with 15+ years across startups, agencies, and product
-              companies.
+              A web, mobile, and IT services studio based in Bataan, Philippines
+              — built by <strong className="text-white">Alexies Iglesia</strong> (IT &amp; Software Engineer)
+              and <strong className="text-white">Charity Dultra</strong> (Graphic Designer &amp; Illustrator).
+              Code and craft, under one roof.
             </p>
           </div>
         </section>
 
         {/* Story */}
         <section className="border-b border-[#1e2d45]">
-          <div className="mx-auto max-w-[1400px] px-4 py-20 md:px-8 md:py-28">
+          <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-20">
             <div className="grid gap-12 md:grid-cols-2">
               <Reveal>
                 <div>
@@ -53,23 +53,20 @@ function AboutPage() {
                     <span className="text-pop">Ship it.</span>
                   </h2>
                   <p className="mt-6 text-xl leading-relaxed text-[#e2eaf5]/80">
-                    Builds Worlds Studio is the workbench of{" "}
-                    <strong className="text-[#e2eaf5]">{PROFILE.name}</strong> — 15+ years spent at the
-                    intersection of mobile, web, brand, and physical
-                    prototyping.
+                    Builds Worlds Studio is the combined work of{" "}
+                    <strong className="text-[#e2eaf5]">Alexies Iglesia</strong> — IT engineer and software developer with 15+ years across startups and agencies — and{" "}
+                    <strong className="text-[#e2eaf5]">Charity Dultra</strong> — a Cum Laude Fine Arts graduate and graphic designer with a decade of work for international clients.
                   </p>
                   <p className="mt-4 text-lg leading-relaxed text-[#7890a8]">
                     From Flutter apps shipped to thousands of daily users, to
-                    WordPress sites that rank on the first page of Google, to
-                    brand identities delivered to clients in Singapore,
-                    Australia, and Japan — the through-line is craft that holds
-                    up in the real world.
+                    brand identities delivered to clients in Singapore, Australia,
+                    and Japan — the through-line is code and design that hold up
+                    in the real world, built by people who care about both.
                   </p>
                   <p className="mt-4 text-lg leading-relaxed text-[#7890a8]">
-                    The studio takes on web &amp; mobile builds, brand and
-                    design work, and the IT services to keep it all running —
-                    for clients who want one accountable partner, not a handoff
-                    chain.
+                    The studio takes on web &amp; mobile builds, graphic design
+                    and illustration, and the IT services to keep it all running —
+                    for clients who want one accountable team, not a handoff chain.
                   </p>
                   <div className="mt-8 flex flex-wrap gap-4">
                     <a
@@ -88,28 +85,32 @@ function AboutPage() {
                 </div>
               </Reveal>
 
-              {/* Founder card */}
+              {/* Team cards */}
               <Reveal delay={0.1}>
-                <div className="border border-[#1e2d45] bg-[#111827] p-6 shadow-brut-lg">
-                  <div
-                    className="flex items-center justify-center border border-[#1e2d45] bg-[#0d1a2e]"
-                    style={{ aspectRatio: "4/5" }}
-                  >
-                    <span className="font-display text-4xl uppercase text-[#e2eaf5]/20">
-                      Photo
-                    </span>
-                  </div>
-                  <div className="mt-6">
-                    <p className="font-display text-xl uppercase text-[#e2eaf5]">
-                      {PROFILE.name}
-                    </p>
-                    <p className="mt-2 text-xs font-bold uppercase tracking-widest text-pop">
-                      Founder · Developer · Designer · Maker
-                    </p>
-                    <p className="mt-3 text-sm font-semibold uppercase tracking-wide text-[#7890a8]">
-                      {PROFILE.location}
-                    </p>
-                  </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {TEAM.map((member) => (
+                    <div key={member.name} className="border border-[#1e2d45] bg-[#111827] p-4 shadow-brut-lg">
+                      <div
+                        className="flex items-center justify-center border border-[#1e2d45] bg-[#1e2d45]"
+                        style={{ aspectRatio: "1/1" }}
+                      >
+                        <span className="font-display text-2xl uppercase text-[#e2eaf5]/20">
+                          Photo
+                        </span>
+                      </div>
+                      <div className="mt-3">
+                        <p className="font-display text-base uppercase text-[#e2eaf5]">
+                          {member.name}
+                        </p>
+                        <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-pop">
+                          {member.role}
+                        </p>
+                        <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-[#7890a8]">
+                          {member.location}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </Reveal>
             </div>

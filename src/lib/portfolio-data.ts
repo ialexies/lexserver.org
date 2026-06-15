@@ -8,6 +8,19 @@ export const PROFILE = {
   linkedin: "https://www.linkedin.com/in/alexies-iglesia",
 };
 
+export const TEAM = [
+  {
+    name: "Alexies Iglesia",
+    role: "IT Engineer · Software Engineer",
+    location: "Hermosa, Bataan · Philippines",
+  },
+  {
+    name: "Charity Dultra",
+    role: "Graphic Designer · Illustrator",
+    location: "Philippines",
+  },
+];
+
 export const METRICS = [
   { value: "15+", label: "Years experience" },
   { value: "6+", label: "Apps shipped" },
@@ -465,7 +478,7 @@ export const PRICING: PricingTier[] = [
   },
 ];
 
-export const EXPERIENCE = [
+export const ALEXIES_EXPERIENCE = [
   {
     role: "Mobile App Developer",
     company: "MadMonkey Hostels",
@@ -507,6 +520,33 @@ export const EXPERIENCE = [
     company: "Captivate Solutions",
     period: "Jun 2017 — Sep 2019",
     body: "Led the web team, ran scrum, owned ERDs, client meetings, Laravel/PHP & WordPress development, and server ops.",
+  },
+];
+
+export const CHARITY_EXPERIENCE = [
+  {
+    role: "Freelance Graphic Designer",
+    company: "Various US Clients",
+    period: "2021 — Present",
+    body: "Independent design contractor serving US-based companies — brand identity, illustration, and digital design work across multiple industries.",
+  },
+  {
+    role: "Graphic Designer",
+    company: "Design Pickle",
+    period: "2018 — 2021",
+    body: "Remote graphic designer producing high-volume on-brand assets for international clients on a subscription design platform.",
+  },
+  {
+    role: "Graphic Designer",
+    company: "Captivate Solutions",
+    period: "2017 — 2018",
+    body: "In-house graphic design for a software agency — marketing collateral, UI assets, and client-facing visual materials.",
+  },
+  {
+    role: "Bachelor of Fine Arts — Graphic Design (Cum Laude)",
+    company: "Technological University of the Philippines, Manila",
+    period: "Graduated 2017",
+    body: "Graduated Cum Laude with a major in Graphic Design.",
   },
 ];
 

@@ -12,7 +12,7 @@ const PLATFORM_LABELS: Record<Platform, string> = {
 export function Products() {
   return (
     <section id="products" className="border-b border-[#1e2d45]">
-      <div className="mx-auto max-w-[1400px] px-4 py-20 md:px-8 md:py-28">
+      <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-20">
         <SectionHeading
           index="04"
           eyebrow="Built in-house"
