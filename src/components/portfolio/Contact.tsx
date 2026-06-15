@@ -34,7 +34,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="border-b border-[#1e2d45] bg-pop text-white">
+    <section id="contact" className="border-b border-border bg-pop text-white">
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 px-4 py-20 md:grid-cols-2 md:px-8 md:py-28">
         <div className="flex flex-col justify-between">
           <div>
@@ -75,19 +75,19 @@ export function Contact() {
         </div>
 
         {sent ? (
-          <div className="flex flex-col items-center justify-center gap-6 border border-white/20 bg-[#0b1120] p-8 text-center shadow-brut-lg">
+          <div className="flex flex-col items-center justify-center gap-6 border border-white/20 bg-paper p-8 text-center shadow-brut-lg">
             <CheckCircle size={64} className="text-pop" strokeWidth={1.5} />
             <div>
-              <h3 className="font-display text-2xl uppercase tracking-tight text-[#e2eaf5]">
+              <h3 className="font-display text-2xl uppercase tracking-tight text-ink">
                 Message Sent!
               </h3>
-              <p className="mt-2 text-sm text-[#7890a8]">
+              <p className="mt-2 text-sm text-muted-foreground">
                 Your email client should have opened. We'll get back to you within 24 hours.
               </p>
             </div>
             <button
               onClick={() => setSent(false)}
-              className="border border-[#1e2d45] px-6 py-2 text-xs font-bold uppercase tracking-widest text-[#7890a8] transition-colors hover:border-pop hover:text-pop"
+              className="border border-border px-6 py-2 text-xs font-bold uppercase tracking-widest text-muted-foreground transition-colors hover:border-pop hover:text-pop"
             >
               Send Another
             </button>
@@ -95,13 +95,13 @@ export function Contact() {
         ) : (
           <form
             onSubmit={handleSubmit}
-            className="border border-white/20 bg-[#0b1120] p-6 shadow-brut-lg md:p-8"
+            className="border border-white/20 bg-paper p-6 shadow-brut-lg md:p-8"
           >
             <div className="grid gap-4">
               <Field label="Name" value={name} onChange={setName} placeholder="JUAN DELA CRUZ" />
               <Field label="Email" type="email" value={from} onChange={setFrom} placeholder="YOU@COMPANY.COM" />
               <label className="block">
-                <span className="block text-[11px] font-bold uppercase tracking-widest text-[#e2eaf5]">
+                <span className="block text-[11px] font-bold uppercase tracking-widest text-ink">
                   Project Brief
                 </span>
                 <textarea
@@ -110,7 +110,7 @@ export function Contact() {
                   value={msg}
                   onChange={(e) => setMsg(e.target.value)}
                   placeholder="TELL US WHAT YOU'RE BUILDING…"
-                  className="mt-2 w-full resize-none border border-[#1e2d45] bg-[#070e1b] p-4 text-sm font-bold uppercase tracking-wider text-[#e2eaf5] placeholder:text-[#7890a8]/60 focus:border-pop focus:outline-none"
+                  className="mt-2 w-full resize-none border border-border bg-canvas p-4 text-sm font-bold uppercase tracking-wider text-ink placeholder:text-muted-foreground/60 focus:border-pop focus:outline-none"
                 />
               </label>
               <button
@@ -145,7 +145,7 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="block text-[11px] font-bold uppercase tracking-widest text-[#e2eaf5]">
+      <span className="block text-[11px] font-bold uppercase tracking-widest text-ink">
         {label}
       </span>
       <input
@@ -154,7 +154,7 @@ function Field({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="mt-2 w-full border border-[#1e2d45] bg-[#070e1b] p-4 text-sm font-bold uppercase tracking-wider text-[#e2eaf5] placeholder:text-[#7890a8]/60 focus:border-pop focus:outline-none"
+        className="mt-2 w-full border border-border bg-canvas p-4 text-sm font-bold uppercase tracking-wider text-ink placeholder:text-muted-foreground/60 focus:border-pop focus:outline-none"
       />
     </label>
   );

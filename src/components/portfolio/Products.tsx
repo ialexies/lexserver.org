@@ -11,7 +11,7 @@ const PLATFORM_LABELS: Record<Platform, string> = {
 
 export function Products() {
   return (
-    <section id="products" className="border-b border-[#1e2d45]">
+    <section id="products" className="border-b border-border">
       <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-20">
         <SectionHeading
           index="04"
@@ -27,7 +27,7 @@ export function Products() {
                 className={`card-shimmer flex h-full flex-col border transition-all duration-200 hover:-translate-y-1 ${
                   product.status === "published"
                     ? "border-pop shadow-brut-pop"
-                    : "border-[#1e2d45] bg-[#111827] hover:border-pop hover:shadow-brut"
+                    : "border-border bg-surface hover:border-pop hover:shadow-brut"
                 }`}
               >
                 <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
@@ -40,7 +40,7 @@ export function Products() {
                   <span
                     className={`absolute left-3 top-3 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest ${
                       product.status === "published"
-                        ? "bg-[#111827] text-[#e2eaf5]"
+                        ? "bg-surface text-ink"
                         : "bg-pop text-white"
                     }`}
                   >
@@ -52,11 +52,11 @@ export function Products() {
                   <h3 className="font-display text-2xl uppercase leading-tight tracking-tight">
                     {product.name}
                   </h3>
-                  <p className="mt-1 text-[12px] font-bold uppercase tracking-widest text-[#7890a8]">
+                  <p className="mt-1 text-[12px] font-bold uppercase tracking-widest text-muted-foreground">
                     {product.tagline}
                   </p>
 
-                  <p className="mt-4 text-[14px] leading-relaxed text-[#7890a8]">
+                  <p className="mt-4 text-[14px] leading-relaxed text-muted-foreground">
                     {product.description}
                   </p>
 
@@ -64,7 +64,7 @@ export function Products() {
                     {product.features.map((f) => (
                       <li key={f} className="flex items-start gap-2 text-[13px] leading-snug">
                         <Check size={13} className="mt-0.5 shrink-0 text-pop" />
-                        <span className="text-[#e2eaf5]/70">{f}</span>
+                        <span className="text-ink/70">{f}</span>
                       </li>
                     ))}
                   </ul>
@@ -73,7 +73,7 @@ export function Products() {
                     {product.platforms.map((p) => (
                       <span
                         key={p}
-                        className="border border-[#1e2d45] px-2 py-0.5 text-[11px] font-bold uppercase tracking-widest text-[#7890a8]"
+                        className="border border-border px-2 py-0.5 text-[11px] font-bold uppercase tracking-widest text-muted-foreground"
                       >
                         {PLATFORM_LABELS[p]}
                       </span>
@@ -96,7 +96,7 @@ export function Products() {
                         href={product.storeLinks.android}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="border border-[#1e2d45] px-4 py-2 text-[12px] font-bold uppercase tracking-widest text-[#e2eaf5] transition-all hover:border-pop hover:text-pop"
+                        className="border border-border px-4 py-2 text-[12px] font-bold uppercase tracking-widest text-ink transition-all hover:border-pop hover:text-pop"
                       >
                         Play Store →
                       </a>
@@ -106,7 +106,7 @@ export function Products() {
                         href={product.storeLinks.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="border border-[#1e2d45] px-4 py-2 text-[12px] font-bold uppercase tracking-widest text-[#7890a8] transition-all hover:border-pop hover:text-pop"
+                        className="border border-border px-4 py-2 text-[12px] font-bold uppercase tracking-widest text-muted-foreground transition-all hover:border-pop hover:text-pop"
                       >
                         GitHub →
                       </a>

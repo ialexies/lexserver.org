@@ -19,7 +19,7 @@ function BlogPostPage() {
         <main>
           <div className="mx-auto flex min-h-[60vh] max-w-[1400px] flex-col items-center justify-center px-4 py-20 text-center">
             <h1 className="font-display text-6xl uppercase">Post Not Found</h1>
-            <p className="mt-4 text-[#7890a8]">
+            <p className="mt-4 text-muted-foreground">
               This article doesn't exist or may have been moved.
             </p>
             <a
@@ -45,7 +45,7 @@ function BlogPostPage() {
       <Nav />
       <main>
         {/* Hero image */}
-        <div className="border-b border-[#1e2d45]" style={{ aspectRatio: "21/7", maxHeight: "480px", overflow: "hidden" }}>
+        <div className="border-b border-border" style={{ aspectRatio: "21/7", maxHeight: "480px", overflow: "hidden" }}>
           <img
             src={post.image}
             alt={post.title}
@@ -59,14 +59,14 @@ function BlogPostPage() {
           <div className="mb-6 flex flex-wrap items-center gap-3">
             <a
               href="/blog"
-              className="text-[11px] font-bold uppercase tracking-widest text-[#7890a8] hover:text-pop"
+              className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground hover:text-pop"
             >
               ← Blog
             </a>
             <span className="border border-pop bg-pop px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white">
               {post.category}
             </span>
-            <span className="text-[11px] font-bold uppercase tracking-wide text-[#7890a8]">
+            <span className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">
               {new Date(post.date).toLocaleDateString("en-PH", {
                 month: "long",
                 day: "numeric",
@@ -91,14 +91,14 @@ function BlogPostPage() {
           <hr className="divider-gradient my-12" />
 
           {/* CTA */}
-          <div className="border border-[#1e2d45] bg-[#111827] p-6 md:p-8">
-            <p className="text-[11px] font-bold uppercase tracking-widest text-[#7890a8]">
+          <div className="border border-border bg-surface p-6 md:p-8">
+            <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
               / Work with us
             </p>
             <h2 className="font-display mt-2 text-3xl uppercase leading-tight tracking-tight">
               Ready to build something?
             </h2>
-            <p className="mt-3 text-[15px] leading-relaxed text-[#7890a8]">
+            <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
               We build websites, mobile apps, brand identities, and IT infrastructure for businesses across Southeast Asia.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
@@ -110,7 +110,7 @@ function BlogPostPage() {
               </a>
               <a
                 href="/blog"
-                className="border border-[#1e2d45] px-5 py-2.5 text-sm font-bold uppercase tracking-widest text-[#e2eaf5] transition-all hover:border-pop hover:text-pop"
+                className="border border-border px-5 py-2.5 text-sm font-bold uppercase tracking-widest text-ink transition-all hover:border-pop hover:text-pop"
               >
                 More Articles
               </a>

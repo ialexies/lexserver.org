@@ -4,7 +4,7 @@ import { Reveal } from "./Reveal";
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="border-b border-[#1e2d45]">
+    <section id="testimonials" className="border-b border-border">
       <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-20">
         <SectionHeading
           index="05"
@@ -20,7 +20,7 @@ export function Testimonials() {
                 className={`flex h-full flex-col border p-7 transition-all duration-200 hover:-translate-y-1 ${
                   i === 1
                     ? "border-pop bg-pop text-white shadow-brut-pop"
-                    : "border-[#1e2d45] bg-[#111827] text-[#e2eaf5]"
+                    : "border-border bg-surface text-ink"
                 }`}
               >
                 <span
@@ -32,7 +32,7 @@ export function Testimonials() {
                 </span>
                 <p
                   className={`mt-2 flex-1 text-[15px] leading-relaxed ${
-                    i === 1 ? "text-white/90" : "text-[#e2eaf5]/75"
+                    i === 1 ? "text-white/90" : "text-ink/75"
                   }`}
                 >
                   {t.quote}
@@ -41,14 +41,14 @@ export function Testimonials() {
                   <p className="font-display text-base uppercase">{t.name}</p>
                   <p
                     className={`mt-0.5 text-[12px] font-bold uppercase tracking-wide ${
-                      i === 1 ? "text-white/60" : "text-[#7890a8]"
+                      i === 1 ? "text-white/60" : "text-muted-foreground"
                     }`}
                   >
                     {t.company}
                   </p>
                   <p
                     className={`text-[11px] uppercase tracking-widest ${
-                      i === 1 ? "text-white/40" : "text-[#7890a8]/70"
+                      i === 1 ? "text-white/40" : "text-muted-foreground/70"
                     }`}
                   >
                     {t.location}

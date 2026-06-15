@@ -21,14 +21,14 @@ export function SectionHeading({
             className={`flex h-12 w-12 shrink-0 items-center justify-center border ${
               invert
                 ? "border-pop bg-pop text-white"
-                : "border-[#1e2d45] bg-[#111827] text-[#e2eaf5]"
+                : "border-border bg-surface text-ink"
             } font-display text-xl`}
           >
             {index}
           </span>
         )}
         {eyebrow && (
-          <span className="text-xs font-bold uppercase tracking-widest text-[#7890a8]">
+          <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
             {eyebrow}
           </span>
         )}
@@ -37,7 +37,7 @@ export function SectionHeading({
         {title}
       </h2>
       {description && (
-        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[#7890a8]">{description}</p>
+        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">{description}</p>
       )}
     </Reveal>
   );

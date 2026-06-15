@@ -46,7 +46,7 @@ function AnimatedMetric({ value, label, accent }: { value: string; label: string
     <div
       ref={ref}
       className={`flex flex-col items-center justify-center px-4 py-10 text-center ${
-        accent ? "bg-pop text-white" : "bg-[#111827] text-[#e2eaf5]"
+        accent ? "bg-pop text-white" : "bg-surface text-ink"
       }`}
     >
       <span className="font-display text-[clamp(40px,5vw,60px)] tracking-tight">{display}</span>
@@ -59,7 +59,7 @@ function AnimatedMetric({ value, label, accent }: { value: string; label: string
 
 export function Metrics() {
   return (
-    <section className="border-b border-[#1e2d45] bg-[#070e1b]">
+    <section className="border-b border-border bg-canvas">
       <div className="mx-auto grid max-w-[1400px] grid-cols-2 gap-px p-px md:grid-cols-4">
         {METRICS.map((m, i) => (
           <AnimatedMetric key={m.label} value={m.value} label={m.label} accent={i % 2 !== 0} />

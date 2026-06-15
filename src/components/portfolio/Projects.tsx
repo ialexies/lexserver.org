@@ -3,9 +3,9 @@ import { SectionHeading } from "./SectionHeading";
 import { Reveal, RevealItem } from "./Reveal";
 
 const GRID_BG = [
-  "bg-[#111827] text-[#e2eaf5]",
+  "bg-surface text-ink",
   "bg-pop text-white",
-  "bg-[#0d1a2e] text-[#e2eaf5]",
+  "bg-surface/60 text-ink",
 ];
 
 export function Projects() {
@@ -13,7 +13,7 @@ export function Projects() {
   const [featured, ...rest] = PROJECTS;
 
   return (
-    <section id="work" className="border-b border-[#1e2d45]">
+    <section id="work" className="border-b border-border">
       <div className="mx-auto max-w-[1400px] px-4 py-20 md:px-8 md:py-28">
         <SectionHeading
           index="02"
@@ -24,17 +24,17 @@ export function Projects() {
 
         {/* Featured full-width card */}
         <Reveal>
-          <article className="card-shimmer overflow-hidden border border-[#1e2d45] bg-[#111827] shadow-brut">
+          <article className="card-shimmer overflow-hidden border border-border bg-surface shadow-brut">
             <div
-              className="relative border-b border-[#1e2d45] bg-[#0d1a2e]"
+              className="relative border-b border-border bg-canvas"
               style={{ aspectRatio: "16/7" }}
             >
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="font-display select-none text-center text-[8vw] uppercase text-[#e2eaf5]/5">
+                <span className="font-display select-none text-center text-[8vw] uppercase text-ink/5">
                   {featured.title}
                 </span>
               </div>
-              <div className="absolute left-4 top-4 border border-[#1e2d45] bg-[#111827] px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-[#7890a8]">
+              <div className="absolute left-4 top-4 border border-border bg-surface px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
                 Featured · {featured.year}
               </div>
             </div>
@@ -45,14 +45,14 @@ export function Projects() {
               <h3 className="font-display mt-2 text-4xl uppercase leading-tight tracking-tight md:text-[clamp(32px,6vw,64px)]">
                 {featured.title}
               </h3>
-              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[#7890a8]">
+              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
                 {featured.blurb}
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {featured.tech.map((t) => (
                   <span
                     key={t}
-                    className="border border-[#1e2d45] px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-[#7890a8]"
+                    className="border border-border px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-muted-foreground"
                   >
                     {t}
                   </span>
@@ -67,10 +67,10 @@ export function Projects() {
           {rest.map((p, i) => (
             <RevealItem key={p.title}>
               <article
-                className={`card-shimmer flex flex-col border border-[#1e2d45] transition-all duration-200 hover:-translate-y-1 hover:shadow-brut ${GRID_BG[i % GRID_BG.length]}`}
+                className={`card-shimmer flex flex-col border border-border transition-all duration-200 hover:-translate-y-1 hover:shadow-brut ${GRID_BG[i % GRID_BG.length]}`}
               >
                 <div
-                  className="border-b border-[#1e2d45]/50"
+                  className="border-b border-border/50"
                   style={{ aspectRatio: "16/10" }}
                 />
                 <div className="flex flex-1 flex-col justify-between p-7">

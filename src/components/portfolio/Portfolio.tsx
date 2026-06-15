@@ -12,11 +12,11 @@ const FILTERS: { value: PortfolioCategory | "all"; label: string }[] = [
 ];
 
 const CATEGORY_COLORS: Record<PortfolioCategory, string> = {
-  web: "bg-[#1e2d45] text-[#e2eaf5]",
+  web: "bg-border text-ink",
   mobile: "bg-pop text-white",
-  branding: "bg-[#111827] text-[#e2eaf5] border border-[#1e2d45]",
-  design: "bg-[#111827] text-[#e2eaf5] border border-[#1e2d45]",
-  wordpress: "bg-[#111827] text-[#e2eaf5] border border-[#1e2d45]",
+  branding: "bg-surface text-ink border border-border",
+  design: "bg-surface text-ink border border-border",
+  wordpress: "bg-surface text-ink border border-border",
 };
 
 function SkeletonImage({ src, alt }: { src: string; alt: string }) {
@@ -24,7 +24,7 @@ function SkeletonImage({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="relative h-full w-full">
       {!loaded && (
-        <div className="absolute inset-0 animate-pulse bg-[#1a2540]" />
+        <div className="absolute inset-0 animate-pulse bg-surface-raised" />
       )}
       <img
         src={src}
@@ -43,7 +43,7 @@ export function Portfolio() {
   const filtered = active === "all" ? PORTFOLIO : PORTFOLIO.filter((p) => p.category === active);
 
   return (
-    <section id="work" className="border-b border-[#1e2d45]">
+    <section id="work" className="border-b border-border">
       <div className="mx-auto max-w-[1400px] px-4 py-12 md:px-8 md:py-16">
         {/* Filter tabs */}
         <div className="mb-10 flex flex-wrap gap-2">
@@ -54,7 +54,7 @@ export function Portfolio() {
               className={`border px-4 py-1.5 text-[12px] font-bold uppercase tracking-widest transition-all ${
                 active === f.value
                   ? "border-pop bg-pop text-white"
-                  : "border-[#1e2d45] bg-[#111827] text-[#e2eaf5] hover:border-[#e2eaf5]/30"
+                  : "border-border bg-surface text-ink hover:border-ink/30"
               }`}
             >
               {f.label}
@@ -70,7 +70,7 @@ export function Portfolio() {
           {filtered.map((item, i) => (
             <Reveal key={item.slug} delay={(i % 3) * 0.07}>
               <article
-                className="card-shimmer group cursor-pointer border border-[#1e2d45] bg-[#111827] transition-all duration-200 hover:-translate-y-1 hover:border-pop hover:shadow-brut"
+                className="card-shimmer group cursor-pointer border border-border bg-surface transition-all duration-200 hover:-translate-y-1 hover:border-pop hover:shadow-brut"
                 onClick={() => setLightbox(item)}
               >
                 <div className="relative overflow-hidden" style={{ aspectRatio: "16/10" }}>
@@ -88,7 +88,7 @@ export function Portfolio() {
                       <h3 className="font-display truncate text-lg uppercase leading-tight tracking-tight">
                         {item.title}
                       </h3>
-                      <p className="mt-0.5 text-[12px] font-bold uppercase tracking-wide text-[#7890a8]">
+                      <p className="mt-0.5 text-[12px] font-bold uppercase tracking-wide text-muted-foreground">
                         {item.client} · {item.country}
                       </p>
                     </div>
@@ -99,7 +99,7 @@ export function Portfolio() {
                     </span>
                   </div>
 
-                  <p className="mt-3 line-clamp-2 text-[13px] leading-relaxed text-[#7890a8]">
+                  <p className="mt-3 line-clamp-2 text-[13px] leading-relaxed text-muted-foreground">
                     {item.description}
                   </p>
 
@@ -108,7 +108,7 @@ export function Portfolio() {
                       {item.tech?.slice(0, 3).map((t) => (
                         <span
                           key={t}
-                          className="border border-[#1e2d45] px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#7890a8]"
+                          className="border border-border px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-muted-foreground"
                         >
                           {t}
                         </span>
@@ -136,16 +136,16 @@ export function Portfolio() {
       {/* Lightbox */}
       {lightbox && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-[#0b1120]/92 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-paper/92 p-4 backdrop-blur-sm"
           onClick={() => setLightbox(null)}
         >
           <div
-            className="relative max-h-[90vh] w-full max-w-3xl overflow-auto bg-[#111827] shadow-brut-lg"
+            className="relative max-h-[90vh] w-full max-w-3xl overflow-auto bg-surface shadow-brut-lg"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setLightbox(null)}
-              className="absolute right-0 top-0 z-10 border-b border-l border-[#1e2d45] bg-[#111827] px-4 py-2 text-[11px] font-bold uppercase tracking-widest text-[#7890a8] hover:bg-[#1a2540] hover:text-[#e2eaf5]"
+              className="absolute right-0 top-0 z-10 border-b border-l border-border bg-surface px-4 py-2 text-[11px] font-bold uppercase tracking-widest text-muted-foreground hover:bg-surface-raised hover:text-ink"
             >
               ✕ Close
             </button>
@@ -166,11 +166,11 @@ export function Portfolio() {
                 )}
               </div>
 
-              <p className="mt-1 text-sm font-bold uppercase tracking-wide text-[#7890a8]">
+              <p className="mt-1 text-sm font-bold uppercase tracking-wide text-muted-foreground">
                 {lightbox.client} · {lightbox.country}
               </p>
 
-              <p className="mt-4 text-base leading-relaxed text-[#e2eaf5]/75">
+              <p className="mt-4 text-base leading-relaxed text-ink/75">
                 {lightbox.description}
               </p>
 
@@ -179,7 +179,7 @@ export function Portfolio() {
                   {lightbox.tech.map((t) => (
                     <span
                       key={t}
-                      className="border border-[#1e2d45] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-[#7890a8]"
+                      className="border border-border px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-muted-foreground"
                     >
                       {t}
                     </span>

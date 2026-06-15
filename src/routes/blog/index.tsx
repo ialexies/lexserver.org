@@ -22,17 +22,17 @@ function BlogListPage() {
       <Nav />
       <main>
         {/* Hero */}
-        <section className="border-b border-[#1e2d45] bg-[#070e1b]">
+        <section className="border-b border-border bg-canvas">
           <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-20">
             <span className="inline-block border border-pop bg-pop px-3 py-1 text-xs font-bold uppercase tracking-widest text-white">
               / Blog
             </span>
-            <h1 className="font-display mt-6 text-[clamp(48px,10vw,120px)] uppercase leading-[0.88] tracking-tight text-white">
+            <h1 className="font-display mt-6 text-[clamp(48px,10vw,120px)] uppercase leading-[0.88] tracking-tight text-ink">
               Articles &amp;
               <br />
               Insights<span className="text-pop">.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-lg font-semibold text-[#e2eaf5]/60">
+            <p className="mt-6 max-w-xl text-lg font-semibold text-ink/60">
               Web development, branding, and IT insights for businesses in Southeast Asia — written from Bataan, Philippines.
             </p>
           </div>
@@ -42,14 +42,14 @@ function BlogListPage() {
         <section>
           <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-20">
             {posts.length === 0 ? (
-              <p className="text-[#7890a8]">No posts yet. Check back soon.</p>
+              <p className="text-muted-foreground">No posts yet. Check back soon.</p>
             ) : (
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 {posts.map((post, i) => (
                   <Reveal key={post.slug} delay={(i % 3) * 0.07}>
                     <a
                       href={`/blog/${post.slug}`}
-                      className="card-shimmer group flex h-full flex-col border border-[#1e2d45] bg-[#111827] transition-all duration-200 hover:-translate-y-1 hover:border-pop hover:shadow-brut"
+                      className="card-shimmer group flex h-full flex-col border border-border bg-surface transition-all duration-200 hover:-translate-y-1 hover:border-pop hover:shadow-brut"
                     >
                       <div className="overflow-hidden" style={{ aspectRatio: "16/9" }}>
                         <img
@@ -64,7 +64,7 @@ function BlogListPage() {
                           <span className="border border-pop bg-pop px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white">
                             {post.category}
                           </span>
-                          <span className="text-[11px] font-bold uppercase tracking-wide text-[#7890a8]">
+                          <span className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">
                             {new Date(post.date).toLocaleDateString("en-PH", {
                               month: "short",
                               day: "numeric",
@@ -75,7 +75,7 @@ function BlogListPage() {
                         <h2 className="font-display mt-3 text-xl uppercase leading-tight tracking-tight">
                           {post.title}
                         </h2>
-                        <p className="mt-2 flex-1 text-[13px] leading-relaxed text-[#7890a8]">
+                        <p className="mt-2 flex-1 text-[13px] leading-relaxed text-muted-foreground">
                           {post.excerpt}
                         </p>
                         <span className="mt-4 text-[12px] font-bold uppercase tracking-wide text-pop">

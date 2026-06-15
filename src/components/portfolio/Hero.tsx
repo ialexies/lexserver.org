@@ -6,12 +6,12 @@ export function Hero() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="top" className="relative overflow-hidden border-b border-[#1e2d45] bg-[#070e1b]">
-      {/* Gradient mesh glows */}
+    <section id="top" className="relative overflow-hidden border-b border-border bg-canvas">
+      {/* Gradient mesh glows — orange glows hidden on mobile where they float away from the globe */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -bottom-20 -right-20 h-[600px] w-[600px] rounded-full bg-[#ff5722]/10 blur-[120px]" />
+        <div className="absolute -bottom-20 -right-20 h-[600px] w-[600px] rounded-full bg-[#ff5722]/10 blur-[120px] hidden md:block" />
         <div className="absolute -left-32 -top-20 h-[500px] w-[500px] rounded-full bg-[#4f46e5]/8 blur-[100px]" />
-        <div className="absolute bottom-1/3 left-1/3 h-[300px] w-[400px] rounded-full bg-[#ff5722]/5 blur-[80px]" />
+        <div className="absolute bottom-1/3 left-1/3 h-[300px] w-[400px] rounded-full bg-[#ff5722]/5 blur-[80px] hidden md:block" />
       </div>
 
       {/* flex col on mobile → grid 2-col on desktop */}
@@ -22,12 +22,20 @@ export function Hero() {
           {/* Globe — mobile only, sits in the empty top space */}
           <div className="mb-auto flex justify-center pt-4 md:hidden">
             <motion.img
+              src="/hero-globe-light.png"
+              alt=""
+              initial={reduce ? false : { opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="w-[85%] max-w-[340px] block dark:hidden"
+            />
+            <motion.img
               src="/hero-globe.png"
               alt=""
               initial={reduce ? false : { opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="w-[85%] max-w-[340px] mix-blend-lighten"
+              className="w-[85%] max-w-[340px] hidden dark:block dark:mix-blend-lighten"
             />
           </div>
           {/* Badges */}
@@ -44,7 +52,7 @@ export function Hero() {
               initial={reduce ? false : { opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="inline-flex items-center gap-2 border border-[#e2eaf5]/15 px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#e2eaf5]/50"
+              className="inline-flex items-center gap-2 border border-ink/15 px-3 py-1 text-xs font-bold uppercase tracking-widest text-ink/50"
             >
               <motion.span
                 className="h-2 w-2 flex-shrink-0 rounded-full bg-pop"
@@ -55,8 +63,8 @@ export function Hero() {
             </motion.span>
           </div>
 
-          {/* Headline — space/br placed OUTSIDE overflow-hidden span to avoid clip */}
-          <h1 className="font-display -ml-1 text-[clamp(56px,10vw,160px)] uppercase leading-[0.84] tracking-tight text-white">
+          {/* Headline */}
+          <h1 className="font-display -ml-1 text-[clamp(56px,10vw,160px)] uppercase leading-[0.84] tracking-tight text-ink">
             {reduce ? (
               <>We&nbsp;build<br />Worlds<span className="text-pop">.</span></>
             ) : (
@@ -87,7 +95,7 @@ export function Hero() {
               initial={reduce ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.45 }}
-              className="max-w-lg text-lg font-semibold leading-relaxed text-[#e2eaf5]/65"
+              className="max-w-lg text-lg font-semibold leading-relaxed text-ink/65"
             >
               Web, mobile &amp; IT services for startups and businesses across
               Southeast Asia. One studio, end-to-end delivery — from Bataan to
@@ -102,7 +110,7 @@ export function Hero() {
             >
               <a
                 href="#work"
-                className="font-display border border-[#e2eaf5]/30 px-6 py-3 text-base uppercase text-white transition-all hover:border-[#e2eaf5]/60 hover:bg-[#e2eaf5]/5"
+                className="font-display border border-ink/30 px-6 py-3 text-base uppercase text-ink transition-all hover:border-ink/60 hover:bg-ink/5"
               >
                 See Our Work
               </a>
@@ -119,12 +127,20 @@ export function Hero() {
         {/* Right: globe — hidden on mobile, centered on desktop */}
         <div className="hidden md:flex md:items-center md:justify-center">
           <motion.img
+            src="/hero-globe-light.png"
+            alt=""
+            initial={reduce ? false : { opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="w-full max-w-[620px] block dark:hidden"
+          />
+          <motion.img
             src="/hero-globe.png"
             alt=""
             initial={reduce ? false : { opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="w-full max-w-[620px] mix-blend-lighten"
+            className="w-full max-w-[620px] hidden dark:block dark:mix-blend-lighten"
           />
         </div>
       </div>

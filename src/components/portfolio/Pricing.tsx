@@ -5,7 +5,7 @@ import { Check } from "lucide-react";
 
 export function Pricing() {
   return (
-    <section id="pricing" className="border-b border-[#1e2d45]">
+    <section id="pricing" className="border-b border-border">
       <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-20">
         <SectionHeading
           index="06"
@@ -20,8 +20,8 @@ export function Pricing() {
               <div
                 className={`card-shimmer relative flex h-full flex-col border p-7 transition-all duration-200 hover:-translate-y-1 ${
                   tier.highlight
-                    ? "border-pop bg-[#1a1000] text-white shadow-brut-pop"
-                    : "border-[#1e2d45] bg-[#111827] text-[#e2eaf5] hover:border-pop hover:shadow-brut"
+                    ? "border-pop bg-pop/10 text-ink shadow-brut-pop"
+                    : "border-border bg-surface text-ink hover:border-pop hover:shadow-brut"
                 }`}
               >
                 {tier.highlight && (
@@ -34,7 +34,7 @@ export function Pricing() {
                   className={`inline-block self-start border px-2 py-0.5 font-display text-[11px] uppercase tracking-widest ${
                     tier.highlight
                       ? "border-pop bg-pop text-white"
-                      : "border-[#1e2d45] text-[#7890a8]"
+                      : "border-border text-muted-foreground"
                   }`}
                 >
                   {tier.tag}
@@ -50,7 +50,7 @@ export function Pricing() {
                   </span>
                   <span
                     className={`text-[13px] font-bold uppercase tracking-wide ${
-                      tier.highlight ? "text-white/50" : "text-[#7890a8]"
+                      tier.highlight ? "text-ink/50" : "text-muted-foreground"
                     }`}
                   >
                     {tier.unit}
@@ -58,7 +58,7 @@ export function Pricing() {
                 </div>
                 <p
                   className={`mt-1 text-[12px] font-bold uppercase tracking-wide ${
-                    tier.highlight ? "text-white/40" : "text-[#7890a8]"
+                    tier.highlight ? "text-ink/40" : "text-muted-foreground"
                   }`}
                 >
                   {tier.note}
@@ -66,7 +66,7 @@ export function Pricing() {
 
                 <div
                   className={`my-5 border-t ${
-                    tier.highlight ? "border-white/10" : "border-[#1e2d45]"
+                    tier.highlight ? "border-pop/20" : "border-border"
                   }`}
                 />
 
@@ -74,7 +74,7 @@ export function Pricing() {
                   {tier.includes.map((item) => (
                     <li key={item} className="flex items-start gap-2 text-[14px] leading-snug">
                       <Check size={14} className="mt-0.5 shrink-0 text-pop" />
-                      <span className={tier.highlight ? "text-white/75" : "text-[#e2eaf5]/70"}>
+                      <span className={tier.highlight ? "text-ink/75" : "text-ink/70"}>
                         {item}
                       </span>
                     </li>
@@ -86,7 +86,7 @@ export function Pricing() {
                   className={`mt-7 block border py-3 text-center text-[12px] font-bold uppercase tracking-widest transition-all ${
                     tier.highlight
                       ? "border-pop bg-pop text-white hover:ring-2 hover:ring-pop/30"
-                      : "border-[#1e2d45] text-[#e2eaf5] hover:border-pop hover:text-pop"
+                      : "border-border text-ink hover:border-pop hover:text-pop"
                   }`}
                 >
                   Get a Quote →
@@ -97,7 +97,7 @@ export function Pricing() {
         </Reveal>
 
         <Reveal delay={0.2}>
-          <p className="mt-10 text-center text-[13px] font-bold uppercase tracking-widest text-[#7890a8]">
+          <p className="mt-10 text-center text-[13px] font-bold uppercase tracking-widest text-muted-foreground">
             All prices in Philippine Peso (₱) · VAT not included · Custom quotes available for larger projects
           </p>
         </Reveal>

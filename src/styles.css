@@ -34,20 +34,55 @@
   --color-ink: var(--ink);
   --color-paper: var(--paper);
   --color-pop: var(--pop);
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
   --font-display: "Archivo Black", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Hind", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
+/* Light mode (default) */
 :root {
   --radius: 8px;
 
-  /* Core palette */
-  --paper: #0b1120;
-  --ink:   #e2eaf5;
-  --pop:   #ff5722;
+  --paper:   #ffffff;
+  --ink:     #0a0a0a;
+  --pop:     #ff5722;
+  --canvas:  #f0f2f7;
+  --surface: #ffffff;
+  --surface-raised: #e8edf5;
 
-  /* Semantic tokens */
+  --background:            #ffffff;
+  --foreground:            #0a0a0a;
+  --card:                  #f5f7fa;
+  --card-foreground:       #0a0a0a;
+  --popover:               #ffffff;
+  --popover-foreground:    #0a0a0a;
+  --primary:               #ff5722;
+  --primary-foreground:    #ffffff;
+  --secondary:             #e8edf5;
+  --secondary-foreground:  #0a0a0a;
+  --muted:                 #f0f3f8;
+  --muted-foreground:      #5a6575;
+  --accent:                #ff5722;
+  --accent-foreground:     #ffffff;
+  --destructive:           #ef4444;
+  --destructive-foreground:#ffffff;
+  --border:                #d4d8e2;
+  --input:                 #d4d8e2;
+  --ring:                  #ff5722;
+}
+
+/* Dark mode */
+html.dark {
+  --paper:   #0b1120;
+  --ink:     #e2eaf5;
+  --pop:     #ff5722;
+  --canvas:  #070e1b;
+  --surface: #111827;
+  --surface-raised: #1a2540;
+
   --background:            #0b1120;
   --foreground:            #e2eaf5;
   --card:                  #111827;
@@ -74,8 +109,12 @@ html, body {
   color: var(--ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
-  background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
   background-size: 24px 24px;
+}
+
+html.dark, html.dark body {
+  background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
 }
 
 html { scroll-behavior: smooth; }
@@ -101,10 +140,15 @@ html { scroll-behavior: smooth; }
 }
 
 /* Premium soft shadows */
-.shadow-brut     { box-shadow: 0 4px 24px 0 rgba(0,0,0,0.45), 0 1px 4px 0 rgba(0,0,0,0.3); }
-.shadow-brut-lg  { box-shadow: 0 8px 40px 0 rgba(0,0,0,0.55), 0 2px 8px 0 rgba(0,0,0,0.4); }
-.shadow-brut-white { box-shadow: 0 0 0 1px rgba(226,234,245,0.12), 0 4px 24px 0 rgba(0,0,0,0.5); }
-.shadow-brut-pop   { box-shadow: 0 0 20px 0 rgba(255,87,34,0.35), 0 2px 8px 0 rgba(255,87,34,0.2); }
+.shadow-brut     { box-shadow: 0 4px 24px 0 rgba(0,0,0,0.1), 0 1px 4px 0 rgba(0,0,0,0.06); }
+.shadow-brut-lg  { box-shadow: 0 8px 40px 0 rgba(0,0,0,0.12), 0 2px 8px 0 rgba(0,0,0,0.08); }
+.shadow-brut-white { box-shadow: 0 0 0 1px rgba(10,10,10,0.08), 0 4px 24px 0 rgba(0,0,0,0.08); }
+.shadow-brut-pop   { box-shadow: 0 0 20px 0 rgba(255,87,34,0.25), 0 2px 8px 0 rgba(255,87,34,0.15); }
+
+html.dark .shadow-brut     { box-shadow: 0 4px 24px 0 rgba(0,0,0,0.45), 0 1px 4px 0 rgba(0,0,0,0.3); }
+html.dark .shadow-brut-lg  { box-shadow: 0 8px 40px 0 rgba(0,0,0,0.55), 0 2px 8px 0 rgba(0,0,0,0.4); }
+html.dark .shadow-brut-white { box-shadow: 0 0 0 1px rgba(226,234,245,0.12), 0 4px 24px 0 rgba(0,0,0,0.5); }
+html.dark .shadow-brut-pop   { box-shadow: 0 0 20px 0 rgba(255,87,34,0.35), 0 2px 8px 0 rgba(255,87,34,0.2); }
 
 /* Gradient section divider */
 .divider-gradient {
@@ -140,6 +184,6 @@ html { scroll-behavior: smooth; }
 .prose-blog ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
 .prose-blog li { margin-bottom: 0.25rem; line-height: 1.7; }
 .prose-blog a  { color: var(--pop); text-decoration: underline; }
-.prose-blog code { background: #1e2d45; color: #e2eaf5; padding: 0.15em 0.4em; font-family: var(--font-mono); font-size: 0.875em; border-radius: 4px; }
-.prose-blog pre { background: #070e1b; color: #e2eaf5; padding: 1.5rem; overflow-x: auto; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 0.875rem; line-height: 1.6; border-radius: 8px; }
+.prose-blog code { background: var(--surface-raised); color: var(--ink); padding: 0.15em 0.4em; font-family: var(--font-mono); font-size: 0.875em; border-radius: 4px; }
+.prose-blog pre { background: var(--canvas); color: var(--ink); padding: 1.5rem; overflow-x: auto; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 0.875rem; line-height: 1.6; border-radius: 8px; }
 .prose-blog blockquote { border-left: 4px solid var(--pop); padding-left: 1rem; font-style: italic; margin-bottom: 1rem; }

@@ -6,7 +6,7 @@ export function BlogPreview() {
   const posts = getAllPosts().slice(0, 3);
 
   return (
-    <section id="blog" className="border-b border-[#1e2d45]">
+    <section id="blog" className="border-b border-border">
       <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-20">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <SectionHeading
@@ -17,7 +17,7 @@ export function BlogPreview() {
           />
           <a
             href="/blog"
-            className="mb-12 shrink-0 self-start border border-[#1e2d45] px-4 py-2 text-[12px] font-bold uppercase tracking-widest text-[#e2eaf5] transition-all hover:border-pop hover:text-pop md:self-auto"
+            className="mb-12 shrink-0 self-start border border-border px-4 py-2 text-[12px] font-bold uppercase tracking-widest text-ink transition-all hover:border-pop hover:text-pop md:self-auto"
           >
             All Posts →
           </a>
@@ -28,7 +28,7 @@ export function BlogPreview() {
             <RevealItem key={post.slug}>
               <a
                 href={`/blog/${post.slug}`}
-                className="card-shimmer group flex h-full flex-col border border-[#1e2d45] bg-[#111827] transition-all duration-200 hover:-translate-y-1 hover:border-pop hover:shadow-brut"
+                className="card-shimmer group flex h-full flex-col border border-border bg-surface transition-all duration-200 hover:-translate-y-1 hover:border-pop hover:shadow-brut"
               >
                 <div className="overflow-hidden" style={{ aspectRatio: "16/9" }}>
                   <img
@@ -44,7 +44,7 @@ export function BlogPreview() {
                     <span className="border border-pop bg-pop px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white">
                       {post.category}
                     </span>
-                    <span className="text-[11px] font-bold uppercase tracking-wide text-[#7890a8]">
+                    <span className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">
                       {new Date(post.date).toLocaleDateString("en-PH", {
                         month: "short",
                         day: "numeric",
@@ -56,7 +56,7 @@ export function BlogPreview() {
                   <h3 className="font-display mt-3 text-xl uppercase leading-tight tracking-tight">
                     {post.title}
                   </h3>
-                  <p className="mt-2 flex-1 text-[13px] leading-relaxed text-[#7890a8]">
+                  <p className="mt-2 flex-1 text-[13px] leading-relaxed text-muted-foreground">
                     {post.excerpt}
                   </p>
                   <span className="mt-4 text-[12px] font-bold uppercase tracking-wide text-pop">

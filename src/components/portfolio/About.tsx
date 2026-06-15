@@ -4,7 +4,7 @@ import { SectionHeading } from "./SectionHeading";
 
 export function About() {
   return (
-    <section id="about" className="border-b border-[#1e2d45]">
+    <section id="about" className="border-b border-border">
       <div className="mx-auto max-w-[1400px] px-4 py-20 md:px-8 md:py-28">
         <SectionHeading
           index="07"
@@ -15,20 +15,20 @@ export function About() {
         <div className="grid gap-12 md:grid-cols-2">
           <Reveal>
             <div>
-              <p className="text-xl leading-relaxed text-[#e2eaf5]/80">
+              <p className="text-xl leading-relaxed text-ink/80">
                 Builds Worlds Studio is a web, mobile, and IT services studio
-                based in <strong className="text-[#e2eaf5]">Bataan, Philippines</strong> — founded by{" "}
-                <strong className="text-[#e2eaf5]">{PROFILE.name}</strong>, a developer and designer with
+                based in <strong className="text-ink">Bataan, Philippines</strong> — founded by{" "}
+                <strong className="text-ink">{PROFILE.name}</strong>, a developer and designer with
                 15+ years of experience across startups, agencies, and product
                 companies.
               </p>
-              <p className="mt-4 text-lg leading-relaxed text-[#7890a8]">
+              <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
                 We work at the intersection of code, design, and brand — giving
                 businesses in Southeast Asia access to production-quality
                 digital work without the overhead of a large agency. One
                 accountable studio, end-to-end.
               </p>
-              <p className="mt-4 text-lg leading-relaxed text-[#7890a8]">
+              <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
                 From Flutter apps shipped to thousands of users, to WordPress
                 sites that rank on the first page of Google, to brand identities
                 delivered to clients in Singapore, Australia, and Japan — we
@@ -43,7 +43,7 @@ export function About() {
                 </a>
                 <a
                   href="/#work"
-                  className="font-display border border-[#1e2d45] bg-[#111827] px-6 py-3 text-base uppercase text-[#e2eaf5] transition-all hover:border-pop hover:text-pop"
+                  className="font-display border border-border bg-surface px-6 py-3 text-base uppercase text-ink transition-all hover:border-pop hover:text-pop"
                 >
                   See Our Work
                 </a>
@@ -53,7 +53,7 @@ export function About() {
 
           <Reveal delay={0.1}>
             <div>
-              <p className="mb-6 text-xs font-bold uppercase tracking-widest text-[#7890a8]">
+              <p className="mb-6 text-xs font-bold uppercase tracking-widest text-muted-foreground">
                 / Recognition &amp; Awards
               </p>
               <ul className="space-y-4">
@@ -64,8 +64,8 @@ export function About() {
                       i === 0
                         ? "border-pop bg-pop text-white shadow-brut-pop"
                         : i === 1
-                          ? "border-[#1e2d45] bg-[#111827] text-[#e2eaf5]"
-                          : "border-[#1e2d45] bg-[#0d1a2e] text-[#e2eaf5]"
+                          ? "border-border bg-surface text-ink"
+                          : "border-border bg-surface/60 text-ink"
                     }`}
                   >
                     <p className="text-[11px] font-bold uppercase tracking-widest opacity-60">
