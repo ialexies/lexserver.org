@@ -1,128 +1,96 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
-import { Nav } from "@/components/portfolio/Nav";
-import { Footer } from "@/components/portfolio/Footer";
+import {
+  ClosingCta,
+  Container,
+  PageHeader,
+  PageShell,
+  btnPrimary,
+  textLink,
+} from "@/components/portfolio/Page";
 import { Experience } from "@/components/portfolio/Experience";
-import { Reveal } from "@/components/portfolio/Reveal";
-import { PROFILE, TEAM } from "@/lib/portfolio-data";
+import { TEAM } from "@/lib/portfolio-data";
 
 export const Route = createFileRoute("/about")({
+  head: () => ({
+    meta: [
+      { title: "About us | Lexserver" },
+      {
+        name: "description",
+        content:
+          "Lexserver is Alexies Iglesia and Charity Dultra, a developer and a designer in Hermosa, Bataan, building web and mobile apps for businesses across Southeast Asia.",
+      },
+    ],
+  }),
   component: AboutPage,
 });
 
+function initials(name: string) {
+  return name
+    .split(" ")
+    .map((w) => w[0])
+    .join("");
+}
+
 function AboutPage() {
   return (
-    <motion.div
-      className="min-h-screen bg-paper text-ink"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.25 }}
-    >
-      <Nav />
-      <main>
-        {/* Hero */}
-        <section className="border-b border-border bg-canvas text-ink">
-          <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-20">
-            <span className="inline-block border border-pop bg-pop px-3 py-1 text-xs font-bold uppercase tracking-widest text-white">
-              / About the Studio
-            </span>
-            <h1 className="font-display mt-6 text-[clamp(48px,11vw,140px)] uppercase leading-[0.84] tracking-tight">
-              Builds
-              <br />
-              Worlds<span className="text-pop">.</span>
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink/65">
-              A web, mobile, and IT services studio based in Bataan, Philippines — built by{" "}
-              <strong className="text-ink">Alexies Iglesia</strong> (IT &amp; Software Engineer) and{" "}
-              <strong className="text-ink">Charity Dultra</strong> (Graphic Designer &amp;
-              Illustrator). Code and craft, under one roof.
-            </p>
-          </div>
-        </section>
+    <PageShell>
+      <PageHeader
+        eyebrow="About"
+        title="A developer and a designer in Bataan"
+        intro="We're Alexies Iglesia and Charity Dultra. Together we take a project from first sketch to a running app, and we keep looking after it."
+      />
 
-        {/* Story */}
-        <section className="border-b border-border">
-          <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-20">
-            <div className="grid gap-12 md:grid-cols-2">
-              <Reveal>
-                <div>
-                  <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                    / The Story
-                  </span>
-                  <h2 className="font-display mt-3 text-4xl uppercase leading-[0.95] tracking-tight md:text-5xl">
-                    Code. Design.
-                    <br />
-                    <span className="text-pop">Ship it.</span>
-                  </h2>
-                  <p className="mt-6 text-xl leading-relaxed text-ink/80">
-                    Builds Worlds Studio is the combined work of{" "}
-                    <strong className="text-ink">Alexies Iglesia</strong> — IT engineer and software
-                    developer with 15+ years across startups and agencies — and{" "}
-                    <strong className="text-ink">Charity Dultra</strong> — a Cum Laude Fine Arts
-                    graduate and graphic designer with a decade of work for international clients.
-                  </p>
-                  <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-                    From Flutter apps shipped to thousands of daily users, to brand identities
-                    delivered to clients in Singapore, Australia, and Japan — the through-line is
-                    code and design that hold up in the real world, built by people who care about
-                    both.
-                  </p>
-                  <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-                    The studio takes on web &amp; mobile builds, graphic design and illustration,
-                    and the IT services to keep it all running — for clients who want one
-                    accountable team, not a handoff chain.
-                  </p>
-                  <div className="mt-8 flex flex-wrap gap-4">
-                    <a
-                      href="/#contact"
-                      className="font-display border border-pop bg-pop px-6 py-3 text-base uppercase text-white shadow-brut-pop transition-all hover:ring-2 hover:ring-pop/30"
-                    >
-                      Start a Project →
-                    </a>
-                    <a
-                      href="/work"
-                      className="font-display border border-border bg-surface px-6 py-3 text-base uppercase text-ink transition-all hover:border-pop hover:text-pop"
-                    >
-                      See Our Work
-                    </a>
-                  </div>
-                </div>
-              </Reveal>
-
-              {/* Team cards */}
-              <Reveal delay={0.1}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {TEAM.map((member) => (
-                    <div
-                      key={member.name}
-                      className="border border-border bg-surface p-4 shadow-brut-lg"
-                    >
-                      <div
-                        className="flex items-center justify-center border border-border bg-border"
-                        style={{ aspectRatio: "1/1" }}
-                      >
-                        <span className="font-display text-2xl uppercase text-ink/20">Photo</span>
-                      </div>
-                      <div className="mt-3">
-                        <p className="font-display text-base uppercase text-ink">{member.name}</p>
-                        <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-pop">
-                          {member.role}
-                        </p>
-                        <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                          {member.location}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </Reveal>
+      <section className="border-t border-line py-14 md:py-20">
+        <Container>
+          <div className="grid gap-12 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-16">
+            <div className="grid max-w-[62ch] content-start gap-4 text-[17px] leading-relaxed">
+              <p>
+                Alexies has spent 15 years building web and mobile apps for startups and agencies,
+                from leading a web team and running scrum to shipping Flutter apps used by thousands
+                of people a day.
+              </p>
+              <p className="text-muted">
+                Charity is a Cum Laude Fine Arts graduate in graphic design, with close to a decade
+                of brand, illustration and marketing work for clients in the US and Asia.
+              </p>
+              <p className="text-muted">
+                Lexserver is what we do together: websites, apps, design and the hosting to keep it
+                all running, for clients who want one accountable team instead of a hand-off chain.
+                We also build and run our own products, like LupaAtBahay and Indexwise.
+              </p>
+              <div className="mt-4 flex flex-wrap items-center gap-6">
+                <a href="/#contact" className={btnPrimary}>
+                  Start a project
+                </a>
+                <a href="/work" className={textLink}>
+                  See our work
+                </a>
+              </div>
             </div>
-          </div>
-        </section>
 
-        <Experience />
-      </main>
-      <Footer />
-    </motion.div>
+            <ul className="grid content-start gap-6 sm:grid-cols-2">
+              {TEAM.map((m) => (
+                <li key={m.name} className="grid gap-3">
+                  {/* Swap for a real photo: public/team/<name>.webp, square, under 150 KB */}
+                  <div
+                    className="flex aspect-square w-full items-center justify-center rounded-lg border border-line bg-accent-soft text-[32px] font-medium text-accent"
+                    aria-hidden="true"
+                  >
+                    {initials(m.name)}
+                  </div>
+                  <div>
+                    <p className="text-[16px] font-semibold">{m.name}</p>
+                    <p className="text-[14px] text-muted">{m.role}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Container>
+      </section>
+
+      <Experience />
+      <ClosingCta />
+    </PageShell>
   );
 }

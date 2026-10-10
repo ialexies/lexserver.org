@@ -1,10 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
-import { getPostBySlug } from "@/lib/blog";
-import { Nav } from "@/components/portfolio/Nav";
-import { Footer } from "@/components/portfolio/Footer";
+import { formatDate, getAllPosts, getPostBySlug } from "@/lib/blog";
+import { Container, PageShell, btnPrimary, label, textLink } from "@/components/portfolio/Page";
 
 export const Route = createFileRoute("/blog/$slug")({
+  head: ({ params }) => {
+    const post = getPostBySlug(params.slug);
+    return {
+      meta: post
+        ? [
+            { title: `${post.title} | Lexserver` },
+            { name: "description", content: post.excerpt },
+            { property: "og:title", content: post.title },
+            { property: "og:description", content: post.excerpt },
+            { property: "og:type", content: "article" },
+          ]
+        : [{ title: "Post not found | Lexserver" }],
+    };
+  },
   component: BlogPostPage,
 });
 
@@ -14,108 +26,75 @@ function BlogPostPage() {
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-paper text-ink">
-        <Nav />
-        <main>
-          <div className="mx-auto flex min-h-[60vh] max-w-[1400px] flex-col items-center justify-center px-4 py-20 text-center">
-            <h1 className="font-display text-6xl uppercase">Post Not Found</h1>
-            <p className="mt-4 text-muted-foreground">
-              This article doesn't exist or may have been moved.
-            </p>
-            <a
-              href="/blog"
-              className="mt-8 border border-pop bg-pop px-6 py-3 text-sm font-bold uppercase tracking-widest text-white shadow-brut-pop transition-all hover:ring-2 hover:ring-pop/30"
-            >
-              ← Back to Blog
-            </a>
-          </div>
-        </main>
-        <Footer />
-      </div>
+      <PageShell>
+        <Container narrow className="py-24">
+          <h1 className="text-[30px] font-medium tracking-[-0.02em]">That post doesn't exist</h1>
+          <p className="mt-3 text-muted">It may have been renamed or removed.</p>
+          <a href="/blog" className={`${textLink} mt-6 inline-block`}>
+            See all posts
+          </a>
+        </Container>
+      </PageShell>
     );
   }
 
-  return (
-    <motion.div
-      className="min-h-screen bg-paper text-ink"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.25 }}
-    >
-      <Nav />
-      <main>
-        {/* Hero image */}
-        <div
-          className="border-b border-border"
-          style={{ aspectRatio: "21/7", maxHeight: "480px", overflow: "hidden" }}
-        >
-          <img src={post.image} alt={post.title} className="h-full w-full object-cover" />
-        </div>
+  const more = getAllPosts()
+    .filter((p) => p.slug !== post.slug)
+    .slice(0, 3);
 
-        {/* Article */}
-        <article className="mx-auto max-w-[720px] px-4 py-16 md:px-8 md:py-20">
-          {/* Meta */}
-          <div className="mb-6 flex flex-wrap items-center gap-3">
-            <a
-              href="/blog"
-              className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground hover:text-pop"
-            >
+  return (
+    <PageShell>
+      <article>
+        <header className="pb-10 pt-14 md:pt-20">
+          <Container narrow>
+            <a href="/blog" className="text-[14px] text-muted hover:text-fg">
               ← Blog
             </a>
-            <span className="border border-pop bg-pop px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white">
-              {post.category}
-            </span>
-            <span className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">
-              {new Date(post.date).toLocaleDateString("en-PH", {
-                month: "long",
-                day: "numeric",
-                year: "numeric",
-              })}
-            </span>
+            <h1 className="mt-6 text-[30px] font-medium leading-[1.15] tracking-[-0.02em] md:text-[38px]">
+              {post.title}
+            </h1>
+            <p className={`${label} mt-4`}>
+              {formatDate(post.date, "long")} · {post.category} · {post.readingMinutes} min read
+            </p>
+          </Container>
+        </header>
+        {post.image && (
+          <Container narrow className="pb-10">
+            <img src={post.image} alt="" className="w-full rounded-lg border border-line" />
+          </Container>
+        )}
+        <Container narrow className="pb-16">
+          <div className="prose-site" dangerouslySetInnerHTML={{ __html: post.content }} />
+        </Container>
+      </article>
+
+      <section className="border-t border-line py-14">
+        <Container narrow>
+          <div className="rounded-xl border border-line bg-surface p-6 md:p-8">
+            <h2 className="text-[22px] font-medium tracking-[-0.015em]">Need help with this?</h2>
+            <p className="mt-2 text-muted">
+              We build and look after websites and apps for businesses across Southeast Asia.
+            </p>
+            <a href="/#contact" className={`${btnPrimary} mt-5`}>
+              Start a project
+            </a>
           </div>
-
-          {/* Title */}
-          <h1 className="font-display text-[clamp(28px,5vw,52px)] uppercase leading-[0.92] tracking-tight">
-            {post.title}
-          </h1>
-
-          <hr className="divider-gradient my-8" />
-
-          {/* Content */}
-          <div className="prose-blog" dangerouslySetInnerHTML={{ __html: post.content }} />
-
-          <hr className="divider-gradient my-12" />
-
-          {/* CTA */}
-          <div className="border border-border bg-surface p-6 md:p-8">
-            <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
-              / Work with us
-            </p>
-            <h2 className="font-display mt-2 text-3xl uppercase leading-tight tracking-tight">
-              Ready to build something?
-            </h2>
-            <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-              We build websites, mobile apps, brand identities, and IT infrastructure for businesses
-              across Southeast Asia.
-            </p>
-            <div className="mt-5 flex flex-wrap gap-3">
-              <a
-                href="/#contact"
-                className="border border-pop bg-pop px-5 py-2.5 text-sm font-bold uppercase tracking-widest text-white shadow-brut-pop transition-all hover:ring-2 hover:ring-pop/30"
-              >
-                Start a Project →
-              </a>
-              <a
-                href="/blog"
-                className="border border-border px-5 py-2.5 text-sm font-bold uppercase tracking-widest text-ink transition-all hover:border-pop hover:text-pop"
-              >
-                More Articles
-              </a>
+          {more.length > 0 && (
+            <div className="mt-14">
+              <h2 className="text-[18px] font-semibold">More from the blog</h2>
+              <ul className="mt-3 grid">
+                {more.map((p) => (
+                  <li key={p.slug} className="border-t border-line">
+                    <a href={`/blog/${p.slug}`} className="block py-3.5 hover:text-accent">
+                      {p.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
-        </article>
-      </main>
-      <Footer />
-    </motion.div>
+          )}
+        </Container>
+      </section>
+    </PageShell>
   );
 }
