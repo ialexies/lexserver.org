@@ -1,6 +1,5 @@
 @import "tailwindcss" source(none);
 @source "../src";
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -21,26 +20,6 @@
   --color-accent: var(--accent);
   --color-accent-fg: var(--accent-fg);
   --color-accent-soft: var(--accent-soft);
-
-  /* shadcn aliases, kept so src/components/ui still compiles */
-  --color-background: var(--bg);
-  --color-foreground: var(--fg);
-  --color-card: var(--surface);
-  --color-card-foreground: var(--fg);
-  --color-popover: var(--surface);
-  --color-popover-foreground: var(--fg);
-  --color-primary: var(--accent);
-  --color-primary-foreground: var(--accent-fg);
-  --color-secondary: var(--accent-soft);
-  --color-secondary-foreground: var(--fg);
-  --color-muted-foreground: var(--muted);
-  --color-accent-foreground: var(--accent-fg);
-  --color-destructive: #d23f3f;
-  --color-destructive-foreground: #ffffff;
-  --color-border: var(--line);
-  --color-input: var(--line);
-  --color-ring: var(--accent);
-  --color-ring-offset-background: var(--bg);
 
   --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;

@@ -16,7 +16,7 @@ export function Footer() {
           <a href="/" className="text-[15px] font-semibold text-fg">
             Lexserver<span className="text-accent">.</span>
           </a>
-          <p className="text-[14px] text-muted">
+          <p className="text-[14px] text-muted" suppressHydrationWarning>
             © {new Date().getFullYear()} Lexserver · Hermosa, Bataan, Philippines
           </p>
         </div>

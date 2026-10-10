@@ -16,47 +16,31 @@
       href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Lexserver",
+        "url": "https://lexserver.org",
+        "logo": "https://lexserver.org/favicon.svg",
+        "image": "https://lexserver.org/og-image.png",
+        "description": "Two-person studio that designs, builds and runs websites and mobile apps, and makes its own products like LupaAtBahay and Indexwise.",
+        "email": "ialexies@gmail.com",
+        "founder": { "@type": "Person", "name": "Alexies Iglesia" },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Hermosa",
+          "addressRegion": "Bataan",
+          "addressCountry": "PH"
+        },
+        "areaServed": "Worldwide",
+        "sameAs": ["https://www.linkedin.com/in/alexies-iglesia"]
+      }
+    </script>
   </head>
   <body>
-    <div id="root">
-      <div
-        id="init-loader"
-        style="
-          position: fixed;
-          inset: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: var(--loader-bg, #f7f7f5);
-        "
-      >
-        <div
-          style="
-            width: 32px;
-            height: 32px;
-            border: 2px solid var(--loader-ring, #e3e4e8);
-            border-top-color: #3346b8;
-            border-radius: 50%;
-            animation: spin 0.7s linear infinite;
-          "
-        ></div>
-      </div>
-      <style>
-        @keyframes spin {
-          to {
-            transform: rotate(360deg);
-          }
-        }
-        html:not(.dark) {
-          --loader-bg: #f7f7f5;
-          --loader-ring: #e3e4e8;
-        }
-        html.dark {
-          --loader-bg: #131418;
-          --loader-ring: #272a31;
-        }
-      </style>
-    </div>
+    <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
