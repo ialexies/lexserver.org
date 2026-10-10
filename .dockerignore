@@ -1,0 +1,14 @@
+.git
+.github
+.claude
+.lovable
+.tanstack
+node_modules
+dist
+test-results
+tests/screenshots
+package.json;C
+package-lock.json;C
+*.log
+.env
+.env.*

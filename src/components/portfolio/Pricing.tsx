@@ -45,9 +45,7 @@ export function Pricing() {
                 </h3>
 
                 <div className="mt-5 flex items-baseline gap-2">
-                  <span className="font-display text-4xl tracking-tight">
-                    {tier.price}
-                  </span>
+                  <span className="font-display text-4xl tracking-tight">{tier.price}</span>
                   <span
                     className={`text-[13px] font-bold uppercase tracking-wide ${
                       tier.highlight ? "text-ink/50" : "text-muted-foreground"
@@ -65,18 +63,14 @@ export function Pricing() {
                 </p>
 
                 <div
-                  className={`my-5 border-t ${
-                    tier.highlight ? "border-pop/20" : "border-border"
-                  }`}
+                  className={`my-5 border-t ${tier.highlight ? "border-pop/20" : "border-border"}`}
                 />
 
                 <ul className="flex-1 space-y-2.5">
                   {tier.includes.map((item) => (
                     <li key={item} className="flex items-start gap-2 text-[14px] leading-snug">
                       <Check size={14} className="mt-0.5 shrink-0 text-pop" />
-                      <span className={tier.highlight ? "text-ink/75" : "text-ink/70"}>
-                        {item}
-                      </span>
+                      <span className={tier.highlight ? "text-ink/75" : "text-ink/70"}>{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -98,7 +92,8 @@ export function Pricing() {
 
         <Reveal delay={0.2}>
           <p className="mt-10 text-center text-[13px] font-bold uppercase tracking-widest text-muted-foreground">
-            All prices in Philippine Peso (₱) · VAT not included · Custom quotes available for larger projects
+            All prices in Philippine Peso (₱) · VAT not included · Custom quotes available for
+            larger projects
           </p>
         </Reveal>
       </div>

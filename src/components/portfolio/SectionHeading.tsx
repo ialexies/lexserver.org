@@ -19,9 +19,7 @@ export function SectionHeading({
         {index && (
           <span
             className={`flex h-12 w-12 shrink-0 items-center justify-center border ${
-              invert
-                ? "border-pop bg-pop text-white"
-                : "border-border bg-surface text-ink"
+              invert ? "border-pop bg-pop text-white" : "border-border bg-surface text-ink"
             } font-display text-xl`}
           >
             {index}
@@ -37,7 +35,9 @@ export function SectionHeading({
         {title}
       </h2>
       {description && (
-        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">{description}</p>
+        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+          {description}
+        </p>
       )}
     </Reveal>
   );

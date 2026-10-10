@@ -27,13 +27,15 @@ function AboutPage() {
               / About the Studio
             </span>
             <h1 className="font-display mt-6 text-[clamp(48px,11vw,140px)] uppercase leading-[0.84] tracking-tight">
-              Builds<br />Worlds<span className="text-pop">.</span>
+              Builds
+              <br />
+              Worlds<span className="text-pop">.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink/65">
-              A web, mobile, and IT services studio based in Bataan, Philippines
-              — built by <strong className="text-ink">Alexies Iglesia</strong> (IT &amp; Software Engineer)
-              and <strong className="text-ink">Charity Dultra</strong> (Graphic Designer &amp; Illustrator).
-              Code and craft, under one roof.
+              A web, mobile, and IT services studio based in Bataan, Philippines — built by{" "}
+              <strong className="text-ink">Alexies Iglesia</strong> (IT &amp; Software Engineer) and{" "}
+              <strong className="text-ink">Charity Dultra</strong> (Graphic Designer &amp;
+              Illustrator). Code and craft, under one roof.
             </p>
           </div>
         </section>
@@ -54,19 +56,21 @@ function AboutPage() {
                   </h2>
                   <p className="mt-6 text-xl leading-relaxed text-ink/80">
                     Builds Worlds Studio is the combined work of{" "}
-                    <strong className="text-ink">Alexies Iglesia</strong> — IT engineer and software developer with 15+ years across startups and agencies — and{" "}
-                    <strong className="text-ink">Charity Dultra</strong> — a Cum Laude Fine Arts graduate and graphic designer with a decade of work for international clients.
+                    <strong className="text-ink">Alexies Iglesia</strong> — IT engineer and software
+                    developer with 15+ years across startups and agencies — and{" "}
+                    <strong className="text-ink">Charity Dultra</strong> — a Cum Laude Fine Arts
+                    graduate and graphic designer with a decade of work for international clients.
                   </p>
                   <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-                    From Flutter apps shipped to thousands of daily users, to
-                    brand identities delivered to clients in Singapore, Australia,
-                    and Japan — the through-line is code and design that hold up
-                    in the real world, built by people who care about both.
+                    From Flutter apps shipped to thousands of daily users, to brand identities
+                    delivered to clients in Singapore, Australia, and Japan — the through-line is
+                    code and design that hold up in the real world, built by people who care about
+                    both.
                   </p>
                   <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-                    The studio takes on web &amp; mobile builds, graphic design
-                    and illustration, and the IT services to keep it all running —
-                    for clients who want one accountable team, not a handoff chain.
+                    The studio takes on web &amp; mobile builds, graphic design and illustration,
+                    and the IT services to keep it all running — for clients who want one
+                    accountable team, not a handoff chain.
                   </p>
                   <div className="mt-8 flex flex-wrap gap-4">
                     <a
@@ -89,19 +93,18 @@ function AboutPage() {
               <Reveal delay={0.1}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {TEAM.map((member) => (
-                    <div key={member.name} className="border border-border bg-surface p-4 shadow-brut-lg">
+                    <div
+                      key={member.name}
+                      className="border border-border bg-surface p-4 shadow-brut-lg"
+                    >
                       <div
                         className="flex items-center justify-center border border-border bg-border"
                         style={{ aspectRatio: "1/1" }}
                       >
-                        <span className="font-display text-2xl uppercase text-ink/20">
-                          Photo
-                        </span>
+                        <span className="font-display text-2xl uppercase text-ink/20">Photo</span>
                       </div>
                       <div className="mt-3">
-                        <p className="font-display text-base uppercase text-ink">
-                          {member.name}
-                        </p>
+                        <p className="font-display text-base uppercase text-ink">{member.name}</p>
                         <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-pop">
                           {member.role}
                         </p>

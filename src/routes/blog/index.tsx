@@ -33,7 +33,8 @@ function BlogListPage() {
               Insights<span className="text-pop">.</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg font-semibold text-ink/60">
-              Web development, branding, and IT insights for businesses in Southeast Asia — written from Bataan, Philippines.
+              Web development, branding, and IT insights for businesses in Southeast Asia — written
+              from Bataan, Philippines.
             </p>
           </div>
         </section>

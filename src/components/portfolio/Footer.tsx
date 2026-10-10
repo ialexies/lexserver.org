@@ -12,13 +12,22 @@ export function Footer() {
             © {new Date().getFullYear()} Builds Worlds Studio · Hermosa, Bataan · Philippines
           </p>
           <div className="flex gap-6 text-xs font-bold uppercase tracking-widest">
-            <a href="/work" className="text-muted-foreground underline decoration-pop decoration-2 underline-offset-4 hover:text-pop">
+            <a
+              href="/work"
+              className="text-muted-foreground underline decoration-pop decoration-2 underline-offset-4 hover:text-pop"
+            >
               Work
             </a>
-            <a href="/about" className="text-muted-foreground underline decoration-border decoration-2 underline-offset-4 hover:text-pop">
+            <a
+              href="/about"
+              className="text-muted-foreground underline decoration-border decoration-2 underline-offset-4 hover:text-pop"
+            >
               About
             </a>
-            <a href="/blog" className="text-muted-foreground underline decoration-border decoration-2 underline-offset-4 hover:text-pop">
+            <a
+              href="/blog"
+              className="text-muted-foreground underline decoration-border decoration-2 underline-offset-4 hover:text-pop"
+            >
               Blog
             </a>
             <a

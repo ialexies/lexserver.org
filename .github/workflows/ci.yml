@@ -1,0 +1,87 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      # Same flags as the Dockerfile so CI resolves dependencies the way the image does.
+      - run: npm ci --legacy-peer-deps
+      - run: npm run lint
+      - run: npx tsc --noEmit
+      - run: npm run build
+
+  deploy:
+    needs: verify
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    # Runs on the self-hosted runner that lives on lexserver itself. GitHub's hosted
+    # runners have no route to its private LAN address, so the deploy happens locally.
+    runs-on: [self-hosted, lexserver]
+    # Never run two deploys at once, and never cancel one halfway through a swap.
+    concurrency:
+      group: deploy-lexserver-org
+      cancel-in-progress: false
+    env:
+      COMPOSE_PROJECT: lexserver-web
+      CONTAINER: lexserver-web-web-1
+      IMAGE: lexserver-web-web
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Adopt the hand-made container (first run only)
+        # The site used to be started with a plain `docker run`, which leaves a container
+        # compose does not own and cannot replace. Remove it once so compose can take over.
+        run: |
+          if docker inspect "$CONTAINER" >/dev/null 2>&1; then
+            owner="$(docker inspect -f '{{ index .Config.Labels "com.docker.compose.project" }}' "$CONTAINER")"
+            if [ -z "$owner" ]; then
+              echo "Removing unmanaged container $CONTAINER so compose can take over"
+              docker rm -f "$CONTAINER"
+            fi
+          fi
+
+      - name: Keep the current image for rollback
+        run: |
+          if docker image inspect "$IMAGE:latest" >/dev/null 2>&1; then
+            docker tag "$IMAGE:latest" "$IMAGE:previous"
+          fi
+
+      - name: Build and start
+        run: docker compose -p "$COMPOSE_PROJECT" up -d --build
+
+      - name: Health check, roll back on failure
+        run: |
+          check() {
+            for i in $(seq 1 20); do
+              if curl -fsS -o /dev/null --max-time 5 "http://localhost:8085$1"; then
+                echo "OK $1"
+                return 0
+              fi
+              sleep 2
+            done
+            echo "FAILED $1"
+            return 1
+          }
+          if check / && check /lupaatbahay && check /indexwise/; then
+            echo "Deploy healthy"
+            exit 0
+          fi
+          echo "Health check failed, rolling back to $IMAGE:previous"
+          if docker image inspect "$IMAGE:previous" >/dev/null 2>&1; then
+            docker tag "$IMAGE:previous" "$IMAGE:latest"
+            docker compose -p "$COMPOSE_PROJECT" up -d --no-build --force-recreate
+          fi
+          exit 1

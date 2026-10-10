@@ -65,21 +65,33 @@ test.describe("Navigation", () => {
     test("Work link navigates to /work", async ({ page }) => {
       await page.goto("/", { waitUntil: "domcontentloaded" });
       await page.setViewportSize({ width: 1440, height: 900 });
-      await page.locator("header nav ul").first().getByRole("link", { name: "Work", exact: true }).click();
+      await page
+        .locator("header nav ul")
+        .first()
+        .getByRole("link", { name: "Work", exact: true })
+        .click();
       await expect(page).toHaveURL(/\/work/);
     });
 
     test("About link navigates to /about", async ({ page }) => {
       await page.goto("/", { waitUntil: "domcontentloaded" });
       await page.setViewportSize({ width: 1440, height: 900 });
-      await page.locator("header nav ul").first().getByRole("link", { name: "About", exact: true }).click();
+      await page
+        .locator("header nav ul")
+        .first()
+        .getByRole("link", { name: "About", exact: true })
+        .click();
       await expect(page).toHaveURL(/\/about/);
     });
 
     test("Blog link navigates to /blog", async ({ page }) => {
       await page.goto("/", { waitUntil: "domcontentloaded" });
       await page.setViewportSize({ width: 1440, height: 900 });
-      await page.locator("header nav ul").first().getByRole("link", { name: "Blog", exact: true }).click();
+      await page
+        .locator("header nav ul")
+        .first()
+        .getByRole("link", { name: "Blog", exact: true })
+        .click();
       await expect(page).toHaveURL(/\/blog/);
     });
   });

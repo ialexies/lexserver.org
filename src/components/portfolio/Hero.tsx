@@ -16,7 +16,6 @@ export function Hero() {
 
       {/* flex col on mobile → grid 2-col on desktop */}
       <div className="mx-auto flex min-h-[90vh] max-w-[1400px] flex-col px-4 py-12 md:grid md:grid-cols-2 md:px-8 md:py-20">
-
         {/* Left: text content — grows to fill height, content pinned to bottom */}
         <div className="flex flex-grow flex-col justify-end">
           {/* Globe — mobile only, sits in the empty top space */}
@@ -66,7 +65,11 @@ export function Hero() {
           {/* Headline */}
           <h1 className="font-display -ml-1 text-[clamp(56px,10vw,160px)] uppercase leading-[0.84] tracking-tight text-ink">
             {reduce ? (
-              <>We&nbsp;build<br />Worlds<span className="text-pop">.</span></>
+              <>
+                We&nbsp;build
+                <br />
+                Worlds<span className="text-pop">.</span>
+              </>
             ) : (
               HEADLINE.map((word, i) => (
                 <span key={word}>
@@ -75,11 +78,20 @@ export function Hero() {
                       className="inline-block"
                       initial={{ opacity: 0, y: 40 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.55, delay: 0.1 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                      transition={{
+                        duration: 0.55,
+                        delay: 0.1 + i * 0.1,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
                     >
                       {word === "Worlds." ? (
-                        <>{word.slice(0, -1)}<span className="text-pop">.</span></>
-                      ) : word}
+                        <>
+                          {word.slice(0, -1)}
+                          <span className="text-pop">.</span>
+                        </>
+                      ) : (
+                        word
+                      )}
                     </motion.span>
                   </span>
                   {i === 0 && " "}
@@ -97,9 +109,8 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.45 }}
               className="max-w-lg text-lg font-semibold leading-relaxed text-ink/65"
             >
-              Web, mobile &amp; IT services for startups and businesses across
-              Southeast Asia. One studio, end-to-end delivery — from Bataan to
-              the world.
+              Web, mobile &amp; IT services for startups and businesses across Southeast Asia. One
+              studio, end-to-end delivery — from Bataan to the world.
             </motion.p>
 
             <motion.div

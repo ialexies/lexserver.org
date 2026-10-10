@@ -25,9 +25,7 @@ export function Contact() {
       "?subject=" +
       encodeURIComponent(`Project inquiry from ${safeName || "your website"}`) +
       "&body=" +
-      encodeURIComponent(
-        `${safeMsg}\n\n— ${safeName}${safeFrom ? ` (${safeFrom})` : ""}`
-      );
+      encodeURIComponent(`${safeMsg}\n\n— ${safeName}${safeFrom ? ` (${safeFrom})` : ""}`);
     if (!uri.startsWith("mailto:")) return;
     window.location.href = uri;
     setSent(true);
@@ -47,8 +45,8 @@ export function Contact() {
               build?
             </h2>
             <p className="mt-6 max-w-md text-lg font-semibold leading-relaxed uppercase tracking-wide text-white/80">
-              Open for website projects, mobile apps, branding, graphic design,
-              and IT services. Let's make something great together.
+              Open for website projects, mobile apps, branding, graphic design, and IT services.
+              Let's make something great together.
             </p>
           </div>
 
@@ -99,7 +97,13 @@ export function Contact() {
           >
             <div className="grid gap-4">
               <Field label="Name" value={name} onChange={setName} placeholder="JUAN DELA CRUZ" />
-              <Field label="Email" type="email" value={from} onChange={setFrom} placeholder="YOU@COMPANY.COM" />
+              <Field
+                label="Email"
+                type="email"
+                value={from}
+                onChange={setFrom}
+                placeholder="YOU@COMPANY.COM"
+              />
               <label className="block">
                 <span className="block text-[11px] font-bold uppercase tracking-widest text-ink">
                   Project Brief
