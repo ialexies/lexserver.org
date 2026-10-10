@@ -6,7 +6,6 @@ const ROUTES = [
   { path: "/", name: "home" },
   { path: "/work", name: "work" },
   { path: "/about", name: "about" },
-  { path: "/indexwise", name: "indexwise" },
   { path: "/lupaatbahay", name: "lupaatbahay" },
   { path: "/blog", name: "blog" },
   { path: "/blog/how-we-built-tara-stays", name: "blog-post" },

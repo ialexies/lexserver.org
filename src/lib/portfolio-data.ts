@@ -346,7 +346,10 @@ export const PRODUCTS: OwnProduct[] = [
     platforms: ["extension"],
     status: "published",
     image: "/products/indexwise.webp",
-    url: "/indexwise",
+    url: "/indexwise/",
+    storeLinks: {
+      chrome: "https://chromewebstore.google.com/detail/demkfoednfaklniecnobahjiddbhnlpe",
+    },
     features: [
       "Scored audit with copy-paste fixes",
       "CMS detection with platform-specific steps",
@@ -611,13 +614,11 @@ export const AWARDS = [
   {
     title: "3× Programmer of the Year",
     org: "Mondriaan Aura College · 2013, 2014, 2015",
-    detail:
-      "Three consecutive years recognized as top programmer of the institution.",
+    detail: "Three consecutive years recognized as top programmer of the institution.",
   },
   {
     title: "Presidential Award for Excellence in Visual Arts",
     org: "Mondriaan Aura College · 2015",
-    detail:
-      "Highest institutional honor for sustained excellence in visual arts and design.",
+    detail: "Highest institutional honor for sustained excellence in visual arts and design.",
   },
 ];
