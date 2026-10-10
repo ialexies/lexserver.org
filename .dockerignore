@@ -12,3 +12,4 @@ package-lock.json;C
 *.log
 .env
 .env.*
+dist-ssr

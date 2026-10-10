@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "@tanstack/react-router";
 import { ThemeToggle } from "./ThemeToggle";
 
 const NAV_LINKS = [
@@ -9,13 +10,13 @@ const NAV_LINKS = [
   { href: "/blog", label: "Blog" },
 ];
 
-function isActive(href: string) {
-  if (typeof window === "undefined" || href.startsWith("/#")) return false;
-  const path = window.location.pathname;
+function isActive(href: string, path: string) {
+  if (href.startsWith("/#")) return false;
   return path === href || path.startsWith(href + "/");
 }
 
 export function Nav() {
+  const path = useLocation({ select: (l) => l.pathname });
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -50,7 +51,7 @@ export function Nav() {
             <li key={l.href}>
               <a
                 href={l.href}
-                aria-current={isActive(l.href) ? "page" : undefined}
+                aria-current={isActive(l.href, path) ? "page" : undefined}
                 className="text-muted transition-colors hover:text-fg aria-[current=page]:text-fg"
               >
                 {l.label}

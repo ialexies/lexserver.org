@@ -1,8 +1,5 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Outlet, createRootRouteWithContext, useRouter, HeadContent } from "@tanstack/react-router";
-import { useEffect } from "react";
+import { Outlet, createRootRoute, useRouter, HeadContent } from "@tanstack/react-router";
 
-import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Container, PageShell, btnPrimary, textLink } from "../components/portfolio/Page";
 
 function NotFoundComponent() {
@@ -35,9 +32,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <PageShell>
@@ -66,7 +60,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+export const Route = createRootRoute({
   head: () => ({
     meta: [
       { title: "Lexserver | Web and mobile apps from Bataan, Philippines" },
@@ -77,14 +71,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { name: "author", content: "Alexies Iglesia" },
       { property: "og:site_name", content: "Lexserver" },
-      { property: "og:title", content: "Lexserver" },
-      {
-        property: "og:description",
-        content:
-          "Web and mobile apps designed, built and run from Bataan, Philippines. Makers of LupaAtBahay and Indexwise.",
-      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: RootComponent,
@@ -96,13 +84,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 // <html>/<body>: doing so replaced the document element and wiped the theme class.
 // HeadContent renders the per-route <title> and <meta> tags, which React hoists into <head>.
 function RootComponent() {
-  const { queryClient } = Route.useRouteContext();
-
   return (
-    <QueryClientProvider client={queryClient}>
+    <>
       <HeadContent />
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
-    </QueryClientProvider>
+    </>
   );
 }
