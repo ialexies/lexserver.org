@@ -36,13 +36,14 @@ export function Nav() {
 
       <header
         className={`sticky top-0 z-50 border-b border-border transition-all duration-300 ${
-          scrolled
-            ? "bg-paper/85 backdrop-blur-md shadow-lg shadow-black/10"
-            : "bg-paper"
+          scrolled ? "bg-paper/85 backdrop-blur-md shadow-lg shadow-black/10" : "bg-paper"
         }`}
       >
         <nav className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-4 md:px-8">
-          <a href="/" className="flex items-center gap-1.5 font-display text-xl uppercase tracking-tighter text-ink">
+          <a
+            href="/"
+            className="flex items-center gap-1.5 font-display text-xl uppercase tracking-tighter text-ink"
+          >
             Builds&nbsp;Worlds
             <motion.span
               animate={{ opacity: [1, 0.3, 1] }}

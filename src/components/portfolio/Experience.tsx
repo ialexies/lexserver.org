@@ -35,7 +35,9 @@ function PersonTimeline({
               />
               <div>
                 <h4 className="font-display text-lg uppercase md:text-xl">{e.company}</h4>
-                <p className="mt-1 text-sm font-bold uppercase tracking-widest text-pop">{e.role}</p>
+                <p className="mt-1 text-sm font-bold uppercase tracking-widest text-pop">
+                  {e.role}
+                </p>
                 <p className="mt-3 max-w-xl leading-relaxed text-muted-foreground">{e.body}</p>
                 <span className="mt-3 inline-block border border-border bg-surface px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
                   {e.period}

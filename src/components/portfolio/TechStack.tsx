@@ -12,9 +12,7 @@ export function TechStack() {
         <div className="marquee-track flex shrink-0 items-center gap-10 whitespace-nowrap px-6 font-display text-2xl uppercase md:text-3xl">
           {items.map((t, i) => (
             <span key={i} className="flex items-center gap-10">
-              <span className={i % 5 === 2 ? "text-pop" : "text-ink/70"}>
-                {t}
-              </span>
+              <span className={i % 5 === 2 ? "text-pop" : "text-ink/70"}>{t}</span>
               <span className="text-pop opacity-40">●</span>
             </span>
           ))}

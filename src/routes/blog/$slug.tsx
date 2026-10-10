@@ -45,12 +45,11 @@ function BlogPostPage() {
       <Nav />
       <main>
         {/* Hero image */}
-        <div className="border-b border-border" style={{ aspectRatio: "21/7", maxHeight: "480px", overflow: "hidden" }}>
-          <img
-            src={post.image}
-            alt={post.title}
-            className="h-full w-full object-cover"
-          />
+        <div
+          className="border-b border-border"
+          style={{ aspectRatio: "21/7", maxHeight: "480px", overflow: "hidden" }}
+        >
+          <img src={post.image} alt={post.title} className="h-full w-full object-cover" />
         </div>
 
         {/* Article */}
@@ -83,10 +82,7 @@ function BlogPostPage() {
           <hr className="divider-gradient my-8" />
 
           {/* Content */}
-          <div
-            className="prose-blog"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
+          <div className="prose-blog" dangerouslySetInnerHTML={{ __html: post.content }} />
 
           <hr className="divider-gradient my-12" />
 
@@ -99,7 +95,8 @@ function BlogPostPage() {
               Ready to build something?
             </h2>
             <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-              We build websites, mobile apps, brand identities, and IT infrastructure for businesses across Southeast Asia.
+              We build websites, mobile apps, brand identities, and IT infrastructure for businesses
+              across Southeast Asia.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               <a

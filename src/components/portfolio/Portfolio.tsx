@@ -23,9 +23,7 @@ function SkeletonImage({ src, alt }: { src: string; alt: string }) {
   const [loaded, setLoaded] = useState(false);
   return (
     <div className="relative h-full w-full">
-      {!loaded && (
-        <div className="absolute inset-0 animate-pulse bg-surface-raised" />
-      )}
+      {!loaded && <div className="absolute inset-0 animate-pulse bg-surface-raised" />}
       <img
         src={src}
         alt={alt}
@@ -59,7 +57,11 @@ export function Portfolio() {
             >
               {f.label}
               <span className="ml-1.5 opacity-50">
-                ({f.value === "all" ? PORTFOLIO.length : PORTFOLIO.filter((p) => p.category === f.value).length})
+                (
+                {f.value === "all"
+                  ? PORTFOLIO.length
+                  : PORTFOLIO.filter((p) => p.category === f.value).length}
+                )
               </span>
             </button>
           ))}
@@ -170,9 +172,7 @@ export function Portfolio() {
                 {lightbox.client} · {lightbox.country}
               </p>
 
-              <p className="mt-4 text-base leading-relaxed text-ink/75">
-                {lightbox.description}
-              </p>
+              <p className="mt-4 text-base leading-relaxed text-ink/75">{lightbox.description}</p>
 
               {lightbox.tech && (
                 <div className="mt-5 flex flex-wrap gap-2">

@@ -19,7 +19,10 @@ function parseFrontmatter(raw: string): { data: Record<string, string>; body: st
     const colonIdx = line.indexOf(":");
     if (colonIdx === -1) continue;
     const key = line.slice(0, colonIdx).trim();
-    const value = line.slice(colonIdx + 1).trim().replace(/^["']|["']$/g, "");
+    const value = line
+      .slice(colonIdx + 1)
+      .trim()
+      .replace(/^["']|["']$/g, "");
     data[key] = value;
   }
 

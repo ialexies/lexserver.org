@@ -40,10 +40,7 @@ for (const route of ROUTES) {
 
       const w = viewport?.width ?? 375;
       const projectName = testInfo.project.name;
-      const screenshotPath = path.join(
-        screenshotsDir,
-        `${route.name}-${projectName}-${w}px.png`
-      );
+      const screenshotPath = path.join(screenshotsDir, `${route.name}-${projectName}-${w}px.png`);
 
       await page.screenshot({ path: screenshotPath, fullPage: true });
     });

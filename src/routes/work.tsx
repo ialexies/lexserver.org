@@ -27,9 +27,8 @@ function WorkPage() {
               Our Work.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink/65">
-              A selection of projects built for clients across Southeast Asia
-              and beyond — mobile apps, web platforms, brand identities, and
-              more.
+              A selection of projects built for clients across Southeast Asia and beyond — mobile
+              apps, web platforms, brand identities, and more.
             </p>
           </div>
         </section>

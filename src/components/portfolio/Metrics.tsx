@@ -8,7 +8,15 @@ function parseValue(raw: string): { num: number; suffix: string } {
   return { num: parseFloat(match[1]), suffix: match[2] };
 }
 
-function AnimatedMetric({ value, label, accent }: { value: string; label: string; accent: boolean }) {
+function AnimatedMetric({
+  value,
+  label,
+  accent,
+}: {
+  value: string;
+  label: string;
+  accent: boolean;
+}) {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const [display, setDisplay] = useState(reduce ? value : "0");
@@ -27,16 +35,14 @@ function AnimatedMetric({ value, label, accent }: { value: string; label: string
         const tick = (now: number) => {
           const t = Math.min((now - start) / duration, 1);
           const ease = 1 - Math.pow(1 - t, 3);
-          const current = num % 1 === 0
-            ? Math.floor(ease * num)
-            : Math.round(ease * num * 10) / 10;
+          const current = num % 1 === 0 ? Math.floor(ease * num) : Math.round(ease * num * 10) / 10;
           setDisplay(`${current}${suffix}`);
           if (t < 1) requestAnimationFrame(tick);
           else setDisplay(value);
         };
         requestAnimationFrame(tick);
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
     observer.observe(el);
     return () => observer.disconnect();

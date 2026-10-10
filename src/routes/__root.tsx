@@ -78,10 +78,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Builds Worlds Studio — Web · Mobile · SEO · Hosting" },
-      { name: "description", content: "A product studio in Bataan, Philippines building web and mobile apps, SEO tools, and hosting — and the makers of LupaAtBahay and Indexwise." },
+      {
+        name: "description",
+        content:
+          "A product studio in Bataan, Philippines building web and mobile apps, SEO tools, and hosting — and the makers of LupaAtBahay and Indexwise.",
+      },
       { name: "author", content: "Alexies Iglesia" },
       { property: "og:title", content: "Builds Worlds Studio" },
-      { property: "og:description", content: "Web and mobile apps, SEO tools, and hosting from Bataan, Philippines — makers of LupaAtBahay and Indexwise." },
+      {
+        property: "og:description",
+        content:
+          "Web and mobile apps, SEO tools, and hosting from Bataan, Philippines — makers of LupaAtBahay and Indexwise.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
