@@ -13,3 +13,4 @@ package-lock.json;C
 .env
 .env.*
 dist-ssr
+server

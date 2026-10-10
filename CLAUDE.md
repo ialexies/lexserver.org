@@ -112,8 +112,20 @@ demo (it is repeated in each `location` block).
   `tsc --noEmit`, build.
 - `deploy` (self-hosted runner on lexserver, label `lexserver`, push to `main` only, after
   `verify`): tags the current image `lexserver-web-web:previous`, runs
-  `docker compose -p lexserver-web up -d --build`, health-checks `/`, `/lupaatbahay` and
-  `/indexwise/` on port 8085, and rolls back to `:previous` if any fail.
+  `docker compose -p lexserver-web up -d --build`, health-checks `/`, `/lupaatbahay`,
+  `/indexwise/` and `/api/health` on port 8085, and rolls back to `:previous` if any fail.
+
+### Contact form
+
+The `#contact` form posts JSON to `/api/contact`. nginx proxies `/api/` to the `api` service in
+`docker-compose.yml` ([server/contact.mjs](server/contact.mjs), Node + nodemailer, not exposed on
+the host). It saves every message to `messages.jsonl` in the `contact-data` volume, then emails it
+to `CONTACT_TO` with the sender as Reply-To. SMTP settings come from a `.env` file next to
+`docker-compose.yml` on the server (see `.env.example`; never commit it). Without SMTP settings, or
+if sending fails, the API answers 503 and the page offers a prefilled mailto link instead. Spam
+guards: a hidden honeypot field, 5 messages per IP per hour in the API, and an nginx rate limit
+keyed on `CF-Connecting-IP`. Read saved messages with
+`docker exec lexserver-web-api-1 cat /data/messages.jsonl`.
 
 The compose project name `lexserver-web` must stay: it produces the container
 `lexserver-web-web-1`, the image `lexserver-web-web`, and the network `lexserver-web_default`.

@@ -35,3 +35,4 @@ tests/screenshots/
 *.njsproj
 *.sln
 *.sw?
+.env

@@ -4,3 +4,21 @@ services:
     restart: unless-stopped
     ports:
       - "8085:80"
+
+  # Contact form backend, reached by nginx at http://api:3000 (not published on the host).
+  # Email settings come from a .env file next to this one on the server (see .env.example).
+  api:
+    build: ./server
+    restart: unless-stopped
+    environment:
+      CONTACT_TO: ${CONTACT_TO:-ialexies@gmail.com}
+      CONTACT_FROM: ${CONTACT_FROM:-}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-465}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+    volumes:
+      - contact-data:/data
+
+volumes:
+  contact-data:
