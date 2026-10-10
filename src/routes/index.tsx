@@ -30,8 +30,8 @@ function Index() {
         <Hero />
         <Metrics />
         <Services />
-        <Process />
         <Products />
+        <Process />
         <TechStack />
         <Testimonials />
         <Pricing />

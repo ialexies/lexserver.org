@@ -7,6 +7,7 @@ const PLATFORM_LABELS: Record<Platform, string> = {
   android: "Android",
   ios: "iOS",
   web: "Web App",
+  extension: "Chrome Extension",
 };
 
 export function Products() {
@@ -20,7 +21,7 @@ export function Products() {
           description="Beyond client work — software we've designed, built, and shipped ourselves."
         />
 
-        <Reveal stagger className="grid gap-6 md:grid-cols-3">
+        <Reveal stagger className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {PRODUCTS.map((product) => (
             <RevealItem key={product.slug}>
               <div
@@ -31,17 +32,26 @@ export function Products() {
                 }`}
               >
                 <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="h-full w-full object-cover"
-                    loading="lazy"
-                  />
+                  {product.image ? (
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div
+                      aria-hidden="true"
+                      className="flex h-full w-full items-center justify-center bg-canvas"
+                    >
+                      <span className="font-display px-4 text-center text-3xl uppercase tracking-tight text-pop">
+                        {product.name}
+                      </span>
+                    </div>
+                  )}
                   <span
                     className={`absolute left-3 top-3 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest ${
-                      product.status === "published"
-                        ? "bg-surface text-ink"
-                        : "bg-pop text-white"
+                      product.status === "published" ? "bg-surface text-ink" : "bg-pop text-white"
                     }`}
                   >
                     {product.status === "published" ? "Published" : "In Development"}
@@ -84,11 +94,32 @@ export function Products() {
                     {product.url && (
                       <a
                         href={product.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        {...(product.url.startsWith("/")
+                          ? {}
+                          : { target: "_blank", rel: "noopener noreferrer" })}
                         className="border border-pop bg-pop px-4 py-2 text-[12px] font-bold uppercase tracking-widest text-white shadow-brut-pop transition-all hover:ring-2 hover:ring-pop/30"
                       >
-                        Visit →
+                        {product.url.startsWith("/") ? "Learn more →" : "Visit →"}
+                      </a>
+                    )}
+                    {product.storeLinks?.website && (
+                      <a
+                        href={product.storeLinks.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="border border-border px-4 py-2 text-[12px] font-bold uppercase tracking-widest text-ink transition-all hover:border-pop hover:text-pop"
+                      >
+                        Visit site →
+                      </a>
+                    )}
+                    {product.storeLinks?.chrome && (
+                      <a
+                        href={product.storeLinks.chrome}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="border border-border px-4 py-2 text-[12px] font-bold uppercase tracking-widest text-ink transition-all hover:border-pop hover:text-pop"
+                      >
+                        Chrome Web Store →
                       </a>
                     )}
                     {product.storeLinks?.android && (

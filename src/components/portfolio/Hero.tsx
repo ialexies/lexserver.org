@@ -109,7 +109,7 @@ export function Hero() {
               className="flex flex-wrap gap-4"
             >
               <a
-                href="#work"
+                href="/work"
                 className="font-display border border-ink/30 px-6 py-3 text-base uppercase text-ink transition-all hover:border-ink/60 hover:bg-ink/5"
               >
                 See Our Work

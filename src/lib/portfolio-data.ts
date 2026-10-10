@@ -67,10 +67,22 @@ export const SERVICES: Service[] = [
     points: ["Logo Design", "Brand Identity", "Brand Guidelines", "Visual Systems"],
   },
   {
+    tag: "SEO",
+    title: "SEO & Site Insights",
+    body: "Technical and on-page SEO audits, plus Search Console and analytics reporting that tells you what to fix first and why it matters.",
+    points: ["Technical Audits", "Search Console", "Core Web Vitals", "Indexwise"],
+  },
+  {
+    tag: "Hosting",
+    title: "Hosting & Server Management",
+    body: "Self-hosted, containerised stacks behind Cloudflare — deployed, monitored, and backed up so your site stays fast and online.",
+    points: ["Docker", "Cloudflare Tunnel", "Linux Servers", "Backups"],
+  },
+  {
     tag: "IT",
-    title: "IT Services & Support",
-    body: "Hosting, server setup, and ongoing technical support that keeps your website and apps running around the clock.",
-    points: ["AWS / Cloud Hosting", "cPanel / Linux", "Server Ops", "Monitoring"],
+    title: "IT Support & Consulting",
+    body: "Hands-on technical support and advice that keeps your website, apps, and tools working the way your business needs.",
+    points: ["Troubleshooting", "Networking", "Security Reviews", "Monitoring"],
   },
 ];
 
@@ -284,7 +296,7 @@ export const TESTIMONIALS: Testimonial[] = [
   },
 ];
 
-export type Platform = "android" | "ios" | "web";
+export type Platform = "android" | "ios" | "web" | "extension";
 
 export type OwnProduct = {
   slug: string;
@@ -293,17 +305,56 @@ export type OwnProduct = {
   description: string;
   platforms: Platform[];
   status: "published" | "in-development";
-  image: string;
+  image?: string;
   url?: string;
   storeLinks?: {
     android?: string;
     ios?: string;
     github?: string;
+    chrome?: string;
+    website?: string;
   };
   features: string[];
 };
 
 export const PRODUCTS: OwnProduct[] = [
+  {
+    slug: "lupaatbahay",
+    name: "LupaAtBahay",
+    tagline: "Find Lots & Homes in Central Luzon",
+    description:
+      "A Philippine real estate marketplace for lots, houses, and condos across Pampanga, Tarlac, Zambales, Bataan and beyond — buyers send inquiries straight to verified agents, and agents list for free.",
+    platforms: ["web"],
+    status: "published",
+    image: "/products/lupaatbahay.webp",
+    url: "/lupaatbahay",
+    storeLinks: { website: "https://lupaatbahay.com" },
+    features: [
+      "Browse by city, province & property type",
+      "Direct inquiries to agents",
+      "Free listing signup for agents",
+      "Buyer guides & property tools",
+      "Built for mobile-first Filipino users",
+    ],
+  },
+  {
+    slug: "indexwise",
+    name: "Indexwise",
+    tagline: "On-Page SEO Checker for Chrome",
+    description:
+      "A Chrome extension that tells you what's wrong with a page, why it matters, and how to fix it. Runs locally in your browser — no account, no tracking.",
+    platforms: ["extension"],
+    status: "published",
+    image: "/products/indexwise.webp",
+    url: "/indexwise",
+    features: [
+      "Scored audit with copy-paste fixes",
+      "CMS detection with platform-specific steps",
+      "Raw HTML vs rendered DOM diff",
+      "AI & search crawler access matrix",
+      "Core Web Vitals and Search Console tab",
+    ],
+  },
   {
     slug: "re-call",
     name: "Re-call",

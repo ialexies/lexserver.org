@@ -10,6 +10,8 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorkRouteImport } from './routes/work'
+import { Route as LupaatbahayRouteImport } from './routes/lupaatbahay'
+import { Route as IndexwiseRouteImport } from './routes/indexwise'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
@@ -18,6 +20,16 @@ import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 const WorkRoute = WorkRouteImport.update({
   id: '/work',
   path: '/work',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LupaatbahayRoute = LupaatbahayRouteImport.update({
+  id: '/lupaatbahay',
+  path: '/lupaatbahay',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndexwiseRoute = IndexwiseRouteImport.update({
+  id: '/indexwise',
+  path: '/indexwise',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -44,6 +56,8 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/indexwise': typeof IndexwiseRoute
+  '/lupaatbahay': typeof LupaatbahayRoute
   '/work': typeof WorkRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -51,6 +65,8 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/indexwise': typeof IndexwiseRoute
+  '/lupaatbahay': typeof LupaatbahayRoute
   '/work': typeof WorkRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog': typeof BlogIndexRoute
@@ -59,21 +75,47 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/indexwise': typeof IndexwiseRoute
+  '/lupaatbahay': typeof LupaatbahayRoute
   '/work': typeof WorkRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/work' | '/blog/$slug' | '/blog/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/indexwise'
+    | '/lupaatbahay'
+    | '/work'
+    | '/blog/$slug'
+    | '/blog/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/work' | '/blog/$slug' | '/blog'
-  id: '__root__' | '/' | '/about' | '/work' | '/blog/$slug' | '/blog/'
+  to:
+    | '/'
+    | '/about'
+    | '/indexwise'
+    | '/lupaatbahay'
+    | '/work'
+    | '/blog/$slug'
+    | '/blog'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/indexwise'
+    | '/lupaatbahay'
+    | '/work'
+    | '/blog/$slug'
+    | '/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  IndexwiseRoute: typeof IndexwiseRoute
+  LupaatbahayRoute: typeof LupaatbahayRoute
   WorkRoute: typeof WorkRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -86,6 +128,20 @@ declare module '@tanstack/react-router' {
       path: '/work'
       fullPath: '/work'
       preLoaderRoute: typeof WorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lupaatbahay': {
+      id: '/lupaatbahay'
+      path: '/lupaatbahay'
+      fullPath: '/lupaatbahay'
+      preLoaderRoute: typeof LupaatbahayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/indexwise': {
+      id: '/indexwise'
+      path: '/indexwise'
+      fullPath: '/indexwise'
+      preLoaderRoute: typeof IndexwiseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -122,6 +178,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  IndexwiseRoute: IndexwiseRoute,
+  LupaatbahayRoute: LupaatbahayRoute,
   WorkRoute: WorkRoute,
   BlogSlugRoute: BlogSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
