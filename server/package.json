@@ -1,0 +1,11 @@
+{
+  "name": "lexserver-contact",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node contact.mjs"
+  },
+  "dependencies": {
+    "nodemailer": "^7.0.0"
+  }
+}

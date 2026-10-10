@@ -75,7 +75,7 @@ jobs:
             echo "FAILED $1"
             return 1
           }
-          if check / && check /lupaatbahay && check /indexwise/; then
+          if check / && check /lupaatbahay && check /indexwise/ && check /api/health; then
             echo "Deploy healthy"
             exit 0
           fi
