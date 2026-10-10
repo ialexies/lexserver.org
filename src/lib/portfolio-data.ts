@@ -1,8 +1,8 @@
 export const PROFILE = {
   name: "Alexies Iglesia",
-  studio: "Builds Worlds Studio",
+  studio: "Lexserver",
   role: "Founder · Developer · Designer",
-  tagline: "Web, Mobile & IT Services for Southeast Asian Businesses",
+  tagline: "We design, build and run web and mobile products.",
   location: "Hermosa, Bataan · Philippines",
   email: "ialexies@gmail.com",
   linkedin: "https://www.linkedin.com/in/alexies-iglesia",
@@ -21,97 +21,78 @@ export const TEAM = [
   },
 ];
 
-export const METRICS = [
-  { value: "15+", label: "Years experience" },
-  { value: "6+", label: "Apps shipped" },
-  { value: "9+", label: "Clients served" },
-  { value: "10+", label: "Awards & honors" },
-];
-
-export type Service = {
-  tag: string;
+export type ServiceGroup = {
+  slug: string;
   title: string;
-  body: string;
-  points: string[];
+  summary: string;
+  includes: string[];
+  tools: string[];
 };
 
-export const SERVICES: Service[] = [
+/** The three things we sell. The homepage shows the summary, /services shows everything. */
+export const SERVICE_GROUPS: ServiceGroup[] = [
   {
-    tag: "Web",
-    title: "Web Design & Development",
-    body: "Custom websites and web apps that load fast, look great on every screen, and turn visitors into paying customers.",
-    points: ["React", "Next.js", "Vue.js", "Laravel / PHP"],
+    slug: "build",
+    title: "Build",
+    summary:
+      "Websites, web apps and iOS and Android apps, from first sketch to launch. Logo, brand and graphic design come with it when you need them.",
+    includes: [
+      "Business websites and online stores",
+      "Custom web apps, dashboards and admin panels",
+      "Cross-platform mobile apps for iOS and Android",
+      "Logo, brand identity and graphic design",
+    ],
+    tools: ["React", "Next.js", "Laravel", "WordPress", "Flutter", "Figma"],
   },
   {
-    tag: "WordPress",
-    title: "WordPress Sites",
-    body: "Professional business websites and online stores you can manage yourself — no developer needed after launch.",
-    points: ["WordPress", "WooCommerce", "Elementor", "Custom Themes"],
+    slug: "get-found",
+    title: "Get found",
+    summary:
+      "Technical SEO audits, Search Console and analytics reporting, and a list of fixes ranked by what matters most. We built Indexwise for this.",
+    includes: [
+      "Technical and on-page SEO audits",
+      "Search Console and Google Analytics setup and reports",
+      "Core Web Vitals and page speed fixes",
+      "Structured data and sitemaps",
+    ],
+    tools: ["Search Console", "GA4", "PageSpeed", "Indexwise"],
   },
   {
-    tag: "Mobile",
-    title: "Mobile App Development",
-    body: "Cross-platform iOS and Android apps that users love — shipped fast, tested thoroughly, maintained reliably.",
-    points: ["Flutter", "Capacitor.js", "Firebase", "REST / GraphQL"],
-  },
-  {
-    tag: "Design",
-    title: "Graphic Design & Illustration",
-    body: "Print-ready and digital design work for businesses — social media, marketing collateral, and editorial illustration.",
-    points: ["Adobe Photoshop", "Illustrator", "Print & Digital", "Social Media"],
-  },
-  {
-    tag: "Branding",
-    title: "Business Branding",
-    body: "Complete brand identities that make your business memorable — from logo to brand guidelines, ready to use everywhere.",
-    points: ["Logo Design", "Brand Identity", "Brand Guidelines", "Visual Systems"],
-  },
-  {
-    tag: "SEO",
-    title: "SEO & Site Insights",
-    body: "Technical and on-page SEO audits, plus Search Console and analytics reporting that tells you what to fix first and why it matters.",
-    points: ["Technical Audits", "Search Console", "Core Web Vitals", "Indexwise"],
-  },
-  {
-    tag: "Hosting",
-    title: "Hosting & Server Management",
-    body: "Self-hosted, containerised stacks behind Cloudflare — deployed, monitored, and backed up so your site stays fast and online.",
-    points: ["Docker", "Cloudflare Tunnel", "Linux Servers", "Backups"],
-  },
-  {
-    tag: "IT",
-    title: "IT Support & Consulting",
-    body: "Hands-on technical support and advice that keeps your website, apps, and tools working the way your business needs.",
-    points: ["Troubleshooting", "Networking", "Security Reviews", "Monitoring"],
+    slug: "keep-it-running",
+    title: "Keep it running",
+    summary:
+      "Hosting, monitoring, backups and updates on servers we manage. When something breaks, you message us directly.",
+    includes: [
+      "Managed hosting behind Cloudflare",
+      "Uptime and error monitoring",
+      "Backups and security updates",
+      "IT support and troubleshooting",
+    ],
+    tools: ["Docker", "Cloudflare", "Linux", "Sentry"],
   },
 ];
 
 export type ProcessStep = {
-  step: string;
   title: string;
   body: string;
 };
 
 export const PROCESS: ProcessStep[] = [
   {
-    step: "01",
-    title: "Discover",
-    body: "We start by understanding your business — your goals, audience, and what success looks like. No jargon, just clear conversation.",
+    title: "Talk",
+    body: "A call about what you need, who it's for and what you can spend. You get a written quote with the scope spelled out.",
   },
   {
-    step: "02",
     title: "Design",
-    body: "Wireframes, mockups, and brand concepts crafted and refined with your feedback before a single line of production code is written.",
+    body: "You see and approve the screens before we build them, so there are no surprises later.",
   },
   {
-    step: "03",
     title: "Build",
-    body: "Development happens in clear sprints. You see progress weekly. We build fast without cutting corners on quality or security.",
+    body: "Weekly updates with a working link you can click through on your own phone.",
   },
   {
-    step: "04",
-    title: "Launch",
-    body: "We handle deployment, testing, and handover. After launch, we stay for support — you're never left to figure it out alone.",
+    title: "Launch and look after it",
+    body: "We deploy it, show you how to use it, and stay on for hosting and fixes if you want us to.",
   },
 ];
 
@@ -124,143 +105,146 @@ export type PortfolioItem = {
   country: string;
   category: PortfolioCategory;
   description: string;
-  image: string;
+  image?: string;
   url?: string;
+  period?: string;
   status?: "in-development";
   tech?: string[];
+  /** Not shown on the site until there is a real client name and a real image. */
+  hidden?: boolean;
 };
 
 export const PORTFOLIO: PortfolioItem[] = [
   {
     slug: "biyahero",
+    period: "2019 – 2020",
     title: "Biyahero Riding App",
     client: "Groover Delivery Service",
-    country: "🇵🇭 Philippines",
+    country: "Philippines",
     category: "mobile",
     description:
-      "End-to-end mobile riding app for booking and dispatch — built from scratch, design through deployment. Real-time tracking, rider management, and customer-facing booking flow.",
-    image: "https://picsum.photos/seed/biyahero/800/500",
+      "A ride booking and dispatch app, built from scratch from design through deployment. Real-time tracking, rider management, and customer-facing booking flow.",
     tech: ["Flutter", "Dart", "Firebase"],
   },
   {
     slug: "sarisuki-ecommerce",
+    period: "2022 – 2023",
     title: "Supah Quick Ecommerce",
     client: "SARISUKI",
-    country: "🇵🇭 Philippines",
+    country: "Philippines",
     category: "mobile",
     description:
-      "Consumer-facing grocery commerce app — browse, checkout, and track orders in seconds. Served thousands of daily active users at peak grocery delivery demand.",
-    image: "https://picsum.photos/seed/sarisuki/800/500",
+      "A grocery ordering app where shoppers browse, check out and track orders in seconds. Served thousands of daily active users at peak grocery delivery demand.",
     tech: ["Flutter", "GraphQL", "Bloc"],
   },
   {
     slug: "dealflow-tool",
+    period: "2021",
     title: "Business Valuation Tool",
     client: "DealFlow Brokerage",
-    country: "🇵🇭 Philippines",
+    country: "Philippines",
     category: "web",
     description:
       "Internal business valuation web tool plus a Chrome extension for scraping deal data from financial sources. Streamlined analyst workflows significantly.",
-    image: "https://picsum.photos/seed/dealflow/800/500",
     tech: ["Vue.js", "Laravel", "Chrome Extension"],
   },
   {
     slug: "madmonkey-app",
+    period: "2023 – present",
     title: "MadMonkey Hostels App",
     client: "MadMonkey Hostels",
-    country: "🇵🇭 Philippines",
+    country: "Philippines",
     category: "mobile",
     description:
-      "Feature-rich mobile app for a premier hostel chain — booking management, loyalty program, and real-time property updates for staff and guests across multiple locations.",
-    image: "https://picsum.photos/seed/madmonkey/800/500",
+      "The guest and staff app for a hostel chain with several locations: bookings, a loyalty program and live property updates.",
     tech: ["Flutter", "Firebase", "REST API"],
   },
   {
     slug: "coastal-kitchen-brand",
+    hidden: true,
     title: "Coastal Kitchen",
     client: "Restaurant Client",
-    country: "🇵🇭 Philippines",
+    country: "Philippines",
     category: "branding",
     description:
       "Complete brand identity for a coastal seafood restaurant — logo design, color palette, typography system, menu design, and full print collateral suite.",
-    image: "https://picsum.photos/seed/restaurant-brand/800/500",
     tech: ["Adobe Illustrator", "Photoshop", "InDesign"],
   },
   {
     slug: "nexacore-brand",
+    hidden: true,
     title: "NexaCore Brand System",
     client: "Tech Startup",
-    country: "🇸🇬 Singapore",
+    country: "Singapore",
     category: "branding",
     description:
       "Modern tech brand identity with logo variants, brand guidelines document, pitch deck template, and a full social media kit ready for launch.",
-    image: "https://picsum.photos/seed/nexacore/800/500",
     tech: ["Adobe Illustrator", "Figma"],
   },
   {
     slug: "zen-wellness-brand",
+    hidden: true,
     title: "Zen Wellness Co.",
     client: "Wellness Brand",
-    country: "🇦🇺 Australia",
+    country: "Australia",
     category: "branding",
     description:
       "Calm, modern brand identity for a wellness and lifestyle company — including product packaging design, stationery suite, and brand voice guidelines.",
-    image: "https://picsum.photos/seed/wellness/800/500",
     tech: ["Adobe Illustrator", "Photoshop"],
   },
   {
     slug: "national-day-campaign",
+    hidden: true,
     title: "National Day Campaign",
     client: "Event Organizer",
-    country: "🇵🇭 Philippines",
+    country: "Philippines",
     category: "design",
     description:
       "Social media graphics series for a national day celebration — 30+ assets across Instagram, Facebook, and print formats. Delivered in 5 working days.",
-    image: "https://picsum.photos/seed/social-campaign/800/500",
     tech: ["Adobe Photoshop", "Illustrator"],
   },
   {
     slug: "tech-illustrations",
+    hidden: true,
     title: "Tech Editorial Illustrations",
     client: "Online Publication",
-    country: "🇺🇸 USA",
+    country: "USA",
     category: "design",
     description:
       "Series of editorial illustrations for a technology-focused online magazine — covering AI, robotics, and digital life themes in a clean vector style.",
-    image: "https://picsum.photos/seed/illustration/800/500",
     tech: ["Adobe Illustrator", "Photoshop"],
   },
   {
     slug: "coffee-packaging",
+    hidden: true,
     title: "Artisan Coffee Packaging",
     client: "Coffee Brand",
-    country: "🇯🇵 Japan",
+    country: "Japan",
     category: "design",
     description:
       "Packaging design for a specialty coffee brand — labels, retail bags, and display materials with a clean Japanese-inspired aesthetic.",
-    image: "https://picsum.photos/seed/coffee-pack/800/500",
     tech: ["Adobe Illustrator", "Photoshop", "InDesign"],
   },
   {
     slug: "bataan-autoparts",
+    hidden: true,
     title: "Bataan Auto Parts",
     client: "Local Business",
-    country: "🇵🇭 Philippines",
+    country: "Philippines",
     category: "wordpress",
     description:
       "Professional WordPress website for a local auto parts and accessories shop — product catalog, contact forms, and Google Maps integration.",
-    image: "https://picsum.photos/seed/autoparts/800/500",
     tech: ["WordPress", "Elementor", "WooCommerce"],
   },
   {
     slug: "zambales-resort",
+    hidden: true,
     title: "Zambales Beach Resort",
     client: "Resort & Tourism",
-    country: "🇵🇭 Philippines",
+    country: "Philippines",
     category: "wordpress",
     description:
       "Responsive WordPress site for a beach resort — online booking integration, photo gallery, amenities showcase, and local area travel guide.",
-    image: "https://picsum.photos/seed/resort/800/500",
     tech: ["WordPress", "Custom Theme", "Booking Plugin"],
   },
 ];
@@ -272,6 +256,7 @@ export type Testimonial = {
   location: string;
 };
 
+/** Not shown on the site: bring back only real, verbatim quotes with the client's permission. */
 export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
@@ -304,7 +289,7 @@ export type OwnProduct = {
   tagline: string;
   description: string;
   platforms: Platform[];
-  status: "published" | "in-development";
+  status: "published" | "in-development" | "coming-soon";
   image?: string;
   url?: string;
   storeLinks?: {
@@ -323,7 +308,7 @@ export const PRODUCTS: OwnProduct[] = [
     name: "LupaAtBahay",
     tagline: "Find Lots & Homes in Central Luzon",
     description:
-      "A Philippine real estate marketplace for lots, houses, and condos across Pampanga, Tarlac, Zambales, Bataan and beyond — buyers send inquiries straight to verified agents, and agents list for free.",
+      "Lots, houses and condos across Pampanga, Tarlac, Zambales and Bataan. Buyers message verified agents directly, and agents list for free.",
     platforms: ["web"],
     status: "published",
     image: "/products/lupaatbahay.webp",
@@ -342,7 +327,7 @@ export const PRODUCTS: OwnProduct[] = [
     name: "Indexwise",
     tagline: "On-Page SEO Checker for Chrome",
     description:
-      "A Chrome extension that tells you what's wrong with a page, why it matters, and how to fix it. Runs locally in your browser — no account, no tracking.",
+      "A Chrome extension that finds on-page SEO problems, explains why they matter and shows how to fix them. Runs in your browser with no account and no tracking.",
     platforms: ["extension"],
     status: "published",
     image: "/products/indexwise.webp",
@@ -365,12 +350,7 @@ export const PRODUCTS: OwnProduct[] = [
     description:
       "An Android app that records phone calls so you can revisit important conversations — business agreements, medical consultations, or anything worth remembering. All recordings stay on your device; nothing is sent to any server.",
     platforms: ["android"],
-    status: "published",
-    image: "https://picsum.photos/seed/re-call-app/800/500",
-    storeLinks: {
-      android: "#",
-      github: "#",
-    },
+    status: "coming-soon",
     features: [
       "Manual & automatic call recording",
       "Waveform audio player with seek",
@@ -386,8 +366,7 @@ export const PRODUCTS: OwnProduct[] = [
     description:
       "A free hostel booking marketplace connecting travelers with local accommodations across the Philippines. Zero-commission for property owners, with GCash & Maya payment support.",
     platforms: ["web"],
-    status: "in-development",
-    image: "https://picsum.photos/seed/tara-stays/800/500",
+    status: "coming-soon",
     url: "https://staging.tara-stays.com/en",
     features: [
       "Free for travelers & property owners",
@@ -404,8 +383,7 @@ export const PRODUCTS: OwnProduct[] = [
     description:
       "A web-based fitness and workout tracking app — log workouts, track progress over time, and hit weekly goals. Clean, fast, and works on any device without installing anything.",
     platforms: ["web"],
-    status: "in-development",
-    image: "https://picsum.photos/seed/fitness-web/800/500",
+    status: "coming-soon",
     url: "https://fitness-app.lexserver.org",
     features: [
       "Workout logging & history",
@@ -450,6 +428,7 @@ export type PricingTier = {
   includes: string[];
 };
 
+/** Starting prices, shown on /services. */
 export const PRICING: PricingTier[] = [
   {
     service: "WordPress Site",
@@ -536,43 +515,43 @@ export const ALEXIES_EXPERIENCE = [
   {
     role: "Mobile App Developer",
     company: "MadMonkey Hostels",
-    period: "May 2023 — Present",
+    period: "May 2023 – present",
     body: "Feature implementation, API integration, bug fixing, Crashlytics & performance monitoring, stakeholder communication.",
   },
   {
     role: "Mobile App Developer",
     company: "SARISUKI",
-    period: "Jan 2022 — May 2023",
+    period: "Jan 2022 – May 2023",
     body: "Shipped 5 apps including Supah Quick Ecommerce, Warehouse Fulfillment, Opstech Admin, and Sarisuki Fulfillment.",
   },
   {
     role: "Mobile Developer (Contract)",
     company: "Salon D'Art",
     period: "Oct 2022",
-    body: "Full development of an internal bidding app — Firebase backend with Zoho Admin API integration.",
+    body: "Built an internal bidding app with a Firebase backend and Zoho Admin API integration.",
   },
   {
     role: "Full-Stack Developer",
     company: "DealFlow Brokerage",
-    period: "Feb 2021 — May 2021",
+    period: "Feb 2021 – May 2021",
     body: "Built a Business Valuation Tool plus a Google data-scraping Chrome extension.",
   },
   {
     role: "Mobile App Developer",
     company: "Groover Delivery Service",
-    period: "Oct 2019 — Feb 2020",
-    body: "Designed and developed Biyahero — a complete riding & delivery mobile app.",
+    period: "Oct 2019 – Feb 2020",
+    body: "Designed and built Biyahero, a complete ride and delivery app.",
   },
   {
     role: "Web Developer & IT Personnel",
     company: "HYS Yachts",
-    period: "2018 — 2022",
-    body: "Web development and IT support for a yacht services company — maintaining web presence, internal systems, and providing on-site IT assistance.",
+    period: "2018 – 2022",
+    body: "Web development and IT support for a yacht services company: the website, internal systems and on-site IT help.",
   },
   {
     role: "Web Team Lead / Scrum Master",
     company: "Captivate Solutions",
-    period: "Jun 2017 — Sep 2019",
+    period: "Jun 2017 – Sep 2019",
     body: "Led the web team, ran scrum, owned ERDs, client meetings, Laravel/PHP & WordPress development, and server ops.",
   },
 ];
@@ -581,23 +560,23 @@ export const CHARITY_EXPERIENCE = [
   {
     role: "Freelance Graphic Designer",
     company: "Various US Clients",
-    period: "2021 — Present",
-    body: "Independent design contractor serving US-based companies — brand identity, illustration, and digital design work across multiple industries.",
+    period: "2021 – present",
+    body: "Independent designer for US companies: brand identity, illustration and digital design across many industries.",
   },
   {
     role: "Graphic Designer",
     company: "Design Pickle",
-    period: "2018 — 2021",
+    period: "2018 – 2021",
     body: "Remote graphic designer producing high-volume on-brand assets for international clients on a subscription design platform.",
   },
   {
     role: "Graphic Designer",
     company: "Captivate Solutions",
-    period: "2017 — 2018",
-    body: "In-house graphic design for a software agency — marketing collateral, UI assets, and client-facing visual materials.",
+    period: "2017 – 2018",
+    body: "In-house designer at a software agency: marketing materials, UI assets and client presentations.",
   },
   {
-    role: "Bachelor of Fine Arts — Graphic Design (Cum Laude)",
+    role: "Bachelor of Fine Arts in Graphic Design, Cum Laude",
     company: "Technological University of the Philippines, Manila",
     period: "Graduated 2017",
     body: "Graduated Cum Laude with a major in Graphic Design.",

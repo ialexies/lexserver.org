@@ -1,10 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
-import { Check } from "lucide-react";
-import { Nav } from "@/components/portfolio/Nav";
-import { Footer } from "@/components/portfolio/Footer";
-import { SectionHeading } from "@/components/portfolio/SectionHeading";
-import { Reveal, RevealItem } from "@/components/portfolio/Reveal";
+import {
+  ClosingCta,
+  Container,
+  PageShell,
+  Section,
+  SectionHeader,
+  Shot,
+  btnPrimary,
+  btnSecondary,
+  label,
+} from "@/components/portfolio/Page";
 import { OfficeDemo } from "@/components/portfolio/OfficeDemo";
 
 const LIVE_URL = "https://lupaatbahay.com";
@@ -46,7 +51,7 @@ const OFFICE_QUESTIONS = [
 export const Route = createFileRoute("/lupaatbahay")({
   head: () => ({
     meta: [
-      { title: "LupaAtBahay — Case Study | Builds Worlds Studio" },
+      { title: "LupaAtBahay case study | Lexserver" },
       {
         name: "description",
         content:
@@ -135,333 +140,213 @@ const SCREENS = [
 
 function LupaAtBahayPage() {
   return (
-    <motion.div
-      className="min-h-screen bg-paper text-ink"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.25 }}
-    >
-      <Nav />
-      <main>
-        <section className="border-b border-border bg-canvas text-ink">
-          <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-20">
-            <span className="inline-block border border-pop bg-pop px-3 py-1 text-xs font-bold uppercase tracking-widest text-white">
-              / Case Study · Live
-            </span>
-            <h1 className="font-display mt-6 text-[clamp(40px,10vw,140px)] uppercase leading-[0.84] tracking-tight">
-              LupaAt<span className="text-pop">Bahay.</span>
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink/65">
-              A free property marketplace for Central Luzon. Verified agents list houses, lots and
-              land, buyers browse and inquire, and admins moderate what goes live — built, hosted
-              and run end to end by our studio.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href={LIVE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-display border border-pop bg-pop px-6 py-3 text-base uppercase text-white shadow-brut-pop transition-all hover:ring-2 hover:ring-pop/30"
-              >
-                Visit lupaatbahay.com →
-              </a>
-              <a
-                href="/#contact"
-                className="font-display border border-ink/30 px-6 py-3 text-base uppercase text-ink transition-all hover:border-ink/60 hover:bg-ink/5"
-              >
-                Build something like this
-              </a>
-            </div>
-            <img
+    <PageShell>
+      <header className="pb-12 pt-14 md:pb-16 md:pt-20">
+        <Container>
+          <p className={label}>Case study · our own product · live</p>
+          <h1 className="mt-3 text-[30px] font-medium leading-[1.12] tracking-[-0.02em] md:text-[40px]">
+            LupaAtBahay
+          </h1>
+          <p className="mt-4 max-w-[62ch] text-lg leading-relaxed text-muted">
+            A free property marketplace for Central Luzon. Verified agents list houses, lots and
+            land, buyers browse and inquire, and admins check every listing before it goes live. We
+            designed it, built it, host it and run it.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a href={LIVE_URL} target="_blank" rel="noopener noreferrer" className={btnPrimary}>
+              Visit lupaatbahay.com ↗
+            </a>
+            <a href="/#contact" className={btnSecondary}>
+              Build something like this
+            </a>
+          </div>
+          <div className="mt-12">
+            <Shot
               src="/products/lupaatbahay-desktop.webp"
               alt="LupaAtBahay home page on a wide screen"
               width={1280}
               height={800}
-              className="mt-12 w-full border border-border bg-surface shadow-brut"
+              eager
             />
           </div>
-        </section>
+        </Container>
+      </header>
 
-        <section className="border-b border-border">
-          <div className="mx-auto grid max-w-[1400px] gap-10 px-4 py-16 md:grid-cols-2 md:px-8 md:py-20">
-            <div>
-              <SectionHeading index="01" eyebrow="The brief" title="Leads, not checkout." />
-              <p className="text-[15px] leading-relaxed text-muted-foreground">
-                Central Luzon buyers had no single, trustworthy place to browse lots and homes, and
-                small agents had no affordable way to be seen. The platform's job is simple: get a
-                genuine inquiry to the right agent. There is deliberately no payment or escrow flow
-                — an inquiry is the product.
-              </p>
-            </div>
-            <div>
-              <SectionHeading index="02" eyebrow="The outcome" title="Free for everyone." />
-              <p className="text-[15px] leading-relaxed text-muted-foreground">
-                Free to browse, free to list, no commission. A mobile-first site and app that agents
-                can run from their phones, with moderation and role-based access keeping listings
-                trustworthy as the catalogue grows.
-              </p>
-            </div>
+      <Section>
+        <div className="grid gap-10 md:grid-cols-2 md:gap-16">
+          <div>
+            <p className={label}>The brief</p>
+            <h2 className="mt-2 text-[24px] font-medium tracking-[-0.015em]">
+              Leads, not checkout
+            </h2>
+            <p className="mt-3 leading-relaxed text-muted">
+              Central Luzon buyers had no single, trustworthy place to browse lots and homes, and
+              small agents had no affordable way to be seen. The platform's job is simple: get a
+              genuine inquiry to the right agent. There is deliberately no payment or escrow flow.
+              The inquiry is the product.
+            </p>
           </div>
-        </section>
-
-        <section className="border-b border-border">
-          <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-20">
-            <SectionHeading
-              index="03"
-              eyebrow="What we built"
-              title="Features that matter."
-              description="The parts of a marketplace that clients most often ask us for."
-            />
-            <Reveal stagger className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-              {FEATURES.map((f) => (
-                <RevealItem key={f.title}>
-                  <article className="card-shimmer flex h-full flex-col border border-border bg-surface p-7 transition-all duration-200 hover:-translate-y-1 hover:border-pop hover:shadow-brut">
-                    <span className="inline-block self-start border border-pop bg-pop px-2 py-0.5 font-display text-[11px] uppercase tracking-widest text-white">
-                      {f.tag}
-                    </span>
-                    <h3 className="font-display mt-4 text-xl uppercase leading-tight tracking-tight">
-                      {f.title}
-                    </h3>
-                    <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-                      {f.body}
-                    </p>
-                  </article>
-                </RevealItem>
-              ))}
-            </Reveal>
+          <div>
+            <p className={label}>The outcome</p>
+            <h2 className="mt-2 text-[24px] font-medium tracking-[-0.015em]">Free for everyone</h2>
+            <p className="mt-3 leading-relaxed text-muted">
+              Free to browse, free to list, no commission. A mobile-first site and app that agents
+              can run from their phones, with moderation and role-based access keeping listings
+              trustworthy as the catalogue grows.
+            </p>
           </div>
-        </section>
+        </div>
+      </Section>
 
-        <section className="border-b border-border">
-          <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-20">
-            <SectionHeading index="04" eyebrow="On a phone" title="Mobile first." />
-            <Reveal stagger className="grid gap-6 sm:grid-cols-3">
-              {SCREENS.map((s) => (
-                <RevealItem key={s.src}>
-                  <figure>
-                    <img
-                      src={s.src}
-                      alt={s.alt}
-                      width={540}
-                      height={960}
-                      loading="lazy"
-                      className="mx-auto w-full max-w-[300px] border border-border bg-surface"
-                    />
-                    <figcaption className="mt-3 text-center text-[12px] font-bold uppercase tracking-widest text-muted-foreground">
-                      {s.caption}
-                    </figcaption>
-                  </figure>
-                </RevealItem>
-              ))}
-            </Reveal>
-          </div>
-        </section>
+      <Section>
+        <SectionHeader
+          title="What we built"
+          intro="The parts of a marketplace that clients most often ask us for."
+        />
+        <ul className="grid gap-x-12 sm:grid-cols-2">
+          {FEATURES.map((f) => (
+            <li key={f.title} className="grid gap-1 border-t border-line py-5">
+              <p className={label}>{f.tag}</p>
+              <h3 className="text-[17px] font-semibold">{f.title}</h3>
+              <p className="text-[15px] leading-relaxed text-muted">{f.body}</p>
+            </li>
+          ))}
+        </ul>
+      </Section>
 
-        <section className="border-b border-border">
-          <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-20">
-            <SectionHeading
-              index="05"
-              eyebrow="For agents"
-              title="Run listings from one place."
-              description="Agents get a dashboard for their listings, leads and public profile. These screens are from a test agent account."
-            />
-            <Reveal stagger className="grid gap-6 md:grid-cols-2">
-              <RevealItem className="md:col-span-2">
-                <figure>
-                  <img
-                    src="/products/agent-dashboard.webp"
-                    alt="LupaAtBahay agent dashboard showing listing counts, leads, inquiries, favorites and top performing listings"
-                    width={1400}
-                    height={547}
-                    loading="lazy"
-                    className="w-full border border-border bg-surface shadow-brut"
-                  />
-                  <figcaption className="mt-3 text-[12px] font-bold uppercase tracking-widest text-muted-foreground">
-                    Dashboard · listings, leads and performance at a glance
-                  </figcaption>
-                </figure>
-              </RevealItem>
-              <RevealItem>
-                <figure>
-                  <img
-                    src="/products/agent-listings.webp"
-                    alt="LupaAtBahay My Listings page with photos, prices, status and quick actions"
-                    width={1400}
-                    height={460}
-                    loading="lazy"
-                    className="w-full border border-border bg-surface"
-                  />
-                  <figcaption className="mt-3 text-[12px] font-bold uppercase tracking-widest text-muted-foreground">
-                    My listings · edit prices inline, hide or remove
-                  </figcaption>
-                </figure>
-              </RevealItem>
-              <RevealItem>
-                <figure>
-                  <img
-                    src="/products/agent-profile.webp"
-                    alt="LupaAtBahay agent profile editor with vanity URL, photo, cover photo and bio"
-                    width={800}
-                    height={703}
-                    loading="lazy"
-                    className="w-full border border-border bg-surface"
-                  />
-                  <figcaption className="mt-3 text-[12px] font-bold uppercase tracking-widest text-muted-foreground">
-                    Profile · public page with vanity URL and verified badge
-                  </figcaption>
-                </figure>
-              </RevealItem>
-            </Reveal>
-          </div>
-        </section>
-
-        <section className="border-b border-border">
-          <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-20">
-            <SectionHeading
-              index="06"
-              eyebrow="How we run it"
-              title="Managed with AI."
-              description="LupaAtBahay isn't just shipped and forgotten. It has its own MCP server and an AI team that watches and reports on it."
-            />
-            <div className="mb-10">
-              <OfficeDemo
-                src={OFFICE_PREVIEW_URL}
-                poster={OFFICE_SHOTS[0].src}
-                posterAlt={OFFICE_SHOTS[0].alt}
+      <Section>
+        <SectionHeader
+          title="On a phone"
+          intro="Most buyers find LupaAtBahay on mobile, so it was designed for phones first."
+        />
+        <div className="grid gap-8 sm:grid-cols-3">
+          {SCREENS.map((s) => (
+            <figure key={s.src}>
+              <Shot
+                src={s.src}
+                alt={s.alt}
+                width={540}
+                height={960}
+                className="mx-auto max-w-[300px]"
               />
-            </div>
-            <Reveal stagger className="grid gap-6 md:grid-cols-2">
-              <RevealItem>
-                <article className="card-shimmer flex h-full flex-col border border-border bg-surface p-7">
-                  <span className="inline-block self-start border border-pop bg-pop px-2 py-0.5 font-display text-[11px] uppercase tracking-widest text-white">
-                    Dedicated MCP
-                  </span>
-                  <h3 className="font-display mt-4 text-2xl uppercase leading-tight tracking-tight">
-                    Site Insights MCP
-                  </h3>
-                  <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-                    A purpose-built Model Context Protocol server that gives an AI assistant live
-                    marketing, SEO and analytics data for the site. Ask a question in plain language
-                    and get an answer from real data.
-                  </p>
-                  <ul className="mt-5 space-y-2">
-                    {MCP_POINTS.map((p) => (
-                      <li key={p} className="flex items-start gap-2 text-[14px] leading-snug">
-                        <Check size={14} className="mt-0.5 shrink-0 text-pop" />
-                        <span className="text-ink/75">{p}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              </RevealItem>
-              <RevealItem>
-                <article className="card-shimmer flex h-full flex-col border border-border bg-surface p-7">
-                  <span className="inline-block self-start border border-pop bg-pop px-2 py-0.5 font-display text-[11px] uppercase tracking-widest text-white">
-                    AI Office · Demo
-                  </span>
-                  <h3 className="font-display mt-4 text-2xl uppercase leading-tight tracking-tight">
-                    An AI team on the job
-                  </h3>
-                  <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-                    We manage the site through AI Office, a 3D virtual office where AI teammates
-                    take requests, pick up tasks and report back. It connects to the Site Insights
-                    MCP with a read-only token, so answers come from real data.
-                  </p>
-                  <ul className="mt-5 space-y-2">
-                    {OFFICE_QUESTIONS.map((q) => (
-                      <li
-                        key={q}
-                        className="border border-border bg-canvas px-3 py-2 text-[13px] italic text-ink/70"
-                      >
-                        “{q}”
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="mt-4 text-[12px] leading-relaxed text-muted-foreground">
-                    The preview is a simulated demo of the office. It doesn't show live LupaAtBahay
-                    data.
-                  </p>
-                  <div className="mt-auto pt-6">
-                    <a
-                      href={OFFICE_PREVIEW_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block border border-pop bg-pop px-4 py-2 text-[12px] font-bold uppercase tracking-widest text-white shadow-brut-pop transition-all hover:ring-2 hover:ring-pop/30"
-                    >
-                      See the AI Office demo →
-                    </a>
-                  </div>
-                </article>
-              </RevealItem>
-            </Reveal>
-            <Reveal stagger className="mt-10 grid gap-6 sm:grid-cols-2">
-              {OFFICE_SHOTS.slice(1).map((s) => (
-                <RevealItem key={s.src}>
-                  <figure>
-                    <a href={OFFICE_PREVIEW_URL} target="_blank" rel="noopener noreferrer">
-                      <img
-                        src={s.src}
-                        alt={s.alt}
-                        width={1200}
-                        height={675}
-                        loading="lazy"
-                        className="w-full border border-border bg-surface transition-all hover:border-pop hover:shadow-brut"
-                      />
-                    </a>
-                    <figcaption className="mt-3 text-[12px] font-bold uppercase tracking-widest text-muted-foreground">
-                      {s.caption} · simulated demo
-                    </figcaption>
-                  </figure>
-                </RevealItem>
-              ))}
-            </Reveal>
-          </div>
-        </section>
+              <figcaption className="mt-3 text-center text-[14px] text-muted">
+                {s.caption}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </Section>
 
-        <section className="border-b border-border">
-          <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-20">
-            <SectionHeading index="07" eyebrow="Under the hood" title="The stack." />
-            <ul className="flex flex-wrap gap-2">
-              {TECH.map((t) => (
-                <li
-                  key={t}
-                  className="border border-border bg-surface px-3 py-1.5 text-[12px] font-bold uppercase tracking-wide text-muted-foreground"
-                >
-                  {t}
+      <Section>
+        <SectionHeader
+          title="For agents"
+          intro="Agents get a dashboard for their listings, leads and public profile. These screens are from a test agent account."
+        />
+        <div className="grid gap-8 md:grid-cols-2">
+          <figure className="md:col-span-2">
+            <Shot
+              src="/products/agent-dashboard.webp"
+              alt="LupaAtBahay agent dashboard showing listing counts, leads, inquiries, favorites and top performing listings"
+              width={1400}
+              height={547}
+            />
+            <figcaption className="mt-3 text-[14px] text-muted">
+              Dashboard: listings, leads and performance at a glance
+            </figcaption>
+          </figure>
+          <figure>
+            <Shot
+              src="/products/agent-listings.webp"
+              alt="LupaAtBahay My Listings page with photos, prices, status and quick actions"
+              width={1400}
+              height={460}
+            />
+            <figcaption className="mt-3 text-[14px] text-muted">
+              My listings: edit prices inline, hide or remove
+            </figcaption>
+          </figure>
+          <figure>
+            <Shot
+              src="/products/agent-profile.webp"
+              alt="LupaAtBahay agent profile editor with vanity URL, photo, cover photo and bio"
+              width={800}
+              height={703}
+            />
+            <figcaption className="mt-3 text-[14px] text-muted">
+              Profile: public page with a custom URL and verified badge
+            </figcaption>
+          </figure>
+        </div>
+      </Section>
+
+      <Section>
+        <SectionHeader
+          title="How we run it"
+          intro="LupaAtBahay isn't shipped and forgotten. It has its own MCP server and an AI team that watches it and reports back."
+        />
+        <OfficeDemo
+          src={OFFICE_PREVIEW_URL}
+          poster={OFFICE_SHOTS[0].src}
+          posterAlt={OFFICE_SHOTS[0].alt}
+        />
+        <div className="mt-12 grid gap-12 md:grid-cols-2 md:gap-16">
+          <div>
+            <h3 className="text-[20px] font-semibold tracking-[-0.01em]">Site Insights MCP</h3>
+            <p className="mt-2 leading-relaxed text-muted">
+              A purpose-built Model Context Protocol server that gives an AI assistant live
+              marketing, SEO and analytics data for the site. Ask a question in plain language and
+              get an answer from real data. It covers:
+            </p>
+            <ul className="mt-4 grid">
+              {MCP_POINTS.map((p) => (
+                <li key={p} className="border-t border-line py-2.5 text-[15px]">
+                  {p}
                 </li>
               ))}
             </ul>
           </div>
-        </section>
-
-        <section className="bg-canvas">
-          <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-20">
-            <h2 className="font-display max-w-3xl text-[clamp(28px,5vw,56px)] uppercase leading-[0.95] tracking-tight">
-              Need a marketplace, listing site or lead-gen platform?
-            </h2>
-            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink/65">
-              Tell us what you're building. We'll scope it, design it, ship it and keep it running.
+          <div>
+            <h3 className="text-[20px] font-semibold tracking-[-0.01em]">An AI team on the job</h3>
+            <p className="mt-2 leading-relaxed text-muted">
+              We manage the site through AI Office, a 3D virtual office where AI teammates take
+              requests, pick up tasks and report back. It connects to the Site Insights MCP with a
+              read-only token, so answers come from real data. Questions it handles:
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="/#contact"
-                className="font-display border border-pop bg-pop px-6 py-3 text-base uppercase text-white shadow-brut-pop transition-all hover:ring-2 hover:ring-pop/30"
-              >
-                Start a project →
-              </a>
-              <a
-                href={LIVE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-display border border-ink/30 px-6 py-3 text-base uppercase text-ink transition-all hover:border-ink/60 hover:bg-ink/5"
-              >
-                Visit the live site
-              </a>
-            </div>
+            <ul className="mt-4 grid">
+              {OFFICE_QUESTIONS.map((q) => (
+                <li key={q} className="border-t border-line py-2.5 text-[15px] italic">
+                  “{q}”
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 text-[14px] text-muted">
+              The preview is a simulated demo of the office. It doesn't show live LupaAtBahay data.
+            </p>
           </div>
-        </section>
-      </main>
-      <Footer />
-    </motion.div>
+        </div>
+        <div className="mt-12 grid gap-8 sm:grid-cols-2">
+          {OFFICE_SHOTS.slice(1).map((s) => (
+            <figure key={s.src}>
+              <a href={OFFICE_PREVIEW_URL} target="_blank" rel="noopener noreferrer">
+                <Shot src={s.src} alt={s.alt} width={1200} height={675} />
+              </a>
+              <figcaption className="mt-3 text-[14px] text-muted">
+                {s.caption}, simulated demo
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </Section>
+
+      <Section>
+        <SectionHeader title="The stack" />
+        <p className="font-mono text-[13px] leading-loose text-muted">{TECH.join(" · ")}</p>
+      </Section>
+
+      <ClosingCta
+        title="Need a marketplace, listing site or lead-gen platform?"
+        body="Tell us what you're building. We'll scope it, design it, ship it and keep it running."
+      />
+    </PageShell>
   );
 }

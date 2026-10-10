@@ -1,37 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <script>
-      (function() {
-        var saved = localStorage.getItem('theme');
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (saved === 'light') {
-          // explicit light choice — no class
-        } else if (saved === 'dark' || !saved) {
-          document.documentElement.classList.add('dark');
-        } else if (prefersDark) {
-          document.documentElement.classList.add('dark');
-        }
-      })();
-    </script>
+    <script src="/theme-init.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <title>Builds Worlds Studio — Web · Mobile · SEO · Hosting</title>
-    <meta name="description" content="A product studio in Bataan, Philippines building web and mobile apps, SEO tools, and hosting — and the makers of LupaAtBahay and Indexwise." />
+    <title>Lexserver | Web and mobile apps from Bataan, Philippines</title>
+    <meta
+      name="description"
+      content="Lexserver is a two-person studio in Bataan, Philippines. We design, build and run websites and mobile apps, and make our own products like LupaAtBahay and Indexwise."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Hind:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div id="root">
-      <div id="init-loader" style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:var(--loader-bg,#0b1120);">
-        <div style="width:32px;height:32px;border:2px solid var(--loader-ring,#1e2d45);border-top-color:#ff5722;border-radius:50%;animation:spin 0.7s linear infinite;"></div>
+      <div
+        id="init-loader"
+        style="
+          position: fixed;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--loader-bg, #f7f7f5);
+        "
+      >
+        <div
+          style="
+            width: 32px;
+            height: 32px;
+            border: 2px solid var(--loader-ring, #e3e4e8);
+            border-top-color: #3346b8;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+          "
+        ></div>
       </div>
       <style>
-        @keyframes spin{to{transform:rotate(360deg)}}
-        html:not(.dark) { --loader-bg:#ffffff; --loader-ring:#d4d8e2; }
-        html.dark { --loader-bg:#0b1120; --loader-ring:#1e2d45; }
+        @keyframes spin {
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        html:not(.dark) {
+          --loader-bg: #f7f7f5;
+          --loader-ring: #e3e4e8;
+        }
+        html.dark {
+          --loader-bg: #131418;
+          --loader-ring: #272a31;
+        }
       </style>
     </div>
     <script type="module" src="/src/main.tsx"></script>

@@ -7,7 +7,9 @@ export type BlogPost = {
   category: string;
   excerpt: string;
   content: string;
-  image: string;
+  /** Only set when the post's front matter names a real image. */
+  image?: string;
+  readingMinutes: number;
 };
 
 function parseFrontmatter(raw: string): { data: Record<string, string>; body: string } {
@@ -48,7 +50,8 @@ export function getAllPosts(): BlogPost[] {
         category: data.category ?? "General",
         excerpt: data.excerpt ?? "",
         content: marked(body) as string,
-        image: data.image ?? `https://picsum.photos/seed/${slug}/1200/600`,
+        image: data.image && !data.image.includes("picsum.photos") ? data.image : undefined,
+        readingMinutes: Math.max(1, Math.round(body.split(/\s+/).length / 220)),
       };
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -56,4 +59,8 @@ export function getAllPosts(): BlogPost[] {
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return getAllPosts().find((p) => p.slug === slug);
+}
+
+export function formatDate(date: string, month: "short" | "long" = "short") {
+  return new Date(date).toLocaleDateString("en-PH", { month, day: "numeric", year: "numeric" });
 }

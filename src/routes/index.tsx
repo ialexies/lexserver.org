@@ -1,44 +1,51 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
-import { Nav } from "@/components/portfolio/Nav";
+import { PageShell, Section, SectionHeader, textLink } from "@/components/portfolio/Page";
 import { Hero } from "@/components/portfolio/Hero";
-import { Metrics } from "@/components/portfolio/Metrics";
-import { Services } from "@/components/portfolio/Services";
-import { Process } from "@/components/portfolio/Process";
+import { FeaturedCase, WorkRows, VISIBLE_WORK } from "@/components/portfolio/WorkList";
+import { WhatWeDo } from "@/components/portfolio/WhatWeDo";
 import { Products } from "@/components/portfolio/Products";
-import { TechStack } from "@/components/portfolio/TechStack";
-import { Testimonials } from "@/components/portfolio/Testimonials";
-import { Pricing } from "@/components/portfolio/Pricing";
-import { BlogPreview } from "@/components/portfolio/BlogPreview";
+import { Process } from "@/components/portfolio/Process";
 import { Contact } from "@/components/portfolio/Contact";
-import { Footer } from "@/components/portfolio/Footer";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Lexserver | Web and mobile apps from Bataan, Philippines" },
+      {
+        name: "description",
+        content:
+          "Lexserver is a two-person studio in Bataan, Philippines. We design, build and run websites and mobile apps, and make our own products like LupaAtBahay and Indexwise.",
+      },
+    ],
+  }),
   component: Index,
 });
 
+const HOME_WORK = ["sarisuki-ecommerce", "madmonkey-app"];
+
 function Index() {
   return (
-    <motion.div
-      className="min-h-screen bg-paper text-ink"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.25 }}
-    >
-      <Nav />
-      <main>
-        <Hero />
-        <Metrics />
-        <Services />
-        <Products />
-        <Process />
-        <TechStack />
-        <Testimonials />
-        <Pricing />
-        <BlogPreview />
-        <Contact />
-      </main>
-      <Footer />
-    </motion.div>
+    <PageShell>
+      <Hero />
+      <Section id="work">
+        <SectionHeader
+          title="Selected work"
+          intro="Apps and platforms we've designed and built, and in some cases still run."
+          action={
+            <a href="/work" className={textLink}>
+              All work
+            </a>
+          }
+        />
+        <FeaturedCase />
+        <div className="mt-12">
+          <WorkRows items={VISIBLE_WORK.filter((p) => HOME_WORK.includes(p.slug))} />
+        </div>
+      </Section>
+      <WhatWeDo />
+      <Products />
+      <Process />
+      <Contact />
+    </PageShell>
   );
 }
