@@ -1,79 +1,64 @@
 ---
-title: Mobile App vs Website — Which Does Your Business Actually Need?
-date: 2025-06-01
-category: Mobile Development
-excerpt: The honest answer to the question every Philippine business owner asks before spending their development budget.
-image: https://picsum.photos/seed/blog-mobile/1200/600
+title: Mobile app or website: which does your business need?
+date: 2026-10-10T10:30:00Z
+category: Mobile apps
+excerpt: Most businesses that ask us for an app need a good website first. Here is how we help clients decide, and when an app really is the right call.
 ---
 
-## The Most Common Question We Get
+"We need an app" is one of the first things we hear on a call. Sometimes that's right. More often, what the business needs first is a fast website that people can find on Google, and an app makes sense later, if at all.
 
-"We need a mobile app." 
+We build both, so we don't gain anything by steering you one way. Here's how we think it through.
 
-It's the first thing many business owners say when they walk through the door. Sometimes they're right. Often, what they actually need is a well-built website, or a Progressive Web App (PWA) that behaves like a native app but doesn't require separate iOS and Android development.
+## Start with one question
 
-Let's break it down honestly.
+Before we talk about technology, we ask: **what do your customers need to do, and why can't a website do it?**
 
-## When You Need a Native Mobile App
+If the answer is "find us, see our prices and send a message", that's a website. If the answer is "order every week, track a rider, get a notification when something changes", that starts to sound like an app.
 
-A native mobile app — built with Flutter, React Native, or Swift/Kotlin — makes sense when:
+## When a website is the better choice
 
-### 1. You Need Device Hardware Access
-Camera, GPS, Bluetooth, NFC, accelerometer. If your core feature requires these, you need a native app. Examples:
-- A delivery app that tracks driver location in real time
-- A fitness app that uses the phone's accelerometer for workout tracking
-- A retail app that scans product barcodes
+### You're trying to reach new customers
 
-### 2. Your Users Will Be Offline Frequently
-Native apps can store data locally and sync when connected. A website, even with service workers, can't match native offline capability for complex use cases.
+People don't install an app from a business they've never heard of. They search, land on a website, and decide in a few seconds whether to get in touch. Your website is where that first impression happens.
 
-### 3. You Have a Large, Loyal User Base
-App stores make discovery hard. If you don't already have users who want to install your app, you're paying for development AND fighting a discovery problem. Mobile apps succeed when you push your existing users to install them.
+### You want to show up on Google
 
-### 4. Your Core Experience Is Interactive
-Games, creative tools, fitness tracking, navigation — experiences that benefit from the fluid 60fps performance of native rendering.
+Websites rank in search results. Apps mostly don't. A resort in Zambales, a clinic in Balanga or a contractor in Pampanga will get more from a website that loads fast and answers the questions people search for.
 
-## When a Website Is the Right Answer
+### Your budget is under ₱150,000
 
-For most Philippine SMEs, a well-built website does the job better than an app:
+A cross-platform app for iOS and Android starts at about ₱150,000 with us, and it needs updates every year as Apple and Google change their rules. A website starts at ₱15,000, takes weeks rather than months, and starts working for you on launch day.
 
-### 1. You're Acquiring New Customers
-New customers don't install apps from businesses they've never heard of. They Google you, land on your website, and decide in 10 seconds whether to contact you. A website is your first impression — and first impressions don't happen in app stores.
+## When an app is worth it
 
-### 2. You Need to Rank on Google
-Apps don't rank in Google Search. Websites do. If you're a restaurant in Olongapo, a resort in Zambales, or a contractor in Bataan — your website is your most powerful marketing tool.
+### People use it again and again
 
-### 3. Your Budget Is Under ₱150,000
-A proper cross-platform mobile app (iOS + Android) takes 3–6 months and requires maintenance, app store fees, and regular updates. A great website can be built in 3–6 weeks and serves customers from day one.
+Apps earn their place when the same customers come back often: weekly grocery orders, bookings, loyalty points. We've built apps like this for grocery delivery, hostels and ride booking. An app works best when you already have customers who will install it, because the app store won't find them for you.
 
-## The Middle Ground: Progressive Web Apps (PWAs)
+### You need the phone's hardware
 
-PWAs are websites that behave like apps. They can be "installed" to the home screen, work offline, send push notifications, and feel native on modern Android devices (iOS support is improving).
+Live location, the camera, barcode scanning, background notifications and geofencing all work better, or only work, in a native app.
 
-For many Philippine businesses, a PWA is the best of both worlds:
-- No app store approval required
-- Works in any browser
-- Can be installed to the home screen
-- Much cheaper to build and maintain than a native app
+### It has to work with a weak signal
 
-## Our Recommendation by Business Type
+An app can keep data on the phone and sync when the connection comes back. A website can do some of this, but an app does it more reliably.
 
-| Business Type | Recommendation |
-|---|---|
-| Restaurant, cafe, resort | Website + Google Business Profile |
-| E-commerce store | Website + WooCommerce |
-| Service provider (plumber, salon) | Website + contact form |
-| Delivery service | Native app (Flutter) |
-| Marketplace/platform | Web app (Next.js) + PWA |
-| Internal business tool | Web app |
-| Fitness / wellness | Native app or PWA |
+## The middle ground
 
-## The Honest Conversation
+There are two options between "website" and "full app" that we use a lot.
 
-When a client comes to us asking for a mobile app, the first question we ask is: **"What do your customers need to do, and why can't a website do it?"**
+- **An installable website (PWA).** A website that can be added to the home screen and opened like an app. No app store approval, one codebase, and much cheaper to maintain. It works best on Android; iPhone support is more limited.
+- **An app shell around your website.** A thin Flutter app that loads your mobile website and adds what a browser can't, like push notifications and deep links. We did this for [LupaAtBahay](/lupaatbahay), our property marketplace: the site does the work, and the app gives agents notifications on their phone.
 
-Sometimes the answer confirms they need an app. More often, it surfaces a simpler solution that gets them to market faster at a fraction of the cost.
+## A rough guide
 
-We build both — and we'll always recommend what's right for your business, not what's most profitable for us to build.
+- **Restaurant, café, resort, clinic or shop:** a website and a Google Business Profile.
+- **Online store:** a website with a shop. Add an app only once you have repeat buyers asking for one.
+- **Service business (salon, contractor, tutor):** a website with a clear way to message or book.
+- **Marketplace or listing site:** a web app first, then an app shell if users need notifications.
+- **Delivery, booking or anything with live location:** a native app, usually with a web admin for your team.
+- **Internal tool for your staff:** a web app, unless your team works in the field without signal.
 
-Ready to figure out what you actually need? [Start the conversation.](/#contact)
+## If you're not sure
+
+[Send us a few lines](/#contact) about what your customers need to do. We'll tell you what we'd build, and if a website is enough, we'll say so.

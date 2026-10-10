@@ -8,7 +8,7 @@ const ROUTES = [
   { path: "/about", name: "about" },
   { path: "/lupaatbahay", name: "lupaatbahay" },
   { path: "/blog", name: "blog" },
-  { path: "/blog/how-we-built-tara-stays", name: "blog-post" },
+  { path: "/blog/2026-10-10-how-we-built-lupaatbahay", name: "blog-post" },
 ];
 
 // Ensure screenshots folder exists
