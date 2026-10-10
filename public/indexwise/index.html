@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Indexwise: free on-page SEO checker for Chrome</title>
+<meta name="description" content="Indexwise is a free Chrome side panel that audits the page you are viewing, explains what to fix, and shows your Google Search data. No account, no tracking.">
+<link rel="icon" href="/indexwise/img/indexwise-icon.svg" type="image/svg+xml">
+<meta property="og:title" content="Indexwise: free on-page SEO checker for Chrome">
+<meta property="og:description" content="Find what is wrong, get the fix, and copy everything into your AI assistant in one click.">
+<meta property="og:image" content="https://lexserver.org/indexwise/img/social-og-1200x630.png">
+<meta property="og:type" content="website">
+<style>
+:root{--bg:#fff;--fg:#1c1b2e;--muted:#5b5a70;--accent:#4f46e5;--mint:#10b981;--card:#f5f5fc;--line:#e6e5f0}
+@media (prefers-color-scheme:dark){:root{--bg:#14132a;--fg:#ecebf7;--muted:#a3a2bd;--accent:#8b85ff;--card:#1c1b3a;--line:#2a2950}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+nav{display:flex;align-items:center;gap:10px;padding:18px 0;font-weight:700;font-size:1.15rem}
+nav img{width:32px;height:32px}
+nav .sp{flex:1}
+nav a.l{font-weight:500;font-size:.95rem;text-decoration:none;color:var(--muted)}
+.hero{text-align:center;padding:48px 0 32px}
+h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.15;margin:0 0 16px}
+.lead{font-size:1.2rem;color:var(--muted);max-width:640px;margin:0 auto 28px}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;padding:14px 26px;border-radius:10px}
+.btn:hover{filter:brightness(1.08)}
+.sub{color:var(--muted);font-size:.9rem;margin-top:12px}
+.shot{width:100%;border-radius:12px;border:1px solid var(--line);box-shadow:0 10px 40px #1e1b4b22;display:block}
+section{padding:40px 0}
+h2{font-size:1.7rem;margin:0 0 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.card h3{margin:0 0 6px;font-size:1.05rem}
+.card p{margin:0;color:var(--muted);font-size:.95rem}
+.pn{max-width:400px;height:auto;margin:0 auto}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+.two h2{margin-bottom:10px}
+.two p{color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--muted);font-size:.9rem}
+footer a{margin-right:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><img src="/indexwise/img/indexwise-icon.svg" alt=""><span>Indexwise</span><span class="sp"></span><a class="l" href="/indexwise/privacy/">Privacy</a></nav>
+
+<div class="hero">
+<h1>See what Google and AI see.<br>Fix it in one click.</h1>
+<p class="lead">Indexwise is a free Chrome side panel that audits the page you are viewing, tells you what to fix in plain words, and shows your Google Search data without leaving the page.</p>
+<a class="btn" href="https://chromewebstore.google.com/detail/demkfoednfaklniecnobahjiddbhnlpe">Add to Chrome, it's free</a>
+<div class="sub">No account. No tracking. Runs in your browser.</div>
+</div>
+
+<img class="shot" src="/indexwise/img/shot-1-issues.jpg" width="1280" height="800" alt="Indexwise side panel listing SEO issues with copy-paste fixes next to a web page">
+
+<section>
+<h2>Everything you need to improve a page</h2>
+<div class="grid">
+<div class="card"><h3>Issues with fixes</h3><p>A score out of 100. Every problem comes with a copy-paste fix and a "Show on page" highlight.</p></div>
+<div class="card"><h3>One-click Full check</h3><p>Review the page, AI readiness, structured data, images, links and speed together. Download a report.</p></div>
+<div class="card"><h3>Copy as one AI prompt</h3><p>Paste the whole audit into your AI assistant and fix everything at once.</p></div>
+<div class="card"><h3>Speed, explained</h3><p>LCP, CLS and INP in plain words, with what to do about each.</p></div>
+<div class="card"><h3>AI search readiness</h3><p>See which AI crawlers are allowed, and check robots.txt, llms.txt and structured data.</p></div>
+<div class="card"><h3>Bulk, watch and history</h3><p>Audit up to 100 pages, get notified when an important tag changes, and track score history.</p></div>
+</div>
+</section>
+
+<section class="two">
+<div><h2>Your Google Search data, in the panel</h2><p>Connect Search Console (optional, read-only) to see clicks, impressions, CTR and position for 7 days to 12 months, top queries, quick wins, devices, countries, sitemaps and Google's index status for the page. The data goes straight from Google to your browser. The numbers in the screenshot are sample data.</p></div>
+<img class="shot pn" src="/indexwise/img/panel-search.jpg" width="440" height="640" alt="Search tab showing clicks, impressions and quick-win queries (sample data, for illustration)">
+</section>
+
+<section class="two">
+<img class="shot pn" src="/indexwise/img/panel-tools.jpg" width="440" height="640" alt="Tools tab with fix-it checklist, keyword check and rewrite prompts">
+<div><h2>Tools that finish the job</h2><p>A fix-it checklist, title and description rewrite prompts, image alt text drafts, internal link suggestions, readability evidence, a structured data validator, a broken link checker and a competitor content gap.</p></div>
+</section>
+
+<section style="text-align:center">
+<h2>Private by design</h2>
+<p class="lead" style="margin-bottom:24px">Indexwise has no server and no analytics. The pages you analyze never leave your browser. <a href="/indexwise/privacy/">Read the privacy policy</a>.</p>
+<a class="btn" href="https://chromewebstore.google.com/detail/demkfoednfaklniecnobahjiddbhnlpe">Add to Chrome, it's free</a>
+</section>
+</div>
+<footer><div class="wrap"><a href="/indexwise/privacy/">Privacy policy</a><a href="mailto:ialexies@gmail.com">Contact</a><span>Indexwise is not affiliated with Google. Search Console is a trademark of Google LLC.</span></div></footer>
+</body>
+</html>
