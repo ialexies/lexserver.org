@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { ClosingCta, Container, PageHeader, PageShell } from "@/components/portfolio/Page";
 import { FeaturedCase, WorkRows, VISIBLE_WORK } from "@/components/portfolio/WorkList";
+import { Products } from "@/components/portfolio/Products";
 import type { PortfolioCategory } from "@/lib/portfolio-data";
 
 export const Route = createFileRoute("/work")({
@@ -40,6 +41,7 @@ function WorkPage() {
           <FeaturedCase />
         </Container>
       </section>
+      <Products />
       <section className="border-t border-line py-14 md:py-20">
         <Container>
           <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
