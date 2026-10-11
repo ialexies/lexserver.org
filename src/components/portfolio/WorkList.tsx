@@ -17,10 +17,10 @@ export function FeaturedCase() {
     <article className="grid items-center gap-8 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:gap-12">
       <a href="/lupaatbahay" aria-label="LupaAtBahay case study">
         <Shot
-          src="/products/agent-dashboard.webp"
-          alt="LupaAtBahay agent dashboard with listings, leads and inquiries"
+          src="/products/lupaatbahay-listings.webp"
+          alt="LupaAtBahay property listings with a map of Central Luzon"
           width={1400}
-          height={547}
+          height={815}
         />
       </a>
       <div className="grid gap-3">
@@ -65,6 +65,15 @@ export function WorkRows({ items = VISIBLE_WORK }: { items?: PortfolioItem[] }) 
           <div className="min-w-0">
             <h3 className="text-[18px] font-semibold leading-snug">{p.title}</h3>
             <p className="mt-1.5 max-w-[62ch] leading-relaxed text-muted">{p.description}</p>
+            {p.image && (
+              <Shot
+                src={p.image}
+                alt={`${p.title} screenshot`}
+                width={1400}
+                height={p.imageHeight ?? 700}
+                className="mt-5 max-w-[640px]"
+              />
+            )}
           </div>
           {p.tech && (
             <p className="font-mono text-xs leading-relaxed text-muted md:max-w-[180px] md:text-right">

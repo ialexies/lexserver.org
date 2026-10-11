@@ -106,6 +106,8 @@ export type PortfolioItem = {
   category: PortfolioCategory;
   description: string;
   image?: string;
+  /** Pixel height of `image` at 1400px wide, to reserve space before it loads. */
+  imageHeight?: number;
   url?: string;
   period?: string;
   status?: "in-development";
@@ -136,6 +138,8 @@ export const PORTFOLIO: PortfolioItem[] = [
     description:
       "A grocery ordering app where shoppers browse, check out and track orders in seconds. Served thousands of daily active users at peak grocery delivery demand.",
     tech: ["Flutter", "GraphQL", "Bloc"],
+    image: "/products/sarisuki-ecommerce.webp",
+    imageHeight: 616,
   },
   {
     slug: "dealflow-tool",
@@ -158,6 +162,8 @@ export const PORTFOLIO: PortfolioItem[] = [
     description:
       "The guest and staff app for a hostel chain with several locations: bookings, a loyalty program and live property updates.",
     tech: ["Flutter", "Firebase", "REST API"],
+    image: "/products/madmonkey-dumaguete.webp",
+    imageHeight: 769,
   },
   {
     slug: "coastal-kitchen-brand",
