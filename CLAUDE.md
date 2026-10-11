@@ -39,6 +39,11 @@ Static pages in `public/` are served as-is, and win over SPA routes of the same 
 policy, which the Chrome Web Store listing links to — keep that URL stable). Do not add a React
 route at `/indexwise`; it would be shadowed. The Indexwise pages are hand-written HTML styled by
 `public/indexwise/indexwise.css`, which copies the site tokens from `src/styles.css` (keep in sync).
+`public/indexwise/index.html` is **generated**: edit `scripts/build-indexwise-page.mjs` and run
+`node scripts/build-indexwise-page.mjs` (it builds the FAQ JSON-LD from the visible FAQ so they cannot drift).
+The page uses the demo video and panel screenshots in `public/indexwise/video/` and `public/indexwise/img/`,
+which are rendered by the media pipeline in the indexwise extension repo (`media/`, `npm run media:capture`
+then `npm run media:render`). Re-render them after any extension UI change, then copy the outputs here.
 
 ### Pre-rendering
 

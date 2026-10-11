@@ -96,3 +96,55 @@ h2 { font-size: clamp(22px, 3vw, 28px); line-height: 1.2; margin: 0 0 12px; }
 .policy p, .policy li { font-size: 16.5px; line-height: 1.7; }
 .policy ul { padding-left: 1.3rem; }
 .policy li + li { margin-top: 6px; }
+
+/* Landing page v2: demo video, steps, tour blocks, stats and FAQ */
+.product a + a { margin-left: 16px; }
+.demo { margin: 0; }
+.demo video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 8px; border: 1px solid var(--line); background: #0f1226; }
+@media (max-width: 700px) { .demo video { aspect-ratio: 4 / 5; } }
+.demo figcaption { margin-top: 12px; font-size: 14px; color: var(--muted); max-width: 70ch; }
+
+.steps { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 0; counter-reset: step; border-top: 1px solid var(--line); }
+@media (min-width: 768px) { .steps { grid-template-columns: repeat(3, 1fr); column-gap: 32px; } }
+.steps li { counter-increment: step; border-bottom: 1px solid var(--line); padding: 20px 0; position: relative; padding-left: 44px; }
+.steps li::before { content: counter(step); position: absolute; left: 0; top: 20px; width: 28px; height: 28px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font: 500 14px/28px "Geist Mono", ui-monospace, monospace; text-align: center; }
+.steps h3 { margin: 0 0 4px; font-size: 16px; font-weight: 600; }
+.steps p { margin: 0; color: var(--muted); font-size: 15px; }
+
+.two .eyebrow { margin-bottom: 8px; }
+.two h2 { margin-top: 0; }
+.ticks { margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; color: var(--fg); }
+.ticks li { position: relative; padding-left: 26px; font-size: 15.5px; line-height: 1.5; }
+.ticks li::before { content: ""; position: absolute; left: 2px; top: 7px; width: 10px; height: 6px; border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: rotate(-45deg); }
+.note { color: var(--muted); font-size: 14px; margin: 14px 0 0; max-width: 60ch; }
+.two img.panel { max-width: 380px; width: 100%; height: auto; }
+@media (min-width: 768px) { .two img.panel { justify-self: center; } }
+
+.stats { display: grid; gap: 0; border-top: 1px solid var(--line); margin-top: 24px; }
+@media (min-width: 640px) { .stats { grid-template-columns: repeat(3, 1fr); column-gap: 32px; } }
+.stats > div { border-bottom: 1px solid var(--line); padding: 20px 0; }
+.stats b { display: block; font-size: 40px; line-height: 1.1; font-weight: 500; letter-spacing: -0.02em; color: var(--accent); }
+.stats span { display: block; margin-top: 4px; color: var(--muted); font-size: 15px; }
+
+.faq details { border-bottom: 1px solid var(--line); padding: 4px 0; }
+.faq details:first-of-type { border-top: 1px solid var(--line); margin-top: 20px; }
+.faq summary { cursor: pointer; padding: 14px 28px 14px 0; font-weight: 500; font-size: 16.5px; list-style: none; position: relative; min-height: 44px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 4px; top: 12px; font-size: 22px; line-height: 1; color: var(--muted); }
+.faq details[open] summary::after { content: "\2212"; }
+.faq details p { margin: 0 0 16px; color: var(--muted); max-width: 66ch; }
+
+.cta { text-align: left; }
+.cta h2 { margin-bottom: 8px; }
+.cta .lead { margin-bottom: 20px; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+
+/* Show the informative top of each tall panel screenshot, fading out at the bottom. */
+.two img.panel {
+  aspect-ratio: 1 / 1.18;
+  object-fit: cover;
+  object-position: top;
+  -webkit-mask-image: linear-gradient(#000 82%, transparent);
+  mask-image: linear-gradient(#000 82%, transparent);
+  border-bottom: 0;
+}
