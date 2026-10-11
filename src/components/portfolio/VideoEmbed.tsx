@@ -1,27 +1,50 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-/** Click-to-play YouTube embed: no YouTube code loads until the visitor presses play. */
+/**
+ * YouTube embed behind a poster. Without `autoplay`, no YouTube code loads until the visitor
+ * presses play. With it, the poster is the server-rendered image and the muted player replaces it
+ * once the page has loaded, unless the visitor prefers reduced motion.
+ */
 export function VideoEmbed({
   videoId,
   poster,
   title,
   caption,
   durationLabel,
+  autoplay = false,
+  eager = false,
 }: {
   videoId: string;
   poster: string;
   title: string;
   caption: string;
   durationLabel: string;
+  autoplay?: boolean;
+  eager?: boolean;
 }) {
   const [playing, setPlaying] = useState(false);
+  const [muted, setMuted] = useState(false);
+
+  useEffect(() => {
+    if (!autoplay || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const start = () => {
+      setMuted(true);
+      setPlaying(true);
+    };
+    if (document.readyState === "complete") {
+      start();
+      return;
+    }
+    window.addEventListener("load", start, { once: true });
+    return () => window.removeEventListener("load", start);
+  }, [autoplay]);
 
   return (
     <figure>
       <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-line bg-surface">
         {playing ? (
           <iframe
-            src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`}
+            src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1${muted ? "&mute=1" : ""}`}
             title={title}
             className="absolute inset-0 h-full w-full"
             allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
@@ -31,7 +54,10 @@ export function VideoEmbed({
         ) : (
           <button
             type="button"
-            onClick={() => setPlaying(true)}
+            onClick={() => {
+              setMuted(false);
+              setPlaying(true);
+            }}
             aria-label={`Play video: ${title}`}
             className="group absolute inset-0 h-full w-full"
           >
@@ -40,7 +66,8 @@ export function VideoEmbed({
               alt=""
               width={1280}
               height={720}
-              loading="lazy"
+              loading={eager ? "eager" : "lazy"}
+              fetchPriority={eager ? "high" : undefined}
               decoding="async"
               className="absolute inset-0 h-full w-full object-cover"
             />

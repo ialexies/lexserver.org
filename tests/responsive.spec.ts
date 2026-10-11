@@ -14,18 +14,34 @@ const ROUTES = [
 ];
 
 test.describe("lupaatbahay video", () => {
-  test("loads no YouTube frame until play is pressed", async ({ page }) => {
-    await page.goto("/lupaatbahay", { waitUntil: "domcontentloaded" });
-    const play = page.getByRole("button", { name: /Play video/ });
-    await expect(play).toBeVisible();
-    const box = await play.boundingBox();
-    expect(box && box.height >= 44 && box.width >= 44).toBe(true);
-    await expect(page.locator("iframe")).toHaveCount(0);
+  test("autoplays muted after load, above the brief", async ({ page }) => {
+    await page.goto("/lupaatbahay");
+    const frame = page.locator("iframe[src*='youtube-nocookie.com/embed/xap3uTagOdw']");
+    await expect(frame).toHaveCount(1);
+    await expect(frame).toHaveAttribute("src", /autoplay=1/);
+    await expect(frame).toHaveAttribute("src", /mute=1/);
 
-    await play.click();
-    await expect(page.locator("iframe[src*='youtube-nocookie.com/embed/xap3uTagOdw']")).toHaveCount(
-      1,
-    );
+    const videoTop = (await page.locator("#video").boundingBox())?.y ?? Infinity;
+    const briefTop = (await page.getByText("The brief").boundingBox())?.y ?? 0;
+    expect(videoTop).toBeLessThan(briefTop);
+  });
+
+  test.describe("reduced motion", () => {
+    test.use({ contextOptions: { reducedMotion: "reduce" } });
+
+    test("waits for play, then plays with sound", async ({ page }) => {
+      await page.goto("/lupaatbahay");
+      const play = page.getByRole("button", { name: /Play video/ });
+      await expect(play).toBeVisible();
+      const box = await play.boundingBox();
+      expect(box && box.height >= 44 && box.width >= 44).toBe(true);
+      await expect(page.locator("iframe")).toHaveCount(0);
+
+      await play.click();
+      const frame = page.locator("iframe[src*='youtube-nocookie.com/embed/xap3uTagOdw']");
+      await expect(frame).toHaveCount(1);
+      await expect(frame).not.toHaveAttribute("src", /mute=1/);
+    });
   });
 });
 

@@ -153,35 +153,23 @@ function LupaAtBahayPage() {
               Build something like this
             </a>
           </div>
-          <div className="mt-12">
-            <Shot
-              src="/products/lupaatbahay-desktop.webp"
-              alt="LupaAtBahay home page on a wide screen"
-              width={1280}
-              height={800}
+          <div id="video" className="mt-12 scroll-mt-20">
+            <VideoEmbed
+              videoId={VIDEO.id}
+              poster="/products/lupaatbahay-video-poster.webp"
+              title={VIDEO.name}
+              caption="Walkthrough"
+              durationLabel="1 min"
+              autoplay
               eager
+            />
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(VIDEO_LD) }}
             />
           </div>
         </Container>
       </header>
-
-      <Section id="video">
-        <SectionHeader
-          title="See it in action"
-          intro="A one-minute walkthrough: searching by area, viewing a listing and getting the app."
-        />
-        <VideoEmbed
-          videoId={VIDEO.id}
-          poster="/products/lupaatbahay-video-poster.webp"
-          title={VIDEO.name}
-          caption="Walkthrough"
-          durationLabel="1 min"
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(VIDEO_LD) }}
-        />
-      </Section>
 
       <Section>
         <div className="grid gap-10 md:grid-cols-2 md:gap-16">
