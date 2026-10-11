@@ -329,6 +329,24 @@ export const PRODUCTS: OwnProduct[] = [
     ],
   },
   {
+    slug: "aioffice",
+    name: "AI Office",
+    tagline: "A 3D Office Run by AI Teammates",
+    description:
+      "A virtual office where Claude-powered teammates take requests, work a task board and report back with real data. Talk to one assistant and watch the team work.",
+    platforms: ["web"],
+    status: "published",
+    image: "/products/aioffice-office.webp",
+    url: "/aioffice",
+    features: [
+      "One assistant that delegates to a team",
+      "Task board with questions that need you",
+      "Telegram, Slack and WhatsApp",
+      "Live data through the Site Insights MCP",
+      "Changes ship as pull requests",
+    ],
+  },
+  {
     slug: "indexwise",
     name: "Indexwise",
     tagline: "On-Page SEO Checker for Chrome",

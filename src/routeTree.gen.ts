@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorkRouteImport } from './routes/work'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as LupaatbahayRouteImport } from './routes/lupaatbahay'
+import { Route as AiofficeRouteImport } from './routes/aioffice'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
@@ -30,6 +31,11 @@ const ServicesRoute = ServicesRouteImport.update({
 const LupaatbahayRoute = LupaatbahayRouteImport.update({
   id: '/lupaatbahay',
   path: '/lupaatbahay',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiofficeRoute = AiofficeRouteImport.update({
+  id: '/aioffice',
+  path: '/aioffice',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -56,6 +62,7 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/aioffice': typeof AiofficeRoute
   '/lupaatbahay': typeof LupaatbahayRoute
   '/services': typeof ServicesRoute
   '/work': typeof WorkRoute
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/aioffice': typeof AiofficeRoute
   '/lupaatbahay': typeof LupaatbahayRoute
   '/services': typeof ServicesRoute
   '/work': typeof WorkRoute
@@ -75,6 +83,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/aioffice': typeof AiofficeRoute
   '/lupaatbahay': typeof LupaatbahayRoute
   '/services': typeof ServicesRoute
   '/work': typeof WorkRoute
@@ -86,6 +95,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/aioffice'
     | '/lupaatbahay'
     | '/services'
     | '/work'
@@ -95,6 +105,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/aioffice'
     | '/lupaatbahay'
     | '/services'
     | '/work'
@@ -104,6 +115,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/aioffice'
     | '/lupaatbahay'
     | '/services'
     | '/work'
@@ -114,6 +126,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AiofficeRoute: typeof AiofficeRoute
   LupaatbahayRoute: typeof LupaatbahayRoute
   ServicesRoute: typeof ServicesRoute
   WorkRoute: typeof WorkRoute
@@ -142,6 +155,13 @@ declare module '@tanstack/react-router' {
       path: '/lupaatbahay'
       fullPath: '/lupaatbahay'
       preLoaderRoute: typeof LupaatbahayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/aioffice': {
+      id: '/aioffice'
+      path: '/aioffice'
+      fullPath: '/aioffice'
+      preLoaderRoute: typeof AiofficeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -178,6 +198,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AiofficeRoute: AiofficeRoute,
   LupaatbahayRoute: LupaatbahayRoute,
   ServicesRoute: ServicesRoute,
   WorkRoute: WorkRoute,
