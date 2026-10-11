@@ -13,6 +13,22 @@ const ROUTES = [
   { path: "/blog/2026-10-10-how-we-built-lupaatbahay", name: "blog-post" },
 ];
 
+test.describe("lupaatbahay video", () => {
+  test("loads no YouTube frame until play is pressed", async ({ page }) => {
+    await page.goto("/lupaatbahay", { waitUntil: "domcontentloaded" });
+    const play = page.getByRole("button", { name: /Play video/ });
+    await expect(play).toBeVisible();
+    const box = await play.boundingBox();
+    expect(box && box.height >= 44 && box.width >= 44).toBe(true);
+    await expect(page.locator("iframe")).toHaveCount(0);
+
+    await play.click();
+    await expect(page.locator("iframe[src*='youtube-nocookie.com/embed/xap3uTagOdw']")).toHaveCount(
+      1,
+    );
+  });
+});
+
 // Ensure screenshots folder exists
 const screenshotsDir = path.join(process.cwd(), "tests", "screenshots");
 if (!fs.existsSync(screenshotsDir)) fs.mkdirSync(screenshotsDir, { recursive: true });

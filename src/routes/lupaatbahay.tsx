@@ -10,8 +10,27 @@ import {
   btnSecondary,
   label,
 } from "@/components/portfolio/Page";
+import { VideoEmbed } from "@/components/portfolio/VideoEmbed";
 
 const LIVE_URL = "https://lupaatbahay.com";
+
+const VIDEO = {
+  id: "xap3uTagOdw",
+  name: "LupaAtBahay: Free App for Houses, Lots & Land for Sale in Central Luzon",
+};
+
+const VIDEO_LD = {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  name: VIDEO.name,
+  description:
+    "LupaAtBahay is a free property marketplace for Zambales, Bataan, Tarlac and Pampanga: free to browse, free to list, no commission.",
+  thumbnailUrl: "https://lexserver.org/products/lupaatbahay-video-poster.webp",
+  uploadDate: "2026-10-01T21:03:30-07:00",
+  duration: "PT1M13S",
+  embedUrl: `https://www.youtube-nocookie.com/embed/${VIDEO.id}`,
+  contentUrl: `https://www.youtube.com/watch?v=${VIDEO.id}`,
+};
 
 const MCP_POINTS = [
   "Google Analytics, Tag Manager and Search Console",
@@ -145,6 +164,24 @@ function LupaAtBahayPage() {
           </div>
         </Container>
       </header>
+
+      <Section id="video">
+        <SectionHeader
+          title="See it in action"
+          intro="A one-minute walkthrough: searching by area, viewing a listing and getting the app."
+        />
+        <VideoEmbed
+          videoId={VIDEO.id}
+          poster="/products/lupaatbahay-video-poster.webp"
+          title={VIDEO.name}
+          caption="Walkthrough"
+          durationLabel="1 min"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(VIDEO_LD) }}
+        />
+      </Section>
 
       <Section>
         <div className="grid gap-10 md:grid-cols-2 md:gap-16">

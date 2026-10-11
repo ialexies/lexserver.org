@@ -1,5 +1,5 @@
 import { PORTFOLIO, type PortfolioItem } from "@/lib/portfolio-data";
-import { Shot, accentLink, label } from "./Page";
+import { Shot, accentLink, label, textLink } from "./Page";
 
 const KIND: Record<PortfolioItem["category"], string> = {
   web: "Web app",
@@ -15,13 +15,16 @@ export const VISIBLE_WORK = PORTFOLIO.filter((p) => !p.hidden);
 export function FeaturedCase() {
   return (
     <article className="grid items-center gap-8 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:gap-12">
-      <a href="/lupaatbahay" aria-label="LupaAtBahay case study">
+      <a href="/lupaatbahay" aria-label="LupaAtBahay case study" className="relative block">
         <Shot
           src="/products/lupaatbahay-listings.webp"
           alt="LupaAtBahay property listings with a map of Central Luzon"
           width={1400}
           height={815}
         />
+        <span className="absolute bottom-3 left-3 rounded-full bg-black/70 px-3 py-1.5 font-mono text-xs text-white">
+          ▶ 1 min walkthrough
+        </span>
       </a>
       <div className="grid gap-3">
         <p className={label}>Marketplace · our own product · live</p>
@@ -36,9 +39,14 @@ export function FeaturedCase() {
           <span className="mx-2 text-line">|</span>
           <span className="font-medium text-fg">Stack</span> Next.js, Supabase, Flutter
         </p>
-        <a href="/lupaatbahay" className={`${accentLink} mt-1 w-fit`}>
-          Read the case study →
-        </a>
+        <div className="mt-1 flex flex-wrap items-center gap-x-6 gap-y-2">
+          <a href="/lupaatbahay" className={accentLink}>
+            Read the case study →
+          </a>
+          <a href="/lupaatbahay#video" className={textLink}>
+            Watch the walkthrough
+          </a>
+        </div>
       </div>
     </article>
   );
