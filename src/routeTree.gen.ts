@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorkRouteImport } from './routes/work'
 import { Route as TaraStaysRouteImport } from './routes/tara-stays'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as RaceverseRouteImport } from './routes/raceverse'
 import { Route as LupaatbahayRouteImport } from './routes/lupaatbahay'
 import { Route as AiofficeRouteImport } from './routes/aioffice'
 import { Route as AboutRouteImport } from './routes/about'
@@ -32,6 +33,11 @@ const TaraStaysRoute = TaraStaysRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RaceverseRoute = RaceverseRouteImport.update({
+  id: '/raceverse',
+  path: '/raceverse',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LupaatbahayRoute = LupaatbahayRouteImport.update({
@@ -70,6 +76,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/aioffice': typeof AiofficeRoute
   '/lupaatbahay': typeof LupaatbahayRoute
+  '/raceverse': typeof RaceverseRoute
   '/services': typeof ServicesRoute
   '/tara-stays': typeof TaraStaysRoute
   '/work': typeof WorkRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/aioffice': typeof AiofficeRoute
   '/lupaatbahay': typeof LupaatbahayRoute
+  '/raceverse': typeof RaceverseRoute
   '/services': typeof ServicesRoute
   '/tara-stays': typeof TaraStaysRoute
   '/work': typeof WorkRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/aioffice': typeof AiofficeRoute
   '/lupaatbahay': typeof LupaatbahayRoute
+  '/raceverse': typeof RaceverseRoute
   '/services': typeof ServicesRoute
   '/tara-stays': typeof TaraStaysRoute
   '/work': typeof WorkRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/aioffice'
     | '/lupaatbahay'
+    | '/raceverse'
     | '/services'
     | '/tara-stays'
     | '/work'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/aioffice'
     | '/lupaatbahay'
+    | '/raceverse'
     | '/services'
     | '/tara-stays'
     | '/work'
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/aioffice'
     | '/lupaatbahay'
+    | '/raceverse'
     | '/services'
     | '/tara-stays'
     | '/work'
@@ -140,6 +152,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AiofficeRoute: typeof AiofficeRoute
   LupaatbahayRoute: typeof LupaatbahayRoute
+  RaceverseRoute: typeof RaceverseRoute
   ServicesRoute: typeof ServicesRoute
   TaraStaysRoute: typeof TaraStaysRoute
   WorkRoute: typeof WorkRoute
@@ -168,6 +181,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/raceverse': {
+      id: '/raceverse'
+      path: '/raceverse'
+      fullPath: '/raceverse'
+      preLoaderRoute: typeof RaceverseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lupaatbahay': {
@@ -220,6 +240,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AiofficeRoute: AiofficeRoute,
   LupaatbahayRoute: LupaatbahayRoute,
+  RaceverseRoute: RaceverseRoute,
   ServicesRoute: ServicesRoute,
   TaraStaysRoute: TaraStaysRoute,
   WorkRoute: WorkRoute,
