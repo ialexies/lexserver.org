@@ -148,6 +148,18 @@ const ld = [
   },
   {
     "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: "Indexwise: on-page SEO audit in your Chrome side panel",
+    description:
+      "A 35-second video of Indexwise, the free Chrome side panel that audits the page you are viewing and shows what to fix.",
+    thumbnailUrl: `${SITE}/indexwise/video/indexwise-demo-wide-poster.webp`,
+    embedUrl: "https://www.youtube-nocookie.com/embed/N7BgcLCU7I8",
+    contentUrl: "https://www.youtube.com/watch?v=N7BgcLCU7I8",
+    uploadDate: "2026-10-10",
+    duration: "PT35S",
+  },
+  {
+    "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: FAQ.map(([q, a]) => ({
       "@type": "Question",
@@ -230,6 +242,19 @@ ${block({ eyebrow: "Speed", title: "Speed, explained in plain words", body: "Lar
 ${block({ id: "search", eyebrow: "Search Console", title: "Your Google Search data, in the panel", body: "Connect Search Console (optional, read-only) to see how the page performs without switching tabs.", items: ["Clicks, impressions, CTR and position for 7 days to 12 months, with change arrows", "Quick wins: queries ranking just off page one", "Devices, countries, sitemaps and Google’s index status for the page", "Download the queries as a CSV"], note: "The numbers in this screenshot are sample data for a fictional site.", k: "search", flip: true })}
 ${block({ id: "tools", eyebrow: "Tools", title: "Tools that finish the job", body: "The fix is not always one line. These tools help you write, check and generate what the audit asks for.", items: ["Schema generator for Article, Product and more, ready to paste", "Title and description rewrite prompts, and image alt text drafts", "Readability score, keyword check and a structured data validator", "Broken link checker and competitor content gap"], k: "schema" })}
 ${block({ eyebrow: "Bulk and watch", title: "Many pages, many clients", body: "Audit up to 100 pages at once from a sitemap, and keep an eye on the pages that matter.", items: ["Bulk audit from the sitemap, three pages at a time", "Watch pages: re-checked every 6 hours, with an alert when a title, canonical, robots tag, status or indexability changes", "Score history, a Client report with your own branding, and CSV export"], k: "bulk", flip: true })}
+
+<section id="watch">
+<h2>Watch it with sound</h2>
+<figure class="yt">
+<div class="yt-frame" data-video-id="N7BgcLCU7I8" data-title="Indexwise: on-page SEO audit in your Chrome side panel">
+<button type="button" class="yt-play" aria-label="Play video: Indexwise, on-page SEO audit in your Chrome side panel">
+<img src="/indexwise/video/indexwise-demo-wide-poster.webp" alt="" width="1280" height="720" loading="lazy" decoding="async">
+<span class="yt-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l11-6.5a1 1 0 0 0 0-1.72l-11-6.5A1 1 0 0 0 8 5.5Z"/></svg></span>
+</button>
+</div>
+<figcaption>35 seconds. Plays from YouTube only after you press play. <a href="https://www.youtube.com/watch?v=N7BgcLCU7I8" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></figcaption>
+</figure>
+</section>
 
 <section id="real">
 <p class="eyebrow">On a real site</p>
