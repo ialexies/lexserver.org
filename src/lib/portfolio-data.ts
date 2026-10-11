@@ -372,8 +372,9 @@ export const PRODUCTS: OwnProduct[] = [
     description:
       "A free hostel booking marketplace connecting travelers with local accommodations across the Philippines. Zero-commission for property owners, with GCash & Maya payment support.",
     platforms: ["web"],
-    status: "coming-soon",
-    url: "https://staging.tara-stays.com/en",
+    status: "in-development",
+    image: "/products/tara-stays.webp",
+    storeLinks: { website: "https://staging.tara-stays.com/en" },
     features: [
       "Free for travelers & property owners",
       "GCash & Maya payment support",

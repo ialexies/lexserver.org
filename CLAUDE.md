@@ -61,7 +61,8 @@ experience and awards). Section components read from it, so most copy changes ar
 one file. A few strings are hardcoded in components or route files (the hero, page intros,
 `/lupaatbahay` page copy). Portfolio items with `hidden: true` are kept but not shown (no real
 client name or image yet). `TESTIMONIALS` is not rendered; only add real quotes with permission.
-Products with `status: "coming-soon"` are listed by name only. Blog posts are
+Products with `status: "coming-soon"` are listed by name only. `status: "in-development"` products
+get a full row with an "In development" badge. Blog posts are
 markdown in `src/blog/posts/` (`YYYY-MM-DD-slug.md`), loaded by `src/lib/blog.ts`.
 
 Adding a product: add an `OwnProduct` to `PRODUCTS`. An internal `url` starting with `/` renders as

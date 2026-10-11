@@ -8,7 +8,11 @@ function primaryLink(p: OwnProduct): { href: string; text: string; external: boo
   if (p.storeLinks?.chrome)
     return { href: p.storeLinks.chrome, text: "Get it for Chrome", external: true };
   if (p.storeLinks?.website)
-    return { href: p.storeLinks.website, text: "Visit the site", external: true };
+    return {
+      href: p.storeLinks.website,
+      text: p.status === "in-development" ? "Preview the staging site" : "Visit the site",
+      external: true,
+    };
   return null;
 }
 
@@ -21,8 +25,8 @@ function secondaryLink(p: OwnProduct): { href: string; text: string } | null {
 }
 
 export function Products() {
-  const live = PRODUCTS.filter((p) => p.status === "published");
-  const soon = PRODUCTS.filter((p) => p.status !== "published");
+  const listed = PRODUCTS.filter((p) => p.status !== "coming-soon");
+  const soon = PRODUCTS.filter((p) => p.status === "coming-soon");
 
   return (
     <Section id="products">
@@ -31,7 +35,7 @@ export function Products() {
         intro="Software we design, ship and keep running ourselves."
       />
       <ul className="grid">
-        {live.map((p) => {
+        {listed.map((p) => {
           const main = primaryLink(p);
           const extra = secondaryLink(p);
           return (
@@ -53,8 +57,11 @@ export function Products() {
                 <div className="flex flex-wrap items-center gap-2.5">
                   <h3 className="text-[18px] font-semibold">{p.name}</h3>
                   <span className="inline-flex items-center gap-1.5 rounded-full border border-line px-2.5 py-0.5 text-[13px] text-fg">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#2f9e6a]" aria-hidden="true" />
-                    Live
+                    <span
+                      className={`h-1.5 w-1.5 rounded-full ${p.status === "published" ? "bg-[#2f9e6a]" : "bg-muted"}`}
+                      aria-hidden="true"
+                    />
+                    {p.status === "published" ? "Live" : "In development"}
                   </span>
                 </div>
                 <p className="mt-1.5 max-w-[62ch] leading-relaxed text-muted">{p.description}</p>
