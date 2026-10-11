@@ -142,17 +142,6 @@ export const PORTFOLIO: PortfolioItem[] = [
     imageHeight: 616,
   },
   {
-    slug: "dealflow-tool",
-    period: "2021",
-    title: "Business Valuation Tool",
-    client: "DealFlow Brokerage",
-    country: "Philippines",
-    category: "web",
-    description:
-      "Internal business valuation web tool plus a Chrome extension for scraping deal data from financial sources. Streamlined analyst workflows significantly.",
-    tech: ["Vue.js", "Laravel", "Chrome Extension"],
-  },
-  {
     slug: "madmonkey-app",
     period: "2023 – present",
     title: "MadMonkey Hostels App",
