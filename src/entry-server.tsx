@@ -13,6 +13,7 @@ export const STATIC_PATHS = [
   "/lupaatbahay",
   "/aioffice",
   "/tara-stays",
+  "/raceverse",
   "/blog",
   ...getAllPosts().map((p) => `/blog/${p.slug}`),
 ];
