@@ -1,5 +1,21 @@
 // Small enhancements for the Indexwise landing page. Loaded as an external file because the CSP blocks inline scripts.
 (function () {
+  var frame = document.querySelector(".yt-frame");
+  if (!frame) return;
+  var btn = frame.querySelector(".yt-play");
+  if (!btn) return;
+  btn.addEventListener("click", function () {
+    var f = document.createElement("iframe");
+    f.src = "https://www.youtube-nocookie.com/embed/" + frame.getAttribute("data-video-id") + "?autoplay=1&rel=0&playsinline=1";
+    f.title = frame.getAttribute("data-title") || "Video";
+    f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+    f.allowFullscreen = true;
+    f.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+    frame.replaceChildren(f);
+  });
+})();
+
+(function () {
   var video = document.getElementById("demo");
   if (!video) return;
 
