@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorkRouteImport } from './routes/work'
+import { Route as TaraStaysRouteImport } from './routes/tara-stays'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as LupaatbahayRouteImport } from './routes/lupaatbahay'
 import { Route as AiofficeRouteImport } from './routes/aioffice'
@@ -21,6 +22,11 @@ import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 const WorkRoute = WorkRouteImport.update({
   id: '/work',
   path: '/work',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TaraStaysRoute = TaraStaysRouteImport.update({
+  id: '/tara-stays',
+  path: '/tara-stays',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/aioffice': typeof AiofficeRoute
   '/lupaatbahay': typeof LupaatbahayRoute
   '/services': typeof ServicesRoute
+  '/tara-stays': typeof TaraStaysRoute
   '/work': typeof WorkRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/aioffice': typeof AiofficeRoute
   '/lupaatbahay': typeof LupaatbahayRoute
   '/services': typeof ServicesRoute
+  '/tara-stays': typeof TaraStaysRoute
   '/work': typeof WorkRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog': typeof BlogIndexRoute
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/aioffice': typeof AiofficeRoute
   '/lupaatbahay': typeof LupaatbahayRoute
   '/services': typeof ServicesRoute
+  '/tara-stays': typeof TaraStaysRoute
   '/work': typeof WorkRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/aioffice'
     | '/lupaatbahay'
     | '/services'
+    | '/tara-stays'
     | '/work'
     | '/blog/$slug'
     | '/blog/'
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/aioffice'
     | '/lupaatbahay'
     | '/services'
+    | '/tara-stays'
     | '/work'
     | '/blog/$slug'
     | '/blog'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/aioffice'
     | '/lupaatbahay'
     | '/services'
+    | '/tara-stays'
     | '/work'
     | '/blog/$slug'
     | '/blog/'
@@ -129,6 +141,7 @@ export interface RootRouteChildren {
   AiofficeRoute: typeof AiofficeRoute
   LupaatbahayRoute: typeof LupaatbahayRoute
   ServicesRoute: typeof ServicesRoute
+  TaraStaysRoute: typeof TaraStaysRoute
   WorkRoute: typeof WorkRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -141,6 +154,13 @@ declare module '@tanstack/react-router' {
       path: '/work'
       fullPath: '/work'
       preLoaderRoute: typeof WorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tara-stays': {
+      id: '/tara-stays'
+      path: '/tara-stays'
+      fullPath: '/tara-stays'
+      preLoaderRoute: typeof TaraStaysRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -201,6 +221,7 @@ const rootRouteChildren: RootRouteChildren = {
   AiofficeRoute: AiofficeRoute,
   LupaatbahayRoute: LupaatbahayRoute,
   ServicesRoute: ServicesRoute,
+  TaraStaysRoute: TaraStaysRoute,
   WorkRoute: WorkRoute,
   BlogSlugRoute: BlogSlugRoute,
   BlogIndexRoute: BlogIndexRoute,

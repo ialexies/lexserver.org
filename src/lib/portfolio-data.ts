@@ -392,6 +392,7 @@ export const PRODUCTS: OwnProduct[] = [
     platforms: ["web"],
     status: "in-development",
     image: "/products/tara-stays.webp",
+    url: "/tara-stays",
     storeLinks: { website: "https://staging.tara-stays.com/en" },
     features: [
       "Free for travelers & property owners",
