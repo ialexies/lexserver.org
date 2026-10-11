@@ -10,6 +10,7 @@ import {
   btnSecondary,
   label,
 } from "@/components/portfolio/Page";
+import { AutoplayVideo } from "@/components/portfolio/AutoplayVideo";
 
 const LIVE_URL = "https://fitness-app.lexserver.org";
 
@@ -200,17 +201,12 @@ function RaceversePage() {
           intro="A one-minute walkthrough: the athlete feed, finding and registering for a race, and the organizer and admin tools."
         />
         <figure>
-          <video
-            controls
-            preload="none"
-            playsInline
+          <AutoplayVideo
+            src="/products/raceverse-demo.mp4"
             poster="/products/raceverse-video-poster.webp"
             width={1280}
             height={720}
-            className="aspect-video w-full rounded-lg border border-line bg-surface"
-          >
-            <source src="/products/raceverse-demo.mp4" type="video/mp4" />
-          </video>
+          />
           <figcaption className="mt-3 text-[14px] text-muted">Walkthrough · 1 min</figcaption>
         </figure>
         <script

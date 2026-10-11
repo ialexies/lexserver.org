@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * YouTube embed behind a poster. Without `autoplay`, no YouTube code loads until the visitor
  * presses play. With it, the poster is the server-rendered image and the muted player replaces it
- * once the page has loaded, unless the visitor prefers reduced motion.
+ * once the page has loaded, unless the visitor prefers reduced motion. Browsers block unmuted
+ * autoplay, so the muted player shows a "Tap for sound" button that unmutes it through the
+ * YouTube iframe API (a tap is the user gesture that makes that allowed).
  */
 export function VideoEmbed({
   videoId,
@@ -24,6 +26,18 @@ export function VideoEmbed({
 }) {
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(false);
+  const frame = useRef<HTMLIFrameElement>(null);
+
+  const unmute = () => {
+    const send = (func: string, args: unknown[] = []) =>
+      frame.current?.contentWindow?.postMessage(
+        JSON.stringify({ event: "command", func, args }),
+        "https://www.youtube-nocookie.com",
+      );
+    send("unMute");
+    send("setVolume", [100]);
+    setMuted(false);
+  };
 
   useEffect(() => {
     if (!autoplay || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -43,14 +57,35 @@ export function VideoEmbed({
     <figure>
       <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-line bg-surface">
         {playing ? (
-          <iframe
-            src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1${muted ? "&mute=1" : ""}`}
-            title={title}
-            className="absolute inset-0 h-full w-full"
-            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-            allowFullScreen
-            referrerPolicy="strict-origin-when-cross-origin"
-          />
+          <>
+            <iframe
+              ref={frame}
+              src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1&enablejsapi=1&origin=${encodeURIComponent(window.location.origin)}${muted ? "&mute=1" : ""}`}
+              title={title}
+              className="absolute inset-0 h-full w-full"
+              allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
+            {muted && (
+              <button
+                type="button"
+                onClick={unmute}
+                className="absolute right-3 top-3 inline-flex min-h-11 items-center gap-2 rounded-full bg-black/75 px-4 text-[14px] font-medium text-white shadow-lg transition-colors hover:bg-black"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="18"
+                  height="18"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M3 9v6h4l5 5V4L7 9H3Zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4Z" />
+                </svg>
+                Tap for sound
+              </button>
+            )}
+          </>
         ) : (
           <button
             type="button"

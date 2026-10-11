@@ -20,6 +20,14 @@ test.describe("lupaatbahay video", () => {
     await expect(frame).toHaveCount(1);
     await expect(frame).toHaveAttribute("src", /autoplay=1/);
     await expect(frame).toHaveAttribute("src", /mute=1/);
+    await expect(frame).toHaveAttribute("src", /enablejsapi=1/);
+
+    const sound = page.getByRole("button", { name: /Tap for sound/ });
+    await expect(sound).toBeVisible();
+    const box = await sound.boundingBox();
+    expect(box && box.height >= 44).toBe(true);
+    await sound.click();
+    await expect(sound).toHaveCount(0);
 
     const videoTop = (await page.locator("#video").boundingBox())?.y ?? Infinity;
     const briefTop = (await page.getByText("The brief").boundingBox())?.y ?? 0;
@@ -41,6 +49,51 @@ test.describe("lupaatbahay video", () => {
       const frame = page.locator("iframe[src*='youtube-nocookie.com/embed/xap3uTagOdw']");
       await expect(frame).toHaveCount(1);
       await expect(frame).not.toHaveAttribute("src", /mute=1/);
+    });
+  });
+});
+
+test.describe("raceverse video", () => {
+  const countPlays = () => {
+    (window as unknown as { __plays: number }).__plays = 0;
+    HTMLMediaElement.prototype.play = function () {
+      (window as unknown as { __plays: number }).__plays += 1;
+      return Promise.resolve();
+    };
+  };
+  const plays = (page: import("@playwright/test").Page) =>
+    page.evaluate(() => (window as unknown as { __plays: number }).__plays);
+
+  test("starts muted once scrolled into view", async ({ page }) => {
+    await page.addInitScript(countPlays);
+    await page.goto("/raceverse");
+    expect(await plays(page)).toBe(0);
+    await page.locator("#video video").scrollIntoViewIfNeeded();
+    await expect.poll(() => plays(page)).toBe(1);
+    expect(await page.locator("#video video").evaluate((v: HTMLVideoElement) => v.muted)).toBe(
+      true,
+    );
+
+    const sound = page.getByRole("button", { name: /Tap for sound/ });
+    await expect(sound).toBeVisible();
+    const box = await sound.boundingBox();
+    expect(box && box.height >= 44).toBe(true);
+    await sound.click();
+    await expect(sound).toHaveCount(0);
+    expect(await page.locator("#video video").evaluate((v: HTMLVideoElement) => v.muted)).toBe(
+      false,
+    );
+  });
+
+  test.describe("reduced motion", () => {
+    test.use({ contextOptions: { reducedMotion: "reduce" } });
+
+    test("does not autoplay", async ({ page }) => {
+      await page.addInitScript(countPlays);
+      await page.goto("/raceverse");
+      await page.locator("#video video").scrollIntoViewIfNeeded();
+      await page.waitForTimeout(500);
+      expect(await plays(page)).toBe(0);
     });
   });
 });
