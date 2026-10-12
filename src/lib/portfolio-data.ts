@@ -530,10 +530,10 @@ export const PRICING: PricingTier[] = [
 
 export const ALEXIES_EXPERIENCE = [
   {
-    role: "Mobile App Developer",
+    role: "Senior Full-Stack Developer",
     company: "MadMonkey Hostels",
     period: "May 2023 – present",
-    body: "Feature implementation, API integration, bug fixing, Crashlytics & performance monitoring, stakeholder communication.",
+    body: "Feature implementation, API integration, bug fixing, Crashlytics & performance monitoring, stakeholder communication. Also handling SEO and analytics.",
   },
   {
     role: "Mobile App Developer",
