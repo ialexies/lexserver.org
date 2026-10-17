@@ -67,7 +67,7 @@ When you publish an important new page, paste its address into the search bar at
 
 ## Check the pages themselves
 
-Search Console tells you how Google sees the site overall. To check one page at a time, such as whether it has a proper title, description, headings and image alt text, we built [Indexwise](/indexwise/), a free Chrome extension. It runs in your browser, explains each problem in plain words and shows how to fix it.
+Search Console tells you how Google sees the site overall. To check one page at a time, such as whether it has a proper title, description, headings and image alt text, we built [Indexwise](https://indexwise.dev/), a free Chrome extension. It runs in your browser, explains each problem in plain words and shows how to fix it.
 
 ## If you'd rather not do it yourself
 

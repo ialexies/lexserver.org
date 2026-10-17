@@ -2,8 +2,6 @@ import { PRODUCTS, type OwnProduct } from "@/lib/portfolio-data";
 import { Section, SectionHeader, accentLink } from "./Page";
 
 function primaryLink(p: OwnProduct): { href: string; text: string; external: boolean } | null {
-  if (p.url?.startsWith("/indexwise"))
-    return { href: p.url, text: "About Indexwise", external: false };
   if (p.url?.startsWith("/")) return { href: p.url, text: "Read the case study", external: false };
   if (p.storeLinks?.chrome)
     return { href: p.storeLinks.chrome, text: "Get it for Chrome", external: true };
@@ -17,7 +15,7 @@ function primaryLink(p: OwnProduct): { href: string; text: string; external: boo
 }
 
 function secondaryLink(p: OwnProduct): { href: string; text: string } | null {
-  if (p.storeLinks?.website && p.url?.startsWith("/"))
+  if (p.storeLinks?.website && (p.url?.startsWith("/") || p.storeLinks.chrome))
     return { href: p.storeLinks.website, text: p.storeLinks.website.replace(/^https?:\/\//, "") };
   if (p.storeLinks?.chrome && p.url?.startsWith("/"))
     return { href: p.storeLinks.chrome, text: "Chrome Web Store" };

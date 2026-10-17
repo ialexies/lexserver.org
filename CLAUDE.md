@@ -34,16 +34,14 @@ and must not render its own `<html>`/`<body>` (that wiped the theme class).
 Do not add a route at `/products`: `public/products/` (images) is a directory, so nginx would serve
 that instead. Products live in the `#products` section of the homepage.
 
-Static pages in `public/` are served as-is, and win over SPA routes of the same path:
-`public/indexwise/` (the Indexwise landing page) and `public/indexwise/privacy/` (its privacy
-policy, which the Chrome Web Store listing links to — keep that URL stable). Do not add a React
-route at `/indexwise`; it would be shadowed. The Indexwise pages are hand-written HTML styled by
-`public/indexwise/indexwise.css`, which copies the site tokens from `src/styles.css` (keep in sync).
-`public/indexwise/index.html` is **generated**: edit `scripts/build-indexwise-page.mjs` and run
-`node scripts/build-indexwise-page.mjs` (it builds the FAQ JSON-LD from the visible FAQ so they cannot drift).
-The page uses the demo video and panel screenshots in `public/indexwise/video/` and `public/indexwise/img/`,
-which are rendered by the media pipeline in the indexwise extension repo (`media/`, `npm run media:capture`
-then `npm run media:render`). Re-render them after any extension UI change, then copy the outputs here.
+Static pages in `public/` are served as-is, and win over SPA routes of the same path.
+
+Indexwise moved to its own domain, https://indexwise.dev/ (landing page, privacy policy and the Chrome Web Store
+links all live there now). `nginx.conf` permanently redirects `/indexwise/` and `/indexwise/privacy` to the new
+URLs: **never remove those redirects**, because the Web Store listing and Google consent screen may still point
+at the old URLs. The old images, video and CSS in `public/indexwise/` are kept only so old hotlinks keep working;
+delete them once nothing links to them. Do not add a React route at `/indexwise`. Links to Indexwise from this
+site point at `https://indexwise.dev/`. The product and the media pipeline live in the indexwise extension repo.
 
 ### Pre-rendering
 

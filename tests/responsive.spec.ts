@@ -8,7 +8,6 @@ const ROUTES = [
   { path: "/about", name: "about" },
   { path: "/lupaatbahay", name: "lupaatbahay" },
   { path: "/tara-stays", name: "tara-stays" },
-  { path: "/indexwise/", name: "indexwise" },
   { path: "/blog", name: "blog" },
   { path: "/blog/2026-10-10-how-we-built-lupaatbahay", name: "blog-post" },
 ];
