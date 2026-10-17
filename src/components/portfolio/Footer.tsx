@@ -5,7 +5,7 @@ const LINKS = [
   { href: "/services", label: "Services" },
   { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },
-  { href: "/indexwise/", label: "Indexwise" },
+  { href: "https://indexwise.dev/", label: "Indexwise" },
 ];
 
 export function Footer() {

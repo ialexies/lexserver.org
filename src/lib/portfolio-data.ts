@@ -344,9 +344,9 @@ export const PRODUCTS: OwnProduct[] = [
     platforms: ["extension"],
     status: "published",
     image: "/products/indexwise.webp",
-    url: "/indexwise/",
     storeLinks: {
       chrome: "https://chromewebstore.google.com/detail/demkfoednfaklniecnobahjiddbhnlpe",
+      website: "https://indexwise.dev/",
     },
     features: [
       "Scored audit with copy-paste fixes",
