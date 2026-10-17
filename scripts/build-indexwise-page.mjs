@@ -91,7 +91,7 @@ const FAQ = [
   ],
   [
     "Does it send my pages or data anywhere?",
-    'No. The audit runs in your browser and the results are shown only to you. Indexwise has no server and does not track you. See the <a href="/indexwise/privacy/">privacy policy</a> for the details.',
+    'No. The audit runs in your browser and the results are shown only to you. Indexwise does not track you. The only thing it sends is an anonymous error report when Indexwise itself breaks, with no page addresses in it, and you can turn that off. See the <a href="/indexwise/privacy/">privacy policy</a> for the details.',
   ],
   [
     "Do I have to connect Google Search Console or Google Analytics?",
@@ -279,7 +279,7 @@ ${block({ eyebrow: "Bulk and watch", title: "Many pages, many clients", body: "A
 
 <section id="privacy">
 <h2>Private by design</h2>
-<p class="lead">Indexwise has no server and does not track you. The pages you analyze never leave your browser.</p>
+<p class="lead">Indexwise does not track you. The pages you analyze never leave your browser. Only anonymous error reports are sent, and you can turn them off.</p>
 ${bullets(["It reads the active page only when you click the icon", "It asks for access to websites only when you allow it", "It stores your watched pages locally, in your browser", "It signs in with Google only if you choose to connect Search Console or Google Analytics, read-only", "It uses no remote code, no ads and no trackers"])}
 <p><a href="/indexwise/privacy/">Read the privacy policy</a></p>
 </section>
