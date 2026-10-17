@@ -91,11 +91,11 @@ const FAQ = [
   ],
   [
     "Does it send my pages or data anywhere?",
-    'No. The audit runs in your browser and the results are shown only to you. Indexwise has no server and no analytics. See the <a href="/indexwise/privacy/">privacy policy</a> for the details.',
+    'No. The audit runs in your browser and the results are shown only to you. Indexwise has no server and does not track you. See the <a href="/indexwise/privacy/">privacy policy</a> for the details.',
   ],
   [
-    "Do I have to connect Google Search Console?",
-    "No. Everything except the Search tab works without it. If you choose to connect, access is read-only and the data goes straight from Google to your browser.",
+    "Do I have to connect Google Search Console or Google Analytics?",
+    "No. Everything except the Search Console and Analytics tabs works without them. If you choose to connect, access is read-only and the data goes straight from Google to your browser.",
   ],
   [
     "Which sites and platforms does it work on?",
@@ -239,7 +239,7 @@ ${block({ eyebrow: "Full check", title: "One click for the whole picture", body:
 ${block({ id: "google-ai", eyebrow: "Google and AI", title: "See what search engines and AI tools see", body: "Preview how the page appears in Google on desktop and mobile, and in a social share card. Then check which crawlers are allowed in.", items: ["Googlebot and Bingbot, plus ChatGPT search, Perplexity and Claude search", "AI training crawlers: GPTBot, ClaudeBot, Google-Extended, Applebot-Extended and CCBot", "An AI readiness score, with robots.txt, llms.txt and structured data checked"], k: "aibots" })}
 ${block({ eyebrow: "Raw vs rendered", title: "Spot what only exists after JavaScript runs", body: "Search engines read the raw HTML first and may render the page later. Indexwise compares both so you can see what a crawler that does not run JavaScript would miss.", items: ["Title, description, canonical, robots meta and headings side by side", "Differences are highlighted", "An optional logged-out view shows what visitors who are not signed in see"], k: "render", flip: true })}
 ${block({ eyebrow: "Speed", title: "Speed, explained in plain words", body: "Largest Contentful Paint, Cumulative Layout Shift and Interaction to Next Paint, each with Google’s thresholds and what to do about it.", note: "Measured in your browser during the visit, so it varies with your device and connection. It is a quick check, not Google’s 28-day field data.", k: "speed" })}
-${block({ id: "search", eyebrow: "Search Console", title: "Your Google Search data, in the panel", body: "Connect Search Console (optional, read-only) to see how the page performs without switching tabs.", items: ["Clicks, impressions, CTR and position for 7 days to 12 months, with change arrows", "Quick wins: queries ranking just off page one", "Devices, countries, sitemaps and Google’s index status for the page", "Download the queries as a CSV"], note: "The numbers in this screenshot are sample data for a fictional site.", k: "search", flip: true })}
+${block({ id: "search", eyebrow: "Search Console", title: "Your Google Search data, in the panel", body: "Connect Search Console (optional, read-only) to see how the page performs without switching tabs. Connect Google Analytics too (also optional and read-only) to see sessions, engagement and key events for the same page.", items: ["Clicks, impressions, CTR and position for 7 days to 12 months, with change arrows", "Quick wins: queries ranking just off page one", "Devices, countries, sitemaps and Google’s index status for the page", "Download the queries as a CSV"], note: "The numbers in this screenshot are sample data for a fictional site.", k: "search", flip: true })}
 ${block({ id: "tools", eyebrow: "Tools", title: "Tools that finish the job", body: "The fix is not always one line. These tools help you write, check and generate what the audit asks for.", items: ["Schema generator for Article, Product and more, ready to paste", "Title and description rewrite prompts, and image alt text drafts", "Readability score, keyword check and a structured data validator", "Broken link checker and competitor content gap"], k: "schema" })}
 ${block({ eyebrow: "Bulk and watch", title: "Many pages, many clients", body: "Audit up to 100 pages at once from a sitemap, and keep an eye on the pages that matter.", items: ["Bulk audit from the sitemap, three pages at a time", "Watch pages: re-checked every 6 hours, with an alert when a title, canonical, robots tag, status or indexability changes", "Score history, a Client report with your own branding, and CSV export"], k: "bulk", flip: true })}
 
@@ -279,8 +279,8 @@ ${block({ eyebrow: "Bulk and watch", title: "Many pages, many clients", body: "A
 
 <section id="privacy">
 <h2>Private by design</h2>
-<p class="lead">Indexwise has no server and no analytics. The pages you analyze never leave your browser.</p>
-${bullets(["It reads the active page only when you click the icon", "It asks for access to websites only when you allow it", "It stores your watched pages locally, in your browser", "It signs in with Google only if you choose to connect Search Console, read-only", "It uses no remote code, no ads and no trackers"])}
+<p class="lead">Indexwise has no server and does not track you. The pages you analyze never leave your browser.</p>
+${bullets(["It reads the active page only when you click the icon", "It asks for access to websites only when you allow it", "It stores your watched pages locally, in your browser", "It signs in with Google only if you choose to connect Search Console or Google Analytics, read-only", "It uses no remote code, no ads and no trackers"])}
 <p><a href="/indexwise/privacy/">Read the privacy policy</a></p>
 </section>
 
@@ -303,7 +303,7 @@ ${faqHtml}
 <li><a href="mailto:ialexies@gmail.com">Contact</a></li>
 <li><a href="/">Lexserver</a></li>
 </ul>
-<p>Indexwise is made by Lexserver in Bataan, Philippines. It is not affiliated with Google. Search Console is a trademark of Google LLC.</p>
+<p>Indexwise is made by Lexserver in Bataan, Philippines. It is not affiliated with Google. Search Console and Google Analytics are trademarks of Google LLC.</p>
 </div>
 </footer>
 <script src="/indexwise/indexwise.js" defer></script>
