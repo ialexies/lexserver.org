@@ -38,7 +38,8 @@
 
 <h2>Short version</h2>
 <ul>
-<li>Indexwise has no server. We do not receive, store or see your data.</li>
+<li>Indexwise does not receive, store or see your pages, your audits or your Google data.</li>
+<li>From version 0.10.4, the one thing that leaves your browser is an anonymous error report when Indexwise itself breaks. It contains no page addresses and no personal data, and you can turn it off.</li>
 <li>Indexwise does not track you: no account, no advertising, and no usage analytics of its own.</li>
 <li>Everything Indexwise saves is kept in your own browser.</li>
 <li>Google Search Console and Google Analytics are optional. If you connect them, the extension talks to Google directly with read-only access.</li>
@@ -61,6 +62,11 @@
 </ul>
 <p>Search Console and Analytics data is fetched when you view it and is not saved by Indexwise. Analytics results are kept in memory while the side panel is open, so switching tabs does not ask Google again, and are dropped when the panel closes. The one exception: if a watched page loses Google clicks or position, the watch list keeps that alert (for example the before and after numbers) until you remove the page.</p>
 
+<h2>Error reports</h2>
+<p>From version 0.10.4, when something inside Indexwise fails (for example a bug stops an audit from finishing), the extension sends a short error report so the bug can be found and fixed. It is on by default. To turn it off, open <strong>Options</strong> in the side panel and untick <strong>Send anonymous error reports</strong>.</p>
+<p>A report contains the error message, the place in Indexwise's own code where it happened, which part of the extension it was (side panel or background), the Indexwise version, and the browser's name and major version. Before it is sent, web addresses, email addresses and anything that looks like a sign-in token are removed from the message. A report never contains the page you are auditing, its content, your history, your settings or any Search Console or Analytics data. There is no user ID, so reports cannot be linked to you or to each other.</p>
+<p>Reports go to an error-tracking server run by Lexserver (GlitchTip, at glitchtip.lexserver.org). Like any web request, a report reaches the server from your IP address. The server keeps only a shortened version with the last part removed (for example 203.0.113.0), which points to a network area, not to your device. Reports are used only to fix bugs, are not shared or sold, and are deleted automatically after 90 days. At most 10 reports are sent each time the panel is opened, and the same error is sent only once.</p>
+
 <h2>Background checks</h2>
 <p>If you add pages to your watch list, Indexwise re-checks them about every 6 hours while Chrome is open, and shows a notification when something important changes. If Search Console is connected, these checks also look up the page's recent Google clicks and position. Remove pages from the watch list to stop this.</p>
 
@@ -68,7 +74,7 @@
 <ul>
 <li><strong>activeTab and scripting</strong>: read the page you are auditing after you click the icon.</li>
 <li><strong>sidePanel</strong>: show results next to the page.</li>
-<li><strong>storage</strong>: save the items listed above in your browser.</li>
+<li><strong>storage</strong>: save the items listed above, and whether error reports are on, in your browser.</li>
 <li><strong>alarms and notifications</strong>: run watch-list checks and tell you about changes.</li>
 <li><strong>identity</strong>: let you sign in to Google for Search Console and Google Analytics, only when you choose to.</li>
 <li><strong>Access to all sites (optional)</strong>: requested only if you click "Allow on all sites". You can remove it at any time in Chrome's extension settings.</li>
@@ -93,7 +99,7 @@
 <p>Indexwise is a tool for website owners and is not directed at children under 13.</p>
 
 <h2>Changes</h2>
-<p>If this policy changes, the date above is updated. If a future version ever needs to send data to a server, this page will say so before that version ships.</p>
+<p>If this policy changes, the date above is updated. If a future version needs to send anything else to a server, this page will say so before that version ships.</p>
 
 <h2>Contact</h2>
 <p><a href="mailto:ialexies@gmail.com">ialexies@gmail.com</a></p>
