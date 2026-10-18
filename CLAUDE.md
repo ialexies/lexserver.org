@@ -101,7 +101,8 @@ The logo is the four-tile mark in [src/components/portfolio/Logo.tsx](src/compon
 (`Logo` in the nav and footer, `LogoMark` for the symbol alone). Its coral circle (`#ff6b4a`) is
 the only coral on the site, so don't reuse it elsewhere. Masters, colours and usage rules are in
 [brand/README.md](brand/README.md). Favicons, `site.webmanifest` and `logo-512.png` (the JSON-LD
-logo) live in `public/`.
+logo) live in `public/`. Cloudflare and browsers cache them for a day, so when an icon changes,
+bump the `?v=` on the icon links in `index.html`. Otherwise the old icon keeps showing.
 
 ### Images
 
