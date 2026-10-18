@@ -1,1 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#3346b8"/><path d="M20 15h7v28h17v6H20z" fill="#fff"/><circle cx="48" cy="46" r="3.5" fill="#fff"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><title>Lexserver</title>
+<rect width="256" height="256" rx="56" fill="#3346b8"/><g transform="translate(35.84 35.84) scale(0.72)"><path fill="#fff" d="M118 106A12 12 0 0 1 106 118L36.22 118A6 6 0 0 1 30.24 111.56A88 88 0 0 1 111.56 30.24A6 6 0 0 1 118 36.22Z"/><path fill="#ff6b4a" d="M137.34 74A44.66 44.66 0 1 0 226.66 74A44.66 44.66 0 1 0 137.34 74Z"/><path fill="#fff" d="M42 138H106A12 12 0 0 1 118 150V214A12 12 0 0 1 106 226H42A12 12 0 0 1 30 214V150A12 12 0 0 1 42 138Z"/><path fill="#fff" d="M138 150A12 12 0 0 1 150 138L219.78 138A6 6 0 0 1 225.76 144.44A88 88 0 0 1 144.44 225.76A6 6 0 0 1 138 219.78Z"/></g>
+</svg>

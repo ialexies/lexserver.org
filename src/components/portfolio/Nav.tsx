@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "@tanstack/react-router";
+import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
 
 const NAV_LINKS = [
@@ -42,9 +43,7 @@ export function Nav() {
         aria-label="Main"
         className="mx-auto flex h-16 max-w-[1168px] items-center justify-between gap-4 px-4 md:px-6"
       >
-        <a href="/" className="text-[17px] font-semibold tracking-[-0.01em] text-fg">
-          Lexserver<span className="text-accent">.</span>
-        </a>
+        <Logo />
 
         <ul className="hidden items-center gap-7 text-[14px] md:flex">
           {NAV_LINKS.map((l) => (

@@ -92,6 +92,12 @@ Font: Geist (sans) and Geist Mono (small labels only). Rules: sentence case, no 
 primary button per screen, accent only on the main button and links, whitespace and thin dividers
 instead of bordered cards, no stock photos or decorative graphics. Long-form text uses `.prose-site`.
 
+The logo is the four-tile mark in [src/components/portfolio/Logo.tsx](src/components/portfolio/Logo.tsx)
+(`Logo` in the nav and footer, `LogoMark` for the symbol alone). Its coral circle (`#ff6b4a`) is
+the only coral on the site, so don't reuse it elsewhere. Masters, colours and usage rules are in
+[brand/README.md](brand/README.md). Favicons, `site.webmanifest` and `logo-512.png` (the JSON-LD
+logo) live in `public/`.
+
 ### Images
 
 Product and case-study images are webp in `public/products/`. Keep them under ~150 KB each. Use
