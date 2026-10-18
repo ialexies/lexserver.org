@@ -3,7 +3,11 @@ services:
     build: .
     restart: unless-stopped
     ports:
-      - "8085:80"
+      # Loopback only: the box's shared "lexserver" cloudflared tunnel reaches this over
+      # localhost (see lexserver-workspace/INFRASTRUCTURE.md), and nginx trusts
+      # CF-Connecting-IP for its own rate limiting (see nginx.conf) -- a publicly reachable
+      # 8085 would let that header be forged by going around Cloudflare entirely.
+      - "127.0.0.1:8085:80"
 
   # Contact form backend, reached by nginx at http://api:3000 (not published on the host).
   # Email settings come from a .env file next to this one on the server (see .env.example).

@@ -22,6 +22,11 @@ Docker (host port 8085 -> nginx 80):
 docker compose up --build
 ```
 
+`8085` is published as `127.0.0.1:8085` only (see `docker-compose.yml`), never on all
+interfaces: nginx trusts `CF-Connecting-IP` for its own rate limiting, and a publicly
+reachable port would let that header be forged by skipping Cloudflare entirely. The
+box's shared `cloudflared` tunnel reaches it over `localhost`.
+
 ## Architecture
 
 A React app (Vite + TanStack Router file routes, pre-rendered to static HTML at build time) for Lexserver, the studio
