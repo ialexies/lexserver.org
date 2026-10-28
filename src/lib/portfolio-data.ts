@@ -385,7 +385,7 @@ export const PRODUCTS: OwnProduct[] = [
     status: "published",
     image: "/products/raceverse.webp",
     url: "/raceverse",
-    storeLinks: { website: "https://fitness-app.lexserver.org" },
+    storeLinks: { website: "https://jcirracesolutions.com" },
     features: [
       "Activity logging, social feed and badges",
       "Real and virtual races with live leaderboards",
