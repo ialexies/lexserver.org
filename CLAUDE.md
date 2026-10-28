@@ -73,6 +73,8 @@ Products with `status: "coming-soon"` are listed by name only. `status: "in-deve
 get a full row with an "In development" badge. Blog posts are
 markdown in `src/blog/posts/` (`YYYY-MM-DD-slug.md`), loaded by `src/lib/blog.ts`.
 
+Community work (BetterGov.ph contribution, BetterHermosa.org which we host and manage) is the `COMMUNITY` constant, rendered by `Community.tsx` on the homepage, not in `PRODUCTS` since it isn't our own product.
+
 Adding a product: add an `OwnProduct` to `PRODUCTS`. An internal `url` starting with `/` renders as
 "Learn more"; `storeLinks.website` and `storeLinks.chrome` render extra buttons.
 

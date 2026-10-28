@@ -56,7 +56,26 @@ function AboutPage() {
               <p className="text-muted">
                 Lexserver is what we do together: websites, apps, design and the hosting to keep it
                 all running, for clients who want one accountable team instead of a hand-off chain.
-                We also build and run our own products, like LupaAtBahay and Indexwise.
+                We also build and run our own products, like LupaAtBahay and Indexwise. We
+                contribute to{" "}
+                <a
+                  href="https://bettergov.ph"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={textLink}
+                >
+                  BetterGov.ph
+                </a>{" "}
+                and host and manage{" "}
+                <a
+                  href="https://betterhermosa.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={textLink}
+                >
+                  BetterHermosa.org
+                </a>
+                , a volunteer-run portal for Hermosa, Bataan.
               </p>
               <div className="mt-4 flex flex-wrap items-center gap-6">
                 <a href="/#contact" className={btnPrimary}>
