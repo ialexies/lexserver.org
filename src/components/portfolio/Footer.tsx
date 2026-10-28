@@ -7,6 +7,7 @@ const LINKS = [
   { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },
   { href: "https://indexwise.dev/", label: "Indexwise" },
+  { href: "https://betterhermosa.org/", label: "BetterHermosa" },
 ];
 
 export function Footer() {

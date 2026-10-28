@@ -357,22 +357,6 @@ export const PRODUCTS: OwnProduct[] = [
     ],
   },
   {
-    slug: "re-call",
-    name: "Re-call",
-    tagline: "Never Miss What Was Said",
-    description:
-      "An Android app that records phone calls so you can revisit important conversations — business agreements, medical consultations, or anything worth remembering. All recordings stay on your device; nothing is sent to any server.",
-    platforms: ["android"],
-    status: "coming-soon",
-    features: [
-      "Manual & automatic call recording",
-      "Waveform audio player with seek",
-      "Contact name auto-labeling",
-      "100% local — no cloud, no servers",
-      "Smart cleanup of short recordings",
-    ],
-  },
-  {
     slug: "tara-stays",
     name: "Tara Stays",
     tagline: "Free Hostel Booking for the Philippines",
@@ -411,6 +395,19 @@ export const PRODUCTS: OwnProduct[] = [
     ],
   },
 ];
+
+export const COMMUNITY = {
+  title: "Community work",
+  intro:
+    "We contribute to BetterGov.ph, the open-source effort to make Philippine government services easier to use.",
+  name: "BetterHermosa",
+  description:
+    "We host and manage BetterHermosa.org, a volunteer-run community portal for our home municipality of Hermosa, Bataan: officials, offices, barangays and the requirements for common permits and certificates. It is independent and not an official government website.",
+  image: "/products/betterhermosa.webp",
+  url: "https://betterhermosa.org/",
+  parentName: "BetterGov.ph",
+  parentUrl: "https://bettergov.ph",
+};
 
 export const TECH = [
   "React",

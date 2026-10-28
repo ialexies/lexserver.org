@@ -4,6 +4,7 @@ import { Hero } from "@/components/portfolio/Hero";
 import { FeaturedCase, WorkRows, VISIBLE_WORK } from "@/components/portfolio/WorkList";
 import { WhatWeDo } from "@/components/portfolio/WhatWeDo";
 import { Products } from "@/components/portfolio/Products";
+import { Community } from "@/components/portfolio/Community";
 import { Process } from "@/components/portfolio/Process";
 import { Contact } from "@/components/portfolio/Contact";
 
@@ -44,6 +45,7 @@ function Index() {
       </Section>
       <WhatWeDo />
       <Products />
+      <Community />
       <Process />
       <Contact />
     </PageShell>
