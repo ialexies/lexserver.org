@@ -12,7 +12,7 @@ import {
 } from "@/components/portfolio/Page";
 import { AutoplayVideo } from "@/components/portfolio/AutoplayVideo";
 
-const LIVE_URL = "https://fitness-app.lexserver.org";
+const LIVE_URL = "https://jcirracesolutions.com";
 
 const VIDEO_LD = {
   "@context": "https://schema.org",
